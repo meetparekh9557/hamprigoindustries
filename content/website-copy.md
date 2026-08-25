@@ -1,102 +1,182 @@
-# Hamprigo Industries — Website Copy (Draft 1)
+# Hamprigo Industries — Website Copy (Draft 2, SEO-first)
 
 > **Source:** client brief supplied 2026-08. Every capability, substrate, film
-> type and end-application below is taken from that brief.
-> Anything **not** in the brief is marked `[CONFIRM]` — see *Open Questions*
-> at the end. Nothing is invented and presented as fact.
+> type and end-application is taken from that brief.
+> `[CONFIRM]` marks anything not in the brief. Nothing is invented and
+> presented as fact. See *Open Questions* at the end.
 
 ---
 
-## Positioning
+## What changed in this draft, and why
 
-Hamprigo laminates. That is the through-line: the company takes a customer's
-fabric and permanently bonds it to something else — foam, another fabric, or
-a film — so the finished material does a job the base fabric could not do
-alone.
+Draft 1 was written to read well. This draft is written to **rank**, then read
+well — the keyword targets shape the H1s, the URL structure and the page
+inventory rather than being sprinkled on afterwards.
 
-Everything on the site should ladder back to that one idea. Buyers arriving
-here are sourcing managers and product developers at brands and OEMs. They
-are not browsing. They arrive with a spec, a substrate, a performance target
-and a deadline, and they are trying to answer one question: *can this
-supplier make my material behave the way I need it to?*
+Three findings from checking how this market actually searches:
 
-So the copy leads with substrate and outcome, not adjectives.
+**1. Buyers search the material name, literally.**
+Competitors rank on exact product strings — *"PU Foam Laminated Fabric"*,
+*"TPU Laminated Fabric"*, *"EVA Laminated Fabric"*, *"Bra Cup Foam Laminated
+Fabric"*. Not clever phrases. So the H1 on each service page is now the
+product term verbatim, not a benefit headline. Draft 1's *"Fabric that does
+more than fabric can"* is demoted to a hero subhead where it can still do
+persuasion work without costing us the keyword.
+
+**2. The competition is mostly marketplace listings.**
+Most first-page results are IndiaMART and TradeIndia profiles — thin,
+templated, no depth. That is an unusually soft field. A real site with
+genuine technical substance on each material can outrank them, and the FAQ
+blocks below are built for exactly that.
+
+**3. Every end-application in your brief is its own search term.**
+"Mattress protector fabric", "blackout curtain fabric", "trolley bag fabric",
+"military tent fabric" — buyers search by what they're *making*, not only by
+the material. Your brief lists 15 applications. That's 15 potential landing
+pages of qualified traffic that Draft 1 buried as bullet points inside
+service pages. Section 7 lays that out.
+
+**One thing I can't do without you:** competitors all rank with a city in the
+title — *"...Manufacturer from Mumbai"*, *"...from New Delhi"*. Location is
+the single highest-leverage SEO input in this trade and the brief doesn't
+give one. Every meta title below carries a `[CITY]` slot. Fill it and these
+titles get materially stronger.
+
+> **Note on volume data:** I have no keyword volume figures. There's no
+> keyword tool connected, and Search Console has nothing because the site
+> doesn't exist yet. Targets below are reasoned from competitor language and
+> real search results, not from measured volume. Worth validating before you
+> spend money on any of it.
 
 ---
 
-# Homepage
+## 1. Keyword map
+
+| Page | URL | Primary keyword | Secondary |
+|---|---|---|---|
+| Home | `/` | laminated fabric manufacturer | fabric lamination services, laminated textile supplier |
+| PU foam | `/pu-foam-laminated-fabric` | PU foam laminated fabric | foam laminated fabric, polyurethane foam lamination |
+| Fabric-to-fabric | `/fabric-laminated-with-fabric` | fabric to fabric lamination | double sided laminated fabric, fabric bonding |
+| Films | `/fabric-laminated-with-film` | TPU laminated fabric | PVC laminated fabric, PE laminated fabric, blackout laminated fabric, waterproof laminated fabric |
+| EVA | `/eva-laminated-fabric` | EVA laminated fabric | EVA foam lamination, EVA foam fabric |
+| Bra cups | `/bra-cups` | bra cup foam laminated fabric | moulded bra cups, thermo foam bra cups |
+| Bonded bras | `/seamless-bonded-bras` | seamless bonded bra manufacturer | bonded bra, seamless bra manufacturer |
+| Capabilities | `/capabilities` | wide width fabric lamination | fabric sourcing and development |
+| Contact | `/contact` | — | — |
+
+**Term to use consistently:** *laminated fabric*, not "bonded textile" or
+"composite fabric". It's what buyers type.
+
+**Spelling:** keep **Rexine** — it's standard trade vocabulary in this market
+and a term buyers search.
+
+---
+
+# 2. Homepage
+
+**URL:** `/`
+**Meta title:** `Laminated Fabric Manufacturer | PU Foam, TPU & EVA | Hamprigo`  *(60)*
+**Meta description:** `Fabric lamination with PU foam, EVA foam, films and fabric. Any width, any density. Woven, knitted, non-woven and Rexine substrates laminated to spec.`  *(155)*
 
 ## Hero
 
-**Headline**
-> Fabric that does more than fabric can.
+**H1**
+> Laminated Fabric Manufacturer
 
 **Subhead**
-> Hamprigo Industries laminates woven, knitted, non-woven and Rexine
-> substrates to PU foam, EVA foam, films and other fabrics — bonded
-> permanently, finished to your spec, at any width you need.
+> Fabric that does more than fabric can. Hamprigo Industries laminates woven,
+> knitted, non-woven and Rexine substrates to PU foam, EVA foam, films and
+> other fabrics — bonded permanently, finished to your specification, at any
+> width you need.
 
 **Primary CTA:** Send us your specification
 **Secondary CTA:** See what we laminate
 
 ---
 
-## The four things we bond
+## H2: Our fabric lamination services
 
-*(Four-card grid. Each links to its service page.)*
+*(Four-card grid, each linking to its service page.)*
 
 **PU Foam Laminated Fabric**
 Any density, any thickness. Irreversible bonding with excellent washing
 fastness — the reason our material holds up in lingerie and bra cups.
+→ *PU foam lamination*
 
 **Fabric Laminated with Fabric**
-Two fabrics, permanently joined, for furnishing textiles and structured
+Two fabrics permanently joined, for furnishing textiles and structured
 headwear.
+→ *Fabric-to-fabric lamination*
 
 **Fabric Laminated with Films**
 PVC, TPU, PE and blackout films to make a fabric waterproof, stronger, or
 opaque to light.
+→ *Film lamination*
 
 **EVA Laminated Fabric**
 EVA foam in the colour and thickness your product calls for — the structure
 behind moulded bags and footwear.
+→ *EVA lamination*
 
 ---
 
-## Two things worth knowing before you brief us
+## H2: Any width you need
 
-**Any width you need.**
-Our machinery runs wider than standard lamination width. If your cutting
-plan needs a width most laminators can't hold, that constraint disappears
-here — tell us the width and we'll run it.
+Our lamination machinery runs wider than standard width — any width is
+possible as per your requirement. If your cutting plan or panel size has been
+dictated by what your current laminator can hold, that constraint disappears
+here.
 
-**You don't have to arrive with the fabric.**
-We develop and source fabrics and treated fabrics on your behalf, laminate
-them, and supply the finished product. A brief is enough to start; you do
-not need a mill relationship first.
+## H2: You don't need to arrive with the fabric
 
----
-
-## Closing band
-
-**Headline**
-> Send the spec. We'll tell you what's possible.
-
-**Body**
-> Substrate, foam density, thickness, width, end application — whatever you
-> already know. If the specification isn't settled yet, that's a normal
-> place to start a conversation with us.
-
-**CTA:** Talk to our team
+We develop and source any kind of fabric or treated fabric on your behalf,
+laminate it to your specification, and supply the finished product. One
+supplier from material development through to finished goods.
 
 ---
 
-# Service Page 1 — PU Foam Laminated Fabric
+## H2: Industries we supply
+
+Intimate apparel · Automotive interiors · Footwear · Luggage and bags ·
+Home furnishing · Defence · Contract furniture · Packaging
+
+---
+
+## H2: Frequently asked questions
+
+**What is laminated fabric?**
+Laminated fabric is a textile permanently bonded to another material — foam,
+film, or a second fabric — so the finished material performs in ways the base
+fabric cannot. Lamination can make a fabric waterproof, add cushioning and
+structure, increase strength, or block light.
+
+**Which fabrics can you laminate?**
+Woven, non-woven and knitted fabrics, and Rexine. If you are unsure whether
+your substrate laminates well, send it to us and we will confirm before you
+commit to volume.
+
+**What is the maximum lamination width?**
+Our machinery runs at wider-than-standard widths and we laminate to any width
+as per customer requirement. `[CONFIRM: give the number in inches or cm.]`
+
+**Do I need to supply the fabric?**
+No. We develop and source fabrics and treated fabrics for customers,
+laminate them, and supply the finished product.
+
+**CTA band:** Send the spec. We'll tell you what's possible.
+
+---
+
+# 3. PU Foam Laminated Fabric
+
+**URL:** `/pu-foam-laminated-fabric`
+**Meta title:** `PU Foam Laminated Fabric Manufacturer | [CITY] | Hamprigo`  *(57)*
+**Meta description:** `PU foam laminated fabric in any density and thickness. Woven, knitted, non-woven & Rexine. Irreversible bonding, excellent washing fastness. Get a quote.`  *(155)*
 
 ## Hero
 
-**Headline**
-> PU foam lamination, bonded to last the life of the product.
+**H1**
+> PU Foam Laminated Fabric
 
 **Subhead**
 > State-of-the-art lamination machinery bonds your fabric to PU foam at the
@@ -105,146 +185,180 @@ not need a mill relationship first.
 
 ---
 
-## What we laminate
-
-We bond PU foam to all four substrate families:
+## H2: Substrates we laminate with PU foam
 
 - **Woven fabric**
 - **Non-woven fabric**
 - **Knitted fabric**
 - **Rexine**
 
-Foam is supplied across a **range of densities and thicknesses**, specified
-per requirement rather than pulled from a fixed catalogue. Density and
-thickness are the two variables that decide whether a cup holds shape,
-whether a seat feels right, and whether a padded panel reads as premium —
-so we treat them as customer inputs, not house defaults.
+## H2: Foam densities and thicknesses
+
+PU foam is supplied across a range of densities and thicknesses, specified per
+requirement rather than pulled from a fixed catalogue.
+
+Density and thickness are the two variables that decide whether a cup holds
+its shape, whether a seat feels right, and whether a padded panel reads as
+premium. We treat them as customer inputs, not house defaults.
 
 ---
 
-## Why the bond matters
+## H2: Irreversible bonding and washing fastness
 
-Two properties separate a lamination that survives the product's life from
-one that fails in the field:
+Two properties separate a lamination that lasts the life of the product from
+one that fails in the field.
 
-**Irreversible bonding.**
+### H3: Irreversible bonding
 The foam and the fabric do not separate. No delamination at the edge after
-cutting, no lifting at stress points, no bubbling after use.
+cutting, no lifting at stress points, no bubbling in use.
 
-**Excellent washing fastness.**
-The bond survives laundering. For any garment application — and for lingerie
-and bra cups in particular — this is the property that decides whether the
-product comes back as a return.
+### H3: Excellent washing fastness
+The bond survives laundering. For garment applications — and for lingerie and
+bra cups in particular — this is the property that decides whether a product
+comes back as a return.
 
 ---
 
-## Where it's used
-
-Our PU foam laminated fabrics currently go into:
+## H2: Applications for PU foam laminated fabric
 
 | Sector | Application |
 |---|---|
-| Intimate apparel | Bra cups, lingerie, blouse pads |
+| Intimate apparel | **Bra cups**, lingerie, blouse pads |
 | Automotive | Car seat upholstery |
 | Footwear | Uppers, linings, padded components |
-| Furniture & contract | Auditorium seating |
-| Packaging & luxury goods | Jewellery boxes |
+| Contract furniture | Auditorium seating |
+| Luxury packaging | Jewellery boxes |
+
+*Internal links: bra cups page, EVA page (footwear), film page (automotive).*
 
 ---
 
-## Now what
+## H2: Frequently asked questions
 
-Tell us the substrate, the foam density and thickness, and the end
-application. If you know only the end application, that's enough for us to
-propose a construction.
+**What is PU foam laminated fabric used for?**
+It is used wherever a textile needs cushioning, structure or a soft hand:
+bra cups and lingerie, blouse pads, car seat upholstery, footwear components,
+auditorium seating and jewellery box linings.
+
+**What foam densities are available?**
+We supply a range of densities and thicknesses specified to your requirement.
+Tell us the application and we will propose a construction.
+
+**Will the foam separate from the fabric?**
+No. Our bonding is irreversible — the layers do not delaminate at cut edges
+or under stress.
+
+**Can PU foam laminated fabric be washed?**
+Yes. Our laminate is made for excellent washing fastness, which is why it is
+used in lingerie and bra cups that are laundered repeatedly.
+
+**Can you laminate Rexine with PU foam?**
+Yes — Rexine is one of the four substrate families we laminate, alongside
+woven, knitted and non-woven fabrics.
 
 **CTA:** Request a PU foam lamination quote
 
 ---
 
-# Service Page 2 — Fabric Laminated with Fabric
+# 4. Fabric Laminated with Fabric
+
+**URL:** `/fabric-laminated-with-fabric`
+**Meta title:** `Fabric to Fabric Lamination | Two-Layer Bonded Fabric | Hamprigo`  *(60)*
+**Meta description:** `Fabric-to-fabric lamination bonding two textiles into one material. For furnishing fabrics, caps and headwear. Any width. Send both fabrics or let us source.`  *(157)*
 
 ## Hero
 
-**Headline**
-> Two fabrics. One material.
+**H1**
+> Fabric Laminated with Fabric
 
 **Subhead**
-> We have the technology to laminate two fabrics together — combining the
-> face you want with the body, backing or hand you need.
+> We have the technology to laminate two fabrics together — combining the face
+> you want with the body, backing or hand you need.
 
 ---
 
-## What it's for
+## H2: Why bond fabric to fabric
 
-Bonding fabric to fabric lets a material carry two sets of properties at
+Fabric-to-fabric lamination lets one material carry two sets of properties at
 once: the appearance and handle of the face fabric, plus the weight,
-structure, stability or backing performance of the second layer. It is the
-practical answer when no single fabric gives you both.
+structure, stability or backing performance of the second layer.
+
+It is the practical answer when no single fabric gives you both.
 
 ---
 
-## Where it's used
+## H2: Applications
 
-- **Furnishing fabrics** — upholstery and soft furnishing textiles that need
-  body and dimensional stability behind a decorative face.
-- **Caps and headwear** — structured panels that hold their shape through
-  wear.
+### H3: Furnishing fabrics
+Upholstery and soft furnishing textiles that need body and dimensional
+stability behind a decorative face.
+
+### H3: Caps and headwear
+Structured panels that hold their shape through wear.
 
 ---
 
-## Now what
+## H2: Frequently asked questions
 
-Send both fabrics, or send one and let us source the other. We'll confirm
-the combination laminates cleanly before you commit to volume.
+**Can any two fabrics be laminated together?**
+Most combinations laminate cleanly, but the pairing matters. Send both
+fabrics and we will confirm before you commit to volume.
+
+**Do I have to supply both fabrics?**
+No. Send one and we will develop or source the other.
+
+**What width can you laminate to?**
+Any width as per your requirement — our machinery runs wider than standard.
 
 **CTA:** Discuss a fabric-to-fabric lamination
 
 ---
 
-# Service Page 3 — Fabric Laminated with Films
+# 5. Fabric Laminated with Films
+
+**URL:** `/fabric-laminated-with-film`
+**Meta title:** `TPU, PVC & Blackout Laminated Fabric Manufacturer | Hamprigo`  *(59)*
+**Meta description:** `Waterproof laminated fabric with TPU, PVC, PE and blackout films. For raincoats, mattress protectors, military tents, trolley bags and blackout curtains.`  *(154)*
 
 ## Hero
 
-**Headline**
-> Make the fabric waterproof. Stronger. Or completely opaque.
+**H1**
+> Fabric Laminated with Films
 
 **Subhead**
-> We laminate fabrics with PVC, TPU, PE and blackout films to change what
-> the material can do — not just how it looks.
+> We laminate fabrics with PVC, TPU, PE and blackout films to change what the
+> material can do — not just how it looks.
 
 ---
 
-## The films we run
+## H2: Films we laminate
 
-| Film | What it's for |
+| Film | What it delivers |
 |---|---|
+| **TPU** | Waterproof, with flexibility and softer handle retained |
 | **PVC** | Durable waterproof barrier, wipe-clean surface |
-| **TPU** | Waterproof with flexibility and softer handle retained |
 | **PE** | Cost-effective moisture barrier |
-| **Blackout** | Blocks light transmission through the fabric |
+| **Blackout** | Controls light permeability through the fabric |
 
 ---
 
-## What film lamination changes
+## H2: What film lamination changes
 
-Three performance properties, depending on the film selected:
+### H3: Waterproofing
+The film becomes a continuous barrier across the fabric, so water does not
+pass through the substrate.
 
-**Waterproofing.**
-The film becomes a continuous barrier across the fabric face, so water does
-not pass through the substrate.
-
-**Strength.**
+### H3: Strength
 Film lamination improves the strength of the base fabric — useful wherever
 the textile carries load or takes abrasion.
 
-**Light control.**
-Blackout films control light permeability through the fabric, from partial
-dimming to full blockout.
+### H3: Light control
+Blackout films control light permeability, from partial dimming through to
+full blockout.
 
 ---
 
-## Where it's used
+## H2: Applications for film laminated fabric
 
 - **Military tents** — waterproofing plus the strength the application demands
 - **Raincoats** — waterproof performance in a wearable textile
@@ -254,21 +368,40 @@ dimming to full blockout.
 
 ---
 
-## Now what
+## H2: Frequently asked questions
 
-Tell us the performance target — waterproof rating, strength requirement, or
-degree of light blockout — and the fabric it has to work on.
+**What is the difference between TPU and PVC laminated fabric?**
+TPU keeps the fabric flexible with a softer handle, which suits garments and
+mattress protectors. PVC gives a more durable, wipe-clean barrier that suits
+heavy-duty and industrial uses. PE is the economical option where cost
+matters more than handle.
+
+**Which film makes fabric waterproof?**
+TPU, PVC and PE all create a waterproof barrier. Which one is right depends
+on whether you need softness, durability or lowest cost.
+
+**How does blackout laminated fabric work?**
+A blackout film laminated to the fabric blocks light passing through it. The
+degree of blockout is specified to your requirement.
+
+**Can film lamination make fabric stronger?**
+Yes — laminating film to a base fabric improves its strength, which is why it
+is used in military tents and trolley bags.
 
 **CTA:** Specify a film lamination
 
 ---
 
-# Service Page 4 — EVA Laminated Fabric
+# 6. EVA Laminated Fabric
+
+**URL:** `/eva-laminated-fabric`
+**Meta title:** `EVA Laminated Fabric Manufacturer | Any Colour & Thickness`  *(57)*
+**Meta description:** `EVA foam laminated fabric in various colours and thicknesses. The structural layer behind trolley bags, laptop bags and footwear. Any fabric, any width.`  *(153)*
 
 ## Hero
 
-**Headline**
-> EVA foam lamination, in your colour and your thickness.
+**H1**
+> EVA Laminated Fabric
 
 **Subhead**
 > We laminate any fabric with EVA foam across a range of colours and
@@ -276,9 +409,9 @@ degree of light blockout — and the fabric it has to work on.
 
 ---
 
-## What we offer
+## H2: What we offer
 
-- **Any fabric.** EVA bonds to the substrate you're already using.
+- **Any fabric.** EVA bonds to the substrate you already use.
 - **Various colours.** Specified to your product, not limited to black.
 - **Various thicknesses.** Selected against the rigidity and cushioning your
   part needs.
@@ -289,192 +422,274 @@ category.
 
 ---
 
-## Where it's used
+## H2: Applications for EVA laminated fabric
 
 - **Trolley bags** — moulded panels and structured shells
-- **Laptop bags** — protective padding with a finished face fabric
+- **Laptop bags** — protective padding behind a finished face fabric
 - **Footwear** — structured and cushioned components
 
 ---
 
-## Now what
+## H2: Frequently asked questions
 
-Send the fabric and the thickness, or the part you're trying to build.
+**What is EVA laminated fabric used for?**
+Trolley bags, laptop bags and footwear — anywhere a part must hold a moulded
+shape and absorb impact.
+
+**What is the difference between EVA and PU foam lamination?**
+EVA is firmer and holds a moulded shape, which suits bags, cases and footwear
+structure. PU foam is softer and suits cushioning and garment applications
+such as bra cups, lingerie and seating.
+
+**What colours is EVA available in?**
+Various colours, specified to your product.
 
 **CTA:** Request an EVA lamination quote
 
 ---
 
-# Product Page — Bra Cups
+# 7. Bra Cups
 
-> `[CONFIRM]` **This page needs your input before it ships.** The brief
-> establishes that Hamprigo's PU foam lamination is used to make bra cups,
-> with irreversible bonding and excellent washing fastness. It does not say
-> whether Hamprigo **moulds** the cups in-house or supplies the laminated
-> material to cup moulders. The draft below is written for the first case.
-> See *Open Questions*.
+> `[CONFIRM]` **Needs your input before publishing.** The brief establishes
+> that your PU foam lamination is used to make bra cups, with irreversible
+> bonding and excellent washing fastness. It does not say whether Hamprigo
+> **moulds** cups in-house or supplies laminated material to cup moulders.
+> Written below for the in-house moulding case. If you supply material only,
+> the H1 becomes *"Bra Cup Foam Laminated Fabric"* — which is also the higher-
+> volume keyword, so that version may rank better regardless.
+
+**URL:** `/bra-cups`
+**Meta title:** `Bra Cup Foam Laminated Fabric & Moulded Cups | Hamprigo`  *(55)*
+**Meta description:** `Bra cup fabric laminated with PU foam in your density and thickness. Irreversible bonding and excellent washing fastness. Woven, knitted and non-woven faces.`  *(157)*
 
 ## Hero
 
-**Headline**
-> Bra cups that keep their shape and survive the wash.
+**H1**
+> Bra Cups & Bra Cup Foam Laminated Fabric
 
 **Subhead**
 > Built on our own PU foam lamination — irreversible bonding and excellent
-> washing fastness, specified at the foam density and thickness your style
-> requires.
+> washing fastness, at the foam density and thickness your style requires.
 
 ---
 
-## Why the lamination decides the cup
+## H2: Why the lamination decides the cup
 
-A bra cup fails in one of two ways, and both trace back to the laminate
-rather than the cut-and-sew.
+A bra cup fails in one of two ways, and both trace back to the laminate rather
+than to the cut-and-sew.
 
-**It delaminates.** The foam separates from the fabric at the edge or across
-the face, and the cup wrinkles or bubbles. Our bonding is irreversible — the
-layers do not come apart.
+### H3: It delaminates
+The foam separates from the fabric at the edge or across the face, and the cup
+wrinkles or bubbles. Our bonding is irreversible — the layers do not come
+apart.
 
-**It doesn't survive laundering.** Bras are washed constantly. A laminate
-with poor washing fastness loses its bond, its hand, or its shape within a
-season. Ours is built for repeated laundering.
+### H3: It doesn't survive laundering
+Bras are washed constantly. A laminate with poor washing fastness loses its
+bond, its hand or its shape within a season. Ours is built for repeated
+laundering.
 
 Because we laminate in-house, the cup and the material are not two separate
-supplier decisions. The density, the thickness and the bond are specified
-together, against the style you're building.
+supplier decisions. Density, thickness and bond are specified together against
+the style you are building.
 
 ---
 
-## Specify your cup
+## H2: Specify your cup
 
 - **Foam density** — selected for the support level the style needs
 - **Foam thickness** — from lightly lined through to full push-up volume
 - **Face fabric** — woven, knitted, non-woven or Rexine
-- `[CONFIRM]` **Sizes, cup shapes and moulding tooling** — to be completed
+- `[CONFIRM]` **Cup sizes, shapes and moulding tooling**
 
 ---
 
-## Now what
+## H2: Frequently asked questions
+
+**What fabric is used for bra cups?**
+Bra cups are made from fabric laminated to PU foam. The face fabric can be
+woven, knitted or non-woven; the foam density and thickness determine the
+support level and the cup volume.
+
+**Why do bra cups wrinkle or bubble?**
+That is delamination — the foam separating from the face fabric. It is a
+bonding failure. Our irreversible bonding is specified to prevent it.
+
+**Do laminated bra cups survive washing?**
+Ours are made for it. Excellent washing fastness is the property that keeps
+the bond, the hand and the shape intact through repeated laundering.
+
+**Can I specify my own foam density and thickness?**
+Yes. Both are customer inputs, selected against the support level and volume
+your style needs.
 
 **CTA:** Send us your cup specification
 
 ---
 
-# Product Page — Seamless Bonded Bras
+# 8. Seamless Bonded Bras
 
-> `[CONFIRM]` **This page needs your input before it ships.** The brief asks
-> for content on seamless bonded bras but supplies no detail. The draft below
-> is written from the capabilities the brief *does* establish — PU foam
-> lamination, irreversible bonding, washing fastness, and finished-product
-> supply. Every product-specific claim is flagged. See *Open Questions*.
+> `[CONFIRM]` **Needs your input before publishing.** The brief asks for this
+> page but supplies no detail. Written from capabilities the brief *does*
+> establish — PU foam lamination, irreversible bonding, washing fastness and
+> finished-product supply. Every product-specific claim is flagged.
+
+**URL:** `/seamless-bonded-bras`
+**Meta title:** `Seamless Bonded Bra Manufacturer | Bonded Construction`  *(54)*
+**Meta description:** `Seamless bonded bras built on in-house PU foam lamination. Bonded edges instead of sewn seams — invisible under clothing, no seam abrasion, wash-durable.`  *(154)*
 
 ## Hero
 
-**Headline**
-> No seams. No stitching. Nothing to show through.
+**H1**
+> Seamless Bonded Bras
 
 **Subhead**
-> Bonded construction replaces sewn seams with permanent bonds — for bras
-> that disappear under clothing and stay comfortable against the skin.
+> Bonded construction replaces sewn seams with permanent bonds — for bras that
+> disappear under clothing and stay comfortable against the skin.
 
 ---
 
-## Why bonded beats sewn
+## H2: Why bonded beats sewn
 
-**Invisible under clothing.** A sewn seam creates a ridge that reads through
-a fitted garment. A bonded edge is flat, so the bra line does not print
-through.
+### H3: Invisible under clothing
+A sewn seam creates a ridge that reads through a fitted garment. A bonded edge
+is flat, so the bra line does not print through.
 
-**No seam abrasion.** Stitched seams and their allowances rub at the
-underarm, the wing and the cup edge. Bonding removes the raised edge that
-causes it.
+### H3: No seam abrasion
+Stitched seams and their allowances rub at the underarm, the wing and the cup
+edge. Bonding removes the raised edge that causes it.
 
-**A cleaner edge that holds.** Bonded edges do not fray, unravel or need
-overlocking — and with our lamination behind them, they survive repeated
-laundering.
+### H3: A cleaner edge that holds
+Bonded edges do not fray, unravel or need overlocking — and with our
+lamination behind them, they survive repeated laundering.
 
 ---
 
-## Built on lamination we control
+## H2: Built on lamination we control
 
 Seamless bonded construction only works if the laminate underneath it holds.
 Our irreversible bonding and washing fastness are what let a bonded bra
 survive a wash cycle that would open up a weaker laminate.
 
-We can develop and source the fabrics, laminate them, and supply the
-finished garment — so the material and the construction are specified
-together.
+We can develop and source the fabrics, laminate them, and supply the finished
+garment — so material and construction are specified together.
 
 - `[CONFIRM]` **Bonding method** — adhesive film, thermal, ultrasonic
-- `[CONFIRM]` **Assembly scope** — full finished bras, or bonded components
+- `[CONFIRM]` **Assembly scope** — finished bras, or bonded components
 - `[CONFIRM]` **Size range, MOQs, lead times**
 
 ---
 
-## Now what
+## H2: Frequently asked questions
+
+**What is a bonded bra?**
+A bra assembled with permanent bonds instead of stitched seams. The result has
+no seam ridges, so it stays invisible under fitted clothing.
+
+**Are seamless bonded bras more durable than sewn bras?**
+Durability depends on the laminate behind the bond. A bonded edge cannot fray
+or unravel the way a stitched seam can, but it will only survive laundering if
+the lamination underneath has genuine washing fastness.
+
+**Why are bonded bras more comfortable?**
+There is no raised seam or seam allowance to rub at the underarm, wing or cup
+edge.
 
 **CTA:** Talk to us about a bonded bra programme
 
 ---
 
-# Cross-cutting Capability Blocks
+# 9. Application pages — the biggest untapped opportunity
 
-*Reusable on the homepage, the About page and as an inline band on any
-service page.*
+Your brief lists 15 end-applications. Buyers search for most of them by name,
+and each is a page of qualified traffic that currently exists only as a bullet
+point.
 
-## Any width you need
+Recommended build order — highest intent first:
 
-**Headline**
-> Wider width machinery, so width stops being a constraint.
+| Page | Target keyword | Feeds from |
+|---|---|---|
+| `/applications/mattress-protector-fabric` | mattress protector fabric | Film (TPU/PE) |
+| `/applications/blackout-curtain-fabric` | blackout curtain fabric | Film (blackout) |
+| `/applications/trolley-bag-fabric` | trolley bag fabric | EVA + Film |
+| `/applications/car-seat-upholstery-fabric` | car seat upholstery fabric | PU foam |
+| `/applications/raincoat-fabric` | waterproof raincoat fabric | Film (TPU/PVC) |
+| `/applications/military-tent-fabric` | military tent fabric | Film |
+| `/applications/footwear-fabric` | laminated fabric for footwear | PU foam + EVA |
+| `/applications/laptop-bag-fabric` | laptop bag fabric | EVA |
+| `/applications/blouse-pad-fabric` | blouse pad fabric | PU foam |
+| `/applications/auditorium-seating-fabric` | auditorium seat fabric | PU foam |
+| `/applications/jewellery-box-fabric` | jewellery box lining fabric | PU foam |
 
-**Body**
-> Our lamination machinery runs at wider widths than standard — any width is
-> possible as per your requirement. If your cutting plan or panel size has
-> been dictated by what your current laminator can hold, tell us the width
-> you actually want.
+Each follows one template: what the application demands → which lamination
+delivers it → specification inputs → FAQ → CTA. Roughly 300–500 words. They
+link up to the parent service page, and the service page links down to them.
+
+**Recommendation:** ship the four service pages and two product pages first,
+then add application pages in the order above. They are far cheaper to write
+than the service pages because the technical substance is already settled.
 
 ---
 
-## Development and sourcing
+# 10. Technical SEO notes
 
-**Headline**
-> You don't need to arrive with the fabric.
+**Schema markup**
+- `Organization` on all pages — name, logo, address, contact. Needs the
+  address from Open Questions.
+- `Product` on each service page, with `material` and `applicationArea`.
+- `FAQPage` on every FAQ block above. These are written as direct-answer
+  pairs specifically so they are eligible for rich results and quotable by AI
+  search engines.
+- `BreadcrumbList` once application pages exist.
 
-**Body**
-> We develop and source any kind of fabric or treated fabric on your behalf,
-> laminate it to your specification, and supply the finished product. That
-> means a single supplier from material development through to finished
-> goods — and one conversation instead of three.
+**Internal linking**
+- Every service page links to every application that draws on it.
+- Every application page links back up to its parent service page.
+- The bra cups page and the PU foam page link to each other — they share
+  intent and each reinforces the other's relevance.
+
+**Image alt text** — name the material, not the scene.
+Good: `PU foam laminated knitted fabric for bra cup manufacturing`
+Bad: `factory machine`
+
+**Page speed** — Next.js static generation covers most of it. Serve fabric
+photography in WebP or AVIF; material close-ups are detail-heavy and will be
+the heaviest assets on the site.
+
+**One thing to avoid:** don't spin near-identical pages for
+"PU foam laminated fabric" and "foam laminated fabric". Same intent — one
+page, both phrases used naturally in the copy.
 
 ---
 
-# Open Questions for the Client
+# 11. Open Questions
 
-These block specific sections from going live. Everything else above is
-ready for review.
+Blocking specific sections. Everything else is ready for review.
+
+**SEO-critical**
+1. **City and state for the factory.** Highest-leverage single input on this
+   page set — every competitor ranks with a location in the title.
+2. **Maximum lamination width, as a number.** "Any width" reads as marketing;
+   a figure reads as capability, and it is a genuine differentiator.
+3. **Certifications** — ISO, OEKO-TEX, GRS, customer-specific approvals.
+   OEKO-TEX especially: for intimate apparel and automotive, its absence is
+   conspicuous. Nothing has been claimed.
 
 **Bra cups**
-1. Does Hamprigo **mould** bra cups in-house, or supply laminated material
-   to cup moulders? The page is currently written as in-house moulding.
-2. What cup sizes, shapes and volumes are offered?
+4. Do you **mould** cups in-house, or supply laminated material to moulders?
+5. Cup sizes, shapes and volumes offered?
 
 **Seamless bonded bras**
-3. Does Hamprigo assemble **finished bras**, or supply bonded components?
-4. What bonding method — adhesive film, thermal, ultrasonic?
-5. Size range, MOQs and lead times?
+6. Finished bras, or bonded components?
+7. Bonding method — adhesive film, thermal, ultrasonic?
+8. Size range, MOQs, lead times?
 
-**Company facts — none of these were in the brief**
-6. Year established, ownership, factory location(s).
-7. Certifications — ISO, OEKO-TEX, GRS, or any customer-specific approvals.
-   *(Nothing has been claimed on the site. These are strong trust signals in
-   textile sourcing and worth adding if held.)*
-8. Production capacity — metres per month, or per line.
-9. Maximum lamination width, in cm or inches. The brief says "any width";
-   a number is far more persuasive to a sourcing buyer.
+**Commercial**
+9. Production capacity — metres per month or per line.
 10. Minimum order quantities and typical lead times.
-11. Named reference customers or sectors that can be cited.
+11. Export markets served, if any.
+12. Named reference customers or citable sectors.
 
 **Positioning**
-12. Why does Hamprigo exist — the actual founding reason or the belief the
+13. Why does Hamprigo exist — the actual founding reason or the belief the
     business runs on? Needed before the About page can be written honestly.
-    Homepage copy above deliberately avoids inventing one.
+    Homepage copy deliberately avoids inventing one.
