@@ -36,6 +36,19 @@ behind moulded bags and footwear.
 
 ---
 
+## We Also Manufacture Bra Cups
+
+Not just the fabric that goes into them — the cups themselves.
+
+Most cup suppliers buy their laminated material in. We laminate ours, then
+manufacture the cup from it, so foam density, thickness, face fabric and bond
+are all specified for your style rather than inherited from someone else's
+stock.
+
+**See our bra cups**
+
+---
+
 ## Any Width You Need
 
 Our lamination machinery runs wider than standard width. Any width is possible
@@ -285,9 +298,12 @@ Various colours, specified to your product.
 
 # Bra Cups
 
-Bra cups built on our own PU foam lamination — irreversible bonding and
-excellent washing fastness, at the foam density and thickness your style
-requires.
+We manufacture bra cups. We also laminate the material they are made from.
+
+That is the difference. Most cup suppliers buy their laminated fabric in and
+work with whatever density and thickness the market offers them. We make ours.
+The foam, the face fabric and the bond are specified for your style, in-house,
+before a cup is ever formed.
 
 ## Why the Lamination Decides the Cup
 
@@ -302,9 +318,10 @@ layers do not come apart.
 poor washing fastness loses its bond, its hand or its shape within a season.
 Ours is built for repeated laundering.
 
-Because we laminate in-house, the cup and the material are not two separate
-supplier decisions. Density, thickness and bond are specified together against
-the style you are building.
+Because the lamination and the cup happen under one roof, they are not two
+separate supplier decisions. Density, thickness and bond are specified together
+against the style you are building — and if something needs to change, it
+changes at the source instead of going back down a supply chain.
 
 ## Specify Your Cup
 
@@ -312,7 +329,18 @@ the style you are building.
 - **Foam thickness** — from lightly lined through to full push-up volume
 - **Face fabric** — woven, knitted, non-woven or Rexine
 
+## One Supplier, Start to Finish
+
+We can develop and source the face fabric, laminate it to your specification,
+and manufacture the finished cup. You brief one supplier instead of
+coordinating three, and no one in the chain can point at anyone else when a
+cup does not perform.
+
 ## Frequently Asked Questions
+
+**Do you manufacture bra cups, or supply the fabric?**
+Both. We manufacture bra cups, and we laminate the PU foam fabric they are made
+from. You can buy the finished cup or the laminated material.
 
 **What fabric is used for bra cups?**
 Bra cups are made from fabric laminated to PU foam. The face fabric can be
