@@ -18,7 +18,7 @@ export const company = {
   name: "Hamprigo Industries",
   descriptor: "Textile Lamination",
   foundedYear: 1989,
-  url: "https://www.hamprigoindustries.com",
+  url: "https://hamprigoindustries.com",
   description:
     "Hamprigo Industries laminates woven, non-woven, knitted fabric and Rexine to PU foam, EVA foam, films and other fabrics, at any width, to customer specification.",
 } as const;
