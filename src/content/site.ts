@@ -64,7 +64,7 @@ export const services = [
       "Two properties define the bond. It is irreversible, so the foam does not lift or separate at cut edges. And it holds its washing fastness, so the material survives repeated laundering without losing bond, hand, or shape. For lingerie and bra cup applications, the second one is what decides whether a product comes back as a return.",
     ],
     applications:
-      "Used in lingerie, bra cups, car seat upholstery, blouse pads, footwear, auditorium seating, and jewellery boxes.",
+      "Used in lingerie, bra cups, car seat upholstery, blouse pads, footwear, auditorium seating, and jewelry boxes.",
     cta: "Ask us for a sample in the density and thickness you are considering.",
   },
   {
@@ -96,13 +96,13 @@ export const services = [
     slug: "eva-laminated-fabric",
     title: "EVA Laminated Fabric",
     summary:
-      "EVA foam in custom colours and thicknesses, for products that must hold their form.",
+      "EVA foam in custom colors and thicknesses, for products that must hold their form.",
     body: [
       "EVA lamination adds cushioning and structure that fabric alone cannot provide. That matters for products which need to hold form under repeated impact or pressure, like trolley bags, footwear, and laptop bags.",
-      "We laminate EVA to any fabric in custom colours and thicknesses, with thickness selected against the rigidity and cushioning the part needs.",
+      "We laminate EVA to any fabric in custom colors and thicknesses, with thickness selected against the rigidity and cushioning the part needs.",
     ],
     applications: "Used in trolley bags, laptop bags, and footwear.",
-    cta: "Ask for a sample in the thickness and colour your part calls for.",
+    cta: "Ask for a sample in the thickness and color your part calls for.",
   },
 ] as const;
 
@@ -173,7 +173,7 @@ export const about = {
     {
       heading: null,
       body: [
-        "Founded in 1989, Hamprigo Industries has been a trusted name in the laminated fabric industry for over three decades. Our journey began with a vision to innovate and elevate standards in laminated fabric manufacturing. Today we are a leading provider of high quality, customised laminated fabric solutions for a wide range of industries and applications.",
+        "Founded in 1989, Hamprigo Industries has been a trusted name in the laminated fabric industry for over three decades. Our journey began with a vision to innovate and elevate standards in laminated fabric manufacturing. Today we are a leading provider of high quality, customized laminated fabric solutions for a wide range of industries and applications.",
       ],
     },
     {
@@ -185,15 +185,15 @@ export const about = {
     {
       heading: "Our Expertise",
       body: [
-        "With decades of experience in the industry, we specialise in four lamination techniques: PU foam lamination, fabric to fabric lamination, film lamination, and EVA lamination. Our advanced machinery and skilled team enable us to produce high performance fabrics for applications ranging from automotive and apparel to home furnishings and industrial use.",
+        "With decades of experience in the industry, we specialize in four lamination techniques: PU foam lamination, fabric to fabric lamination, film lamination, and EVA lamination. Our advanced machinery and skilled team enable us to produce high performance fabrics for applications ranging from automotive and apparel to home furnishings and industrial use.",
         "We also manufacture seamless bonded bras from material we laminate ourselves, so material development, lamination and manufacture sit with one supplier rather than being coordinated across several.",
       ],
     },
     {
-      heading: "Quality and Customisation",
+      heading: "Quality and Customization",
       body: [
         "Quality is at the heart of everything we do. We adhere to strict quality control measures throughout the manufacturing process, ensuring that every product meets the highest standards of durability, performance, and reliability.",
-        "We also offer a wide range of customisation options. Density, thickness, colour, film type, and width are specified per order rather than selected from a fixed range, so clients choose the exact materials, colours, and specifications their project calls for.",
+        "We also offer a wide range of customization options. Density, thickness, color, film type, and width are specified per order rather than selected from a fixed range, so clients choose the exact materials, colors, and specifications their project calls for.",
       ],
     },
   ],
@@ -204,7 +204,7 @@ export const about = {
     },
     {
       title: "Customer Focus",
-      body: "Our clients are at the centre of our business. We listen to their needs and work diligently to provide solutions that align with their goals.",
+      body: "Our clients are at the center of our business. We listen to their needs and work diligently to provide solutions that align with their goals.",
     },
     {
       title: "Integrity",
@@ -212,7 +212,7 @@ export const about = {
     },
     {
       title: "Sustainability",
-      body: "We strive to minimise our environmental impact by implementing eco friendly practices and sourcing materials responsibly.",
+      body: "We strive to minimize our environmental impact by implementing eco friendly practices and sourcing materials responsibly.",
     },
   ],
   closing: {

@@ -6,7 +6,7 @@ import { about, company } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: `Founded in ${company.foundedYear}, ${company.name} manufactures customised laminated fabric for automotive, apparel, home furnishing and industrial applications.`,
+  description: `Founded in ${company.foundedYear}, ${company.name} manufactures customized laminated fabric for automotive, apparel, home furnishing and industrial applications.`,
   alternates: { canonical: "/about" },
 };
 
