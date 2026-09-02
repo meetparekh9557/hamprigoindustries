@@ -1,0 +1,9 @@
+# Cloudflare Pages redirects.
+# The previous site was live on this domain until 2025 and these paths are
+# still indexed. Point them at their closest equivalents so old links do not
+# land on a 404.
+/services       /lamination   301
+/service        /lamination   301
+/about-us       /about        301
+/aboutus        /about        301
+/contact-us     /contact      301

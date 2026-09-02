@@ -1,51 +1,132 @@
 "use client";
 
-import { useActionState } from "react";
-import { submitEnquiry, type EnquiryState } from "@/app/contact/actions";
-import { enquiryForm } from "@/content/site";
+import { useState } from "react";
+import { contact, enquiryForm } from "@/content/site";
 
-const initialState: EnquiryState = { status: "idle", message: "" };
+/**
+ * Static export, so there is no server action. The form posts JSON directly
+ * to whatever endpoint NEXT_PUBLIC_ENQUIRY_ENDPOINT names. Any handler that
+ * accepts a JSON POST will work.
+ *
+ * With the variable unset the form refuses to submit and shows the phone
+ * number and email instead. That is deliberate: a form that appears to work
+ * but drops enquiries is worse than one that tells you to call.
+ */
+const ENDPOINT = process.env.NEXT_PUBLIC_ENQUIRY_ENDPOINT;
+
+const REQUIRED: Array<[string, string]> = [
+  ["name", "Name"],
+  ["company", "Company"],
+  ["email", "Email"],
+  ["need", "What do you need"],
+  ["making", "What are you making"],
+];
 
 const fieldClass =
   "mt-2 w-full rounded-sm border border-line bg-white px-3.5 py-2.5 text-base text-ink outline-none transition-colors focus:border-ink";
 const labelClass = "block text-sm font-medium text-ink-strong";
 
-function FieldError({ message }: { message?: string }) {
-  if (!message) return null;
-  return <p className="mt-1.5 text-sm text-brand">{message}</p>;
-}
+type Status = "idle" | "sending" | "sent" | "error";
 
 export function EnquiryForm() {
-  const [state, formAction, pending] = useActionState(
-    submitEnquiry,
-    initialState,
-  );
-  const errors = state.fieldErrors ?? {};
+  const [status, setStatus] = useState<Status>("idle");
+  const [message, setMessage] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
-  if (state.status === "success") {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    const read = (key: string) => String(data.get(key) ?? "").trim();
+
+    // Honeypot. Bots fill hidden fields; people do not.
+    if (read("website")) {
+      setStatus("sent");
+      setMessage("Thank you. We will be in touch.");
+      return;
+    }
+
+    const nextErrors: Record<string, string> = {};
+    for (const [name, label] of REQUIRED) {
+      if (!read(name)) nextErrors[name] = `${label} is required.`;
+    }
+    const email = read("email");
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      nextErrors.email = "Enter a valid email address.";
+    }
+
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) {
+      setStatus("error");
+      setMessage("Please check the highlighted fields.");
+      return;
+    }
+
+    if (!ENDPOINT) {
+      setStatus("error");
+      setMessage(
+        `Our enquiry form is not accepting messages yet. Please email ${contact.email} or call ${contact.phone} and we will respond.`,
+      );
+      return;
+    }
+
+    setStatus("sending");
+    setMessage("");
+
+    const payload = {
+      name: read("name"),
+      company: read("company"),
+      email,
+      phone: read("phone"),
+      need: read("need"),
+      making: read("making"),
+      baseFabric: read("baseFabric"),
+      width: read("width"),
+      volume: read("volume"),
+      notes: read("notes"),
+      submittedAt: new Date().toISOString(),
+    };
+
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) throw new Error(String(response.status));
+      form.reset();
+      setStatus("sent");
+      setMessage(
+        "Thank you. Your enquiry has been sent and we will come back to you shortly.",
+      );
+    } catch {
+      setStatus("error");
+      setMessage(
+        `We could not send your enquiry just now. Please email ${contact.email} or call ${contact.phone}.`,
+      );
+    }
+  }
+
+  if (status === "sent") {
     return (
-      <div
-        role="status"
-        className="rounded-sm border border-line bg-surface p-8"
-      >
+      <div role="status" className="rounded-sm border border-line bg-surface p-8">
         <h3 className="text-lg font-semibold text-ink-strong">
           Enquiry received
         </h3>
-        <p className="mt-3 text-base leading-relaxed text-muted">
-          {state.message}
-        </p>
+        <p className="mt-3 text-base leading-relaxed text-muted">{message}</p>
       </div>
     );
   }
 
   return (
-    <form action={formAction} className="space-y-6" noValidate>
-      {state.status === "error" && state.message ? (
+    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+      {status === "error" && message ? (
         <p
           role="alert"
           className="rounded-sm border border-brand/30 bg-brand/5 px-4 py-3 text-sm leading-relaxed text-ink-strong"
         >
-          {state.message}
+          {message}
         </p>
       ) : null}
 
@@ -54,30 +135,30 @@ export function EnquiryForm() {
           <label className={labelClass} htmlFor="name">
             Name <span aria-hidden="true">*</span>
           </label>
-          <input id="name" name="name" required className={fieldClass} />
-          <FieldError message={errors.name} />
+          <input id="name" name="name" className={fieldClass} />
+          {errors.name ? (
+            <p className="mt-1.5 text-sm text-brand">{errors.name}</p>
+          ) : null}
         </div>
 
         <div>
           <label className={labelClass} htmlFor="company">
             Company <span aria-hidden="true">*</span>
           </label>
-          <input id="company" name="company" required className={fieldClass} />
-          <FieldError message={errors.company} />
+          <input id="company" name="company" className={fieldClass} />
+          {errors.company ? (
+            <p className="mt-1.5 text-sm text-brand">{errors.company}</p>
+          ) : null}
         </div>
 
         <div>
           <label className={labelClass} htmlFor="email">
             Email <span aria-hidden="true">*</span>
           </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            className={fieldClass}
-          />
-          <FieldError message={errors.email} />
+          <input id="email" name="email" type="email" className={fieldClass} />
+          {errors.email ? (
+            <p className="mt-1.5 text-sm text-brand">{errors.email}</p>
+          ) : null}
         </div>
 
         <div>
@@ -92,7 +173,7 @@ export function EnquiryForm() {
         <label className={labelClass} htmlFor="need">
           What do you need? <span aria-hidden="true">*</span>
         </label>
-        <select id="need" name="need" required className={fieldClass}>
+        <select id="need" name="need" defaultValue="" className={fieldClass}>
           <option value="">Please choose</option>
           {enquiryForm.needOptions.map((option) => (
             <option key={option} value={option}>
@@ -100,7 +181,9 @@ export function EnquiryForm() {
             </option>
           ))}
         </select>
-        <FieldError message={errors.need} />
+        {errors.need ? (
+          <p className="mt-1.5 text-sm text-brand">{errors.need}</p>
+        ) : null}
       </div>
 
       <div>
@@ -110,11 +193,12 @@ export function EnquiryForm() {
         <input
           id="making"
           name="making"
-          required
           placeholder="For example, mattress protectors or trolley bag panels"
           className={fieldClass}
         />
-        <FieldError message={errors.making} />
+        {errors.making ? (
+          <p className="mt-1.5 text-sm text-brand">{errors.making}</p>
+        ) : null}
       </div>
 
       <div className="grid gap-6 sm:grid-cols-3">
@@ -145,7 +229,7 @@ export function EnquiryForm() {
         <textarea id="notes" name="notes" rows={4} className={fieldClass} />
       </div>
 
-      {/* Honeypot, visually hidden and skipped by assistive tech. */}
+      {/* Honeypot, off screen and hidden from assistive tech. */}
       <div aria-hidden="true" className="absolute left-[-9999px]">
         <label htmlFor="website">Leave this field empty</label>
         <input id="website" name="website" tabIndex={-1} autoComplete="off" />
@@ -153,10 +237,10 @@ export function EnquiryForm() {
 
       <button
         type="submit"
-        disabled={pending}
+        disabled={status === "sending"}
         className="inline-flex items-center justify-center rounded-sm bg-brand px-6 py-3 text-sm font-semibold tracking-wide text-brand-ink transition-colors hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:opacity-60"
       >
-        {pending ? "Sending..." : "Send enquiry"}
+        {status === "sending" ? "Sending..." : "Send enquiry"}
       </button>
     </form>
   );
