@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored UI/UX Pro Max skill bundle. Third-party scripts, not ours to lint.
+    ".claude/**",
   ]),
 ]);
 

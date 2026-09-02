@@ -2,332 +2,251 @@
  * ---------------------------------------------------------------------------
  * SINGLE SOURCE OF TRUTH FOR ALL SITE COPY
  * ---------------------------------------------------------------------------
- * Every headline, paragraph, product, number and contact detail on the site is
- * defined here so the marketing content can be updated without touching any
- * component code.
+ * Every headline, paragraph and contact detail on the site is defined here so
+ * the copy can be updated without touching component code.
  *
- * NOTE: the specifics below (founding year, certifications, headcount, product
- * lines, addresses, phone numbers) are PLACEHOLDERS written to be realistic for
- * an industrial manufacturer. Replace them with Hamprigo's real details before
- * the site goes live.
+ * House style, agreed with the client:
+ *   - No em dashes anywhere. Use full stops, commas or colons instead.
+ *   - Bra cups appear only as an APPLICATION of PU foam laminated fabric.
+ *     They are never presented as a product or service Hamprigo sells.
+ *   - Contact details are exactly as the client supplied them. Do not
+ *     substitute a company-domain email; that was considered and declined.
  * ---------------------------------------------------------------------------
  */
 
 export const company = {
   name: "Hamprigo Industries",
-  shortName: "Hamprigo",
-  legalName: "Hamprigo Industries Pvt. Ltd.",
-  tagline: "Precision manufacturing, built to hold tolerance.",
-  description:
-    "Hamprigo Industries is a precision engineering and contract manufacturing partner serving the automotive, energy, agriculture and infrastructure sectors.",
-  foundedYear: 1998,
+  descriptor: "Textile Lamination",
+  foundedYear: 1989,
   url: "https://www.hamprigoindustries.com",
+  description:
+    "Hamprigo Industries laminates woven, non-woven, knitted fabric and Rexine to PU foam, EVA foam, films and other fabrics, at any width, to customer specification.",
 } as const;
 
 export const nav = [
   { href: "/", label: "Home" },
+  { href: "/lamination", label: "Lamination" },
+  { href: "/seamless-bonded-bras", label: "Seamless Bonded Bras" },
   { href: "/about", label: "About" },
-  { href: "/products", label: "Products & Services" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
 export const contact = {
-  email: "enquiries@hamprigoindustries.com",
-  salesEmail: "sales@hamprigoindustries.com",
-  careersEmail: "careers@hamprigoindustries.com",
-  phone: "+91 22 4000 1200",
-  phoneHref: "+912240001200",
-  hours: "Monday to Saturday, 9:00 – 18:00 IST",
-  headOffice: {
-    label: "Head Office",
-    lines: ["Plot 42, MIDC Industrial Estate", "Andheri East, Mumbai 400093", "Maharashtra, India"],
+  phone: "+91 961 933 7268",
+  phoneHref: "+919619337268",
+  email: "sahilshah95@live.com",
+  addressLines: [
+    "A 6/6 50, Jeevan Shanti Sagar, Jeevam Bima Nagar, Borivali West",
+    "Suburban, Mumbai 400103",
+    "Maharashtra, India",
+  ],
+} as const;
+
+/** Homepage hero. */
+export const hero = {
+  headline: "Laminated Fabric Manufacturer",
+  subhead:
+    "We laminate woven, non-woven, knitted fabric and Rexine to PU foam, EVA foam, films and other fabrics. Everything is bonded to your specification, at any width you need.",
+  since: `Laminating fabric since ${company.foundedYear}.`,
+  primaryCta: { label: "Request a sample", href: "/contact" },
+  secondaryCta: { label: "See what we laminate", href: "/lamination" },
+} as const;
+
+/** The four lamination techniques. Order is deliberate. */
+export const services = [
+  {
+    slug: "pu-foam-laminated-fabric",
+    title: "PU Foam Laminated Fabric",
+    summary:
+      "Custom densities and thicknesses, with irreversible bonding and excellent washing fastness.",
+    body: [
+      "We laminate woven, non-woven, knitted fabric, and Rexine with PU foam in custom densities and thicknesses. Both are specified per order rather than pulled from a fixed range, because they are what decide whether a cup holds its volume, a seat feels right, or a padded panel reads as premium.",
+      "Two properties define the bond. It is irreversible, so the foam does not lift or separate at cut edges. And it holds its washing fastness, so the material survives repeated laundering without losing bond, hand, or shape. For lingerie and bra cup applications, the second one is what decides whether a product comes back as a return.",
+    ],
+    applications:
+      "Used in lingerie, bra cups, car seat upholstery, blouse pads, footwear, auditorium seating, and jewellery boxes.",
+    cta: "Ask us for a sample in the density and thickness you are considering.",
   },
-  plants: [
+  {
+    slug: "fabric-laminated-with-fabric",
+    title: "Fabric Laminated with Fabric",
+    summary:
+      "Two fabrics bonded into one composite material, for furnishing fabrics and headwear.",
+    body: [
+      "We bond two fabrics into one composite material, giving furnishing and cap manufacturers performance a single layer cannot deliver: added body, texture, or durability behind the face fabric you want to show.",
+      "It is the practical answer when no one fabric gives you both the appearance you need and the structure the product demands.",
+    ],
+    applications: "Used in furnishing fabrics and cap manufacturing.",
+    cta: "Send us both fabrics and we will laminate a sample. If you only have one, we will develop the other.",
+  },
+  {
+    slug: "fabric-laminated-with-films",
+    title: "Fabric Laminated with Films",
+    summary:
+      "PVC, TPU, PE and blackout films to make fabric waterproof, stronger, or light-controlling.",
+    body: [
+      "Laminating fabric with PVC, TPU, PE, or blackout film turns it into a functional material: waterproof, stronger, and light-controlling. This is what makes the difference between a raincoat that leaks and one that doesn't, or a blackout curtain that actually blocks light.",
+      "Each film does a different job. TPU stays flexible and keeps a softer handle, which suits garments and mattress protectors. PVC gives a more durable, wipe-clean barrier. PE is the economical moisture barrier. Blackout film controls how much light passes through the fabric.",
+    ],
+    applications:
+      "Used in military tents, raincoats, trolley bags, mattress protectors, and blackout curtains.",
+    cta: "Tell us the performance target and the fabric it has to work on, and we will send a laminated sample.",
+  },
+  {
+    slug: "eva-laminated-fabric",
+    title: "EVA Laminated Fabric",
+    summary:
+      "EVA foam in custom colours and thicknesses, for products that must hold their form.",
+    body: [
+      "EVA lamination adds cushioning and structure that fabric alone cannot provide. That matters for products which need to hold form under repeated impact or pressure, like trolley bags, footwear, and laptop bags.",
+      "We laminate EVA to any fabric in custom colours and thicknesses, with thickness selected against the rigidity and cushioning the part needs.",
+    ],
+    applications: "Used in trolley bags, laptop bags, and footwear.",
+    cta: "Ask for a sample in the thickness and colour your part calls for.",
+  },
+] as const;
+
+/**
+ * Capabilities that apply across all four techniques.
+ * These are NOT services. The client was explicit that they sit under
+ * lamination rather than standing alongside it.
+ */
+export const capabilities = {
+  heading: "How we laminate, whichever technique you need",
+  intro: "Two things apply across all four.",
+  items: [
     {
-      label: "Unit I — Machining & Assembly",
-      lines: ["Survey 118/2, Chakan Industrial Area", "Pune 410501, Maharashtra"],
-      detail: "72,000 sq ft · CNC machining, sub-assembly, inspection",
+      title: "Any width",
+      body: "Our machinery runs wider than standard, so any width is possible per your requirement. Panel size and cutting plans are not limited by what a standard laminator can hold.",
     },
     {
-      label: "Unit II — Fabrication & Finishing",
-      lines: ["Plot C-9, GIDC Estate", "Vatva, Ahmedabad 382445, Gujarat"],
-      detail: "48,000 sq ft · Sheet metal, welding, surface treatment",
+      title: "Your fabric or ours",
+      body: "Many customers send us their own fabric to laminate. Others ask us to develop, source, or treat it for them. We work either way, and we can supply finished products, so material development through to finished goods sits with one supplier when that is what you need.",
     },
   ],
 } as const;
 
-/** Headline numbers used on the home and about pages. */
-export const stats = [
-  { value: "25+", label: "Years in operation", detail: `Manufacturing since ${company.foundedYear}` },
-  { value: "2", label: "Production facilities", detail: "120,000 sq ft combined" },
-  { value: "180+", label: "People on the floor", detail: "Engineers, machinists, inspectors" },
-  { value: "±0.01mm", label: "Held tolerance", detail: "On critical machined features" },
-] as const;
+/** Closing block used on the lamination page. */
+export const laminationClose = {
+  heading: "Start with a sample",
+  body: [
+    "Tell us the substrate and what the finished material has to do, and we will laminate a sample for you to handle and test. No specification required at this stage.",
+    "If your specification is already settled, send it across and we will come back with a construction and a quotation.",
+  ],
+} as const;
 
-export const heroHighlights = [
-  "ISO 9001:2015 certified quality system",
-  "Prototype to 100,000+ unit production runs",
-  "In-house tooling, machining and finishing",
-] as const;
+export const bondedBras = {
+  title: "Seamless Bonded Bras",
+  intro:
+    "Stitched seams show through fabric, chafe against skin, and add assembly steps. We manufacture seamless, tagless bras using bonding technology instead: no visible seam lines, less production complexity, and a smoother finish your end customer notices.",
+  sections: [
+    {
+      heading: "Why the laminate decides the bra",
+      body: [
+        "Bonding replaces the mechanical hold of a stitch, so the bond itself carries everything the garment goes through. A bonded edge cannot fray or unravel the way a stitched seam can, but it will only survive laundering if the lamination underneath has genuine washing fastness.",
+        "That is why we laminate our own material. Our bonding is irreversible, so layers do not separate at edges or under stress, and it holds its washing fastness through repeated laundering. Those two properties are what let a bonded bra keep its shape and its edges wash after wash.",
+      ],
+    },
+    {
+      heading: "Material and construction, specified together",
+      body: [
+        "We can develop and source the face fabric, or laminate the one you supply. Either way the lamination and the finished garment are done here, so the material and the construction are decided together rather than coordinated across separate suppliers. In bonded construction that matters more than in sewn, because the material and the assembly method are not separable decisions.",
+      ],
+    },
+  ],
+  close: {
+    heading: "Request a sample",
+    body: [
+      "Tell us the style you are planning and we will put a sample together so you can assess the hand, the edge finish, and how it sits.",
+      "If you are working to a settled specification, send it across and we will come back on construction and quantities.",
+    ],
+  },
+} as const;
 
-/** Core capability pillars — shown on the home page and expanded on /products. */
-export const capabilities = [
-  {
-    slug: "cnc-machining",
-    icon: "gear",
-    title: "CNC Machining",
-    summary:
-      "3-, 4- and 5-axis milling and turning for close-tolerance components in steel, aluminium, stainless and engineering plastics.",
-    points: [
-      "Multi-axis milling and live-tool turning centres",
-      "Tolerances held to ±0.01mm on critical features",
-      "First-article inspection on every new part number",
-      "Batch sizes from single prototypes to 100,000+ units",
+/**
+ * About page. The client reviewed these claims and asked that they be kept
+ * as written, including the sustainability statement. Do not trim them.
+ */
+export const about = {
+  title: "About Hamprigo Industries",
+  sections: [
+    {
+      heading: null,
+      body: [
+        "Founded in 1989, Hamprigo Industries has been a trusted name in the laminated fabric industry for over three decades. Our journey began with a vision to innovate and elevate standards in laminated fabric manufacturing. Today we are a leading provider of high quality, customised laminated fabric solutions for a wide range of industries and applications.",
+      ],
+    },
+    {
+      heading: "Our Mission",
+      body: [
+        "Our mission is to deliver superior quality products and unparalleled service to our clients. We achieve this through continuous innovation, state of the art technology, and a relentless commitment to excellence. Our team of experts works closely with clients to understand their unique needs and deliver tailor made solutions that exceed expectations.",
+      ],
+    },
+    {
+      heading: "Our Expertise",
+      body: [
+        "With decades of experience in the industry, we specialise in four lamination techniques: PU foam lamination, fabric to fabric lamination, film lamination, and EVA lamination. Our advanced machinery and skilled team enable us to produce high performance fabrics for applications ranging from automotive and apparel to home furnishings and industrial use.",
+        "We also manufacture seamless bonded bras from material we laminate ourselves, so material development, lamination and manufacture sit with one supplier rather than being coordinated across several.",
+      ],
+    },
+    {
+      heading: "Quality and Customisation",
+      body: [
+        "Quality is at the heart of everything we do. We adhere to strict quality control measures throughout the manufacturing process, ensuring that every product meets the highest standards of durability, performance, and reliability.",
+        "We also offer a wide range of customisation options. Density, thickness, colour, film type, and width are specified per order rather than selected from a fixed range, so clients choose the exact materials, colours, and specifications their project calls for.",
+      ],
+    },
+  ],
+  values: [
+    {
+      title: "Innovation",
+      body: "We continuously seek new ways to improve our products and processes, staying ahead of industry trends and delivering cutting edge solutions.",
+    },
+    {
+      title: "Customer Focus",
+      body: "Our clients are at the centre of our business. We listen to their needs and work diligently to provide solutions that align with their goals.",
+    },
+    {
+      title: "Integrity",
+      body: "We conduct our business with honesty, transparency, and respect for our clients and partners.",
+    },
+    {
+      title: "Sustainability",
+      body: "We strive to minimise our environmental impact by implementing eco friendly practices and sourcing materials responsibly.",
+    },
+  ],
+  closing: {
+    heading: "Your Trusted Partner",
+    body: [
+      "We are dedicated to building long lasting relationships with our clients based on trust, reliability, and mutual success. We take pride in our ability to bring your vision to life with our high quality laminated fabric solutions.",
+      "Thank you for considering Hamprigo Industries as your partner in innovation and quality. We look forward to the opportunity to work with you and contribute to your success.",
     ],
-    materials: ["Mild & alloy steel", "Aluminium 6061 / 7075", "Stainless 304 / 316", "Brass & bronze", "Engineering plastics"],
   },
-  {
-    slug: "sheet-metal-fabrication",
-    icon: "plate",
-    title: "Sheet Metal Fabrication",
-    summary:
-      "Laser cutting, CNC bending, welding and forming for enclosures, brackets, frames and structural weldments.",
-    points: [
-      "Fibre laser cutting up to 16mm mild steel",
-      "CNC press brakes with offline programming",
-      "MIG, TIG and spot welding with certified welders",
-      "Weld fixtures designed and built in-house",
-    ],
-    materials: ["Mild steel", "Galvanised & pre-coated steel", "Stainless 304 / 316", "Aluminium"],
-  },
-  {
-    slug: "tooling-and-dies",
-    icon: "anvil",
-    title: "Tooling & Die Making",
-    summary:
-      "Press tools, jigs, fixtures and gauges designed, cut and proved out in our own tool room before they reach the line.",
-    points: [
-      "Progressive and compound press tools",
-      "Check gauges and inspection fixtures",
-      "Tool trials and process validation",
-      "Preventive tool maintenance programmes",
-    ],
-    materials: ["Tool steel D2 / H13", "EN-series steels", "Carbide inserts"],
-  },
-  {
-    slug: "surface-treatment",
-    icon: "layers",
-    title: "Surface Treatment & Finishing",
-    summary:
-      "Powder coating, plating, passivation and painting managed in-house or through a qualified, audited supplier base.",
-    points: [
-      "Seven-tank pre-treatment and powder coating line",
-      "Zinc, nickel and phosphate coatings",
-      "Salt-spray tested to customer specification",
-      "Colour and gloss matching to brand standards",
-    ],
-    materials: ["Powder coat", "Zinc plating", "Phosphating", "Anodising"],
-  },
-  {
-    slug: "assembly-and-integration",
-    icon: "modules",
-    title: "Assembly & Integration",
-    summary:
-      "Sub-assembly and build-to-print kitting, including torque-controlled fastening, leak testing and functional checks.",
-    points: [
-      "Torque-controlled and error-proofed workstations",
-      "Leak, pressure and functional end-of-line testing",
-      "Kitting, serialisation and traceability",
-      "Packing to customer line-side requirements",
-    ],
-    materials: [],
-  },
-  {
-    slug: "quality-and-metrology",
-    icon: "target",
-    title: "Quality & Metrology",
-    summary:
-      "A climate-controlled metrology room and documented control plans keep every shipment measurable and traceable.",
-    points: [
-      "CMM, height gauge and surface roughness testing",
-      "PPAP, control plans and PFMEA documentation",
-      "Full material and heat-number traceability",
-      "SPC monitoring on critical characteristics",
-    ],
-    materials: [],
-  },
-] as const;
+} as const;
 
-/** Product families — the catalogue side of the business. */
-export const productLines = [
-  {
-    slug: "precision-machined-components",
-    name: "Precision Machined Components",
-    blurb:
-      "Shafts, housings, flanges, manifolds and close-tolerance turned parts produced to drawing and supplied inspection-ready.",
-    specs: [
-      { label: "Size range", value: "Ø5mm – Ø450mm" },
-      { label: "Tolerance", value: "Down to ±0.01mm" },
-      { label: "Surface finish", value: "Ra 0.4 – 3.2 µm" },
-      { label: "Typical volume", value: "50 – 100,000 pcs / yr" },
-    ],
-  },
-  {
-    slug: "fabricated-structures",
-    name: "Fabricated Structures & Enclosures",
-    blurb:
-      "Welded frames, skids, control-panel enclosures and machine guarding, finished and delivered ready to install.",
-    specs: [
-      { label: "Material thickness", value: "0.8mm – 16mm" },
-      { label: "Max sheet size", value: "3000 × 1500mm" },
-      { label: "Finish", value: "Powder coat, plating, paint" },
-      { label: "Typical volume", value: "10 – 5,000 pcs / yr" },
-    ],
-  },
-  {
-    slug: "press-tools-and-fixtures",
-    name: "Press Tools, Jigs & Fixtures",
-    blurb:
-      "Purpose-built tooling designed around your part and proved out on our presses before it is handed over.",
-    specs: [
-      { label: "Tool type", value: "Progressive, compound, blanking" },
-      { label: "Lead time", value: "6 – 12 weeks typical" },
-      { label: "Validation", value: "Trial run + dimensional report" },
-      { label: "Support", value: "Refurbishment & spares" },
-    ],
-  },
-  {
-    slug: "contract-assemblies",
-    name: "Build-to-Print Assemblies",
-    blurb:
-      "Multi-part assemblies built, tested and packed to your specification, with full traceability on every unit.",
-    specs: [
-      { label: "Scope", value: "Sub-assembly to finished unit" },
-      { label: "Testing", value: "Leak, pressure, functional" },
-      { label: "Traceability", value: "Serialised, batch-linked" },
-      { label: "Logistics", value: "Line-side or kitted packing" },
-    ],
-  },
-] as const;
-
-/** Sectors served. */
 export const industries = [
-  { name: "Automotive & Mobility", detail: "Tier-2 supply of machined and fabricated components to Tier-1 assemblers." },
-  { name: "Energy & Power", detail: "Enclosures, structural weldments and machined parts for generation and distribution." },
-  { name: "Agriculture Equipment", detail: "Wear-resistant fabricated assemblies and drivetrain components." },
-  { name: "Infrastructure & Rail", detail: "Heavy fabrication, brackets and safety-critical machined hardware." },
-  { name: "Industrial Automation", detail: "Machine frames, guarding, control enclosures and precision sub-assemblies." },
-  { name: "Water & Process", detail: "Stainless components, manifolds and pressure-tested assemblies." },
+  "Intimate apparel",
+  "Automotive interiors",
+  "Footwear",
+  "Luggage and bags",
+  "Home furnishing",
+  "Defence",
+  "Contract furniture",
+  "Packaging",
 ] as const;
 
-/** How an engagement runs, start to finish. */
-export const process = [
-  {
-    step: "01",
-    title: "Enquiry & feasibility",
-    detail:
-      "Send drawings or a 3D model. Our engineering team reviews manufacturability, flags cost drivers and confirms what we can hold.",
-  },
-  {
-    step: "02",
-    title: "Quotation & planning",
-    detail:
-      "You get a costed quotation with a process route, tooling requirement and lead time — typically within five working days.",
-  },
-  {
-    step: "03",
-    title: "Tooling & first article",
-    detail:
-      "Tools and fixtures are built in our own tool room. A first-article sample and dimensional report go to you for sign-off.",
-  },
-  {
-    step: "04",
-    title: "Production & control",
-    detail:
-      "Approved parts move to series production under a documented control plan, with SPC on critical characteristics.",
-  },
-  {
-    step: "05",
-    title: "Inspection & dispatch",
-    detail:
-      "Every batch ships with an inspection report and full material traceability, packed to your line-side requirement.",
-  },
-] as const;
-
-/** What the company says it stands for. */
-export const values = [
-  {
-    title: "Measure, don't assume",
-    detail:
-      "Nothing leaves the floor on the strength of an opinion. If a characteristic matters, it is measured, recorded and traceable.",
-  },
-  {
-    title: "Own the whole route",
-    detail:
-      "Tooling, machining, fabrication and finishing sit under one roof so accountability never gets handed off at a gate.",
-  },
-  {
-    title: "Say the hard thing early",
-    detail:
-      "If a drawing carries a tolerance that will cost you money for no functional gain, we will tell you at quotation, not at launch.",
-  },
-  {
-    title: "Build people, not just parts",
-    detail:
-      "Machinists and inspectors are trained and certified in-house. Most of our supervisors started on the shop floor.",
-  },
-] as const;
-
-/** Company milestones for the About page. */
-export const timeline = [
-  { year: "1998", title: "Founded in Mumbai", detail: "Started as a four-machine job shop serving local Tier-1 suppliers." },
-  { year: "2005", title: "ISO 9001 certification", detail: "Formalised the quality system and moved into series production contracts." },
-  { year: "2011", title: "Chakan facility opens", detail: "Unit I brings CNC machining and assembly under a purpose-built roof." },
-  { year: "2016", title: "In-house tool room", detail: "Press tool and fixture design brought in-house, cutting development lead times." },
-  { year: "2020", title: "Ahmedabad fabrication unit", detail: "Unit II adds laser cutting, forming and a powder coating line." },
-  { year: "2024", title: "Metrology lab commissioned", detail: "Climate-controlled inspection room with CMM and SPC reporting." },
-] as const;
-
-export const certifications = [
-  { name: "ISO 9001:2015", detail: "Quality management system" },
-  { name: "ISO 14001:2015", detail: "Environmental management" },
-  { name: "ISO 45001:2018", detail: "Occupational health & safety" },
-  { name: "IATF 16949", detail: "Automotive quality (Unit I)" },
-] as const;
-
-export const leadership = [
-  {
-    name: "R. Hampri",
-    role: "Managing Director",
-    bio: "Founded the business in 1998 after fifteen years in tool room and production engineering roles.",
-    initials: "RH",
-  },
-  {
-    name: "S. Deshmukh",
-    role: "Director — Operations",
-    bio: "Runs both plants day to day, with a background in lean manufacturing and automotive Tier-1 supply.",
-    initials: "SD",
-  },
-  {
-    name: "A. Nair",
-    role: "Head of Quality",
-    bio: "Owns the quality system, customer audits and the metrology lab. Certified lead auditor for ISO 9001.",
-    initials: "AN",
-  },
-  {
-    name: "V. Patel",
-    role: "Head of Engineering",
-    bio: "Leads design-for-manufacture reviews, tooling design and new-part introduction across both units.",
-    initials: "VP",
-  },
-] as const;
-
-/** Enquiry form dropdown options. */
-export const enquiryTypes = [
-  "Request a quotation",
-  "Capability / capacity question",
-  "Tooling or development project",
-  "Supplier registration",
-  "Careers",
-  "Something else",
-] as const;
+/** Enquiry form. Six required fields, the rest optional. */
+export const enquiryForm = {
+  heading: "Send us an enquiry",
+  intro:
+    "Tell us what you are trying to make and we will come back with a construction and a sample. You do not need a finished specification to start a conversation.",
+  needOptions: [
+    "PU foam laminated fabric",
+    "Fabric laminated with fabric",
+    "Fabric laminated with films",
+    "EVA laminated fabric",
+    "Seamless bonded bras",
+    "Fabric development and sourcing",
+    "Not sure yet",
+  ],
+} as const;

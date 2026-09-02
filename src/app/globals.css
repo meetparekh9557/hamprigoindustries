@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
+/**
+ * Palette taken from the existing Hamprigo identity: the red from the logo
+ * and the near-black used across the previous site. Committed to a light
+ * design with dark sections, rather than a light/dark theme toggle, because
+ * an industrial B2B site has no need for one and it halves the surface for
+ * contrast bugs.
+ */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #16181d;
+
+  --ink: #16181d;
+  --ink-strong: #0b0c0f;
+  --muted: #5b6270;
+  --line: #e2e5ea;
+  --surface: #f6f7f9;
+
+  --brand: #c8102e;
+  --brand-dark: #a30d26;
+  --brand-ink: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-ink-strong: var(--ink-strong);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-ink: var(--brand-ink);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Respect users who ask for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
