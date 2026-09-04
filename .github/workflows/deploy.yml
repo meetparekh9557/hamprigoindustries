@@ -1,12 +1,16 @@
 name: Deploy to GitHub Pages
 
 # Builds the Next.js static export and publishes it to GitHub Pages on every
-# push. Nothing to run by hand: push, wait about a minute, the site updates.
+# push to main. Nothing to run by hand: push, wait about a minute, the site
+# updates.
+#
+# Only main triggers this. GitHub Pages refuses to publish from any other
+# branch, so building on feature branches produced failed runs that also held
+# the deploy lock and blocked main behind them.
 on:
   push:
     branches:
       - main
-      - claude/company-website-q5qhm4
   workflow_dispatch:
 
 permissions:
@@ -14,10 +18,11 @@ permissions:
   pages: write
   id-token: write
 
-# Let a running deploy finish rather than cancelling it half way.
+# One deploy at a time. A newer push supersedes an older run rather than
+# queueing behind it, so a stuck run cannot block the next deploy.
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
