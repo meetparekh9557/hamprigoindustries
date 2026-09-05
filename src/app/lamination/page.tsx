@@ -167,58 +167,69 @@ export default function LaminationPage() {
         </Container>
       </section>
 
-      {/* 08. Width. A strip running the full viewport, to carry the idea.
-          No figure is given: the brief withholds one until the client
-          supplies it. */}
-      <section className="border-t border-line bg-surface pt-16 sm:pt-20">
+      {/* 08. Width. No photograph: every material shot on this page is
+          already carried by a technique above, and a letterboxed strip of
+          one of them repeated was decoration rather than information. The
+          statement is set as type instead. No figure is given, because the
+          client has not supplied one. */}
+      <section className="border-t border-line py-14 sm:py-16">
         <Container>
-          <div className="max-w-3xl">
+          <div className="grid gap-6 lg:grid-cols-[1fr_1.4fr] lg:items-baseline lg:gap-16">
             <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
               {page.width.heading}
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-muted">
+            <p className="text-lg leading-relaxed text-ink-strong sm:text-xl">
               {page.width.body}
             </p>
           </div>
         </Container>
-        <div className="relative mt-12 h-40 w-full sm:h-56">
-          <Image
-            src="/img/fabric-to-fabric.jpg"
-            alt="Laminated material running the full width"
-            fill
-            sizes="100vw"
-            className="object-cover"
-          />
-        </div>
       </section>
 
-      {/* 09. Layers into one material. Three frames, no film, as briefed. */}
-      <section className="border-t border-line py-16 sm:py-20">
+      {/* 09. Layers into one material. The stages are drawn as the stack
+          they describe, the last one solid to say that the layers have
+          become a single material. Three small photographs in a row said
+          none of that and repeated the technique images. */}
+      <section className="border-t border-line bg-surface py-16 sm:py-20">
         <Container>
-          <div className="max-w-3xl">
-            <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-              {page.construction.heading}
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-muted">
-              {page.construction.body}
-            </p>
+          <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16">
+            <div>
+              <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+                {page.construction.heading}
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-muted">
+                {page.construction.body}
+              </p>
+            </div>
+
+            <ol>
+              {page.construction.steps.map((step, i) => {
+                const last = i === page.construction.steps.length - 1;
+                return (
+                  <li
+                    key={step.label}
+                    className={`flex items-baseline gap-5 border border-line px-6 ${
+                      i > 0 ? "-mt-px" : ""
+                    } ${
+                      last
+                        ? "border-brand-blue bg-brand-blue py-8 text-white"
+                        : "bg-white py-6 text-ink-strong"
+                    }`}
+                  >
+                    <span
+                      className={`spec-label ${last ? "text-white/60" : "text-muted"}`}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span
+                      className={`font-semibold ${last ? "text-xl sm:text-2xl" : "text-lg"}`}
+                    >
+                      {step.label}
+                    </span>
+                  </li>
+                );
+              })}
+            </ol>
           </div>
-          <ul className="mt-12 grid gap-4 sm:grid-cols-3 sm:gap-6">
-            {page.construction.steps.map((step) => (
-              <li key={step.label}>
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={step.src}
-                    alt={step.alt}
-                    fill
-                    sizes="(min-width: 40rem) 32vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <p className="spec-label mt-3 text-ink-strong">{step.label}</p>
-              </li>
-            ))}
-          </ul>
         </Container>
       </section>
 

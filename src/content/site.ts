@@ -593,9 +593,9 @@ export const laminationPage = {
     heading: "From Individual Layers To One Material.",
     body: "Lamination brings different material layers together into a single construction specified for your requirement.",
     steps: [
-      { label: "Fabric", src: "/img/fabric-to-fabric.jpg", alt: "Woven fabric" },
-      { label: "Fabric + PU Foam", src: "/img/pu-foam.jpg", alt: "Fabric laminated to PU foam" },
-      { label: "Laminated Material", src: "/img/eva.jpg", alt: "The finished laminated material" },
+      { label: "Fabric" },
+      { label: "Fabric + PU Foam" },
+      { label: "Laminated Material" },
     ],
   },
   close: {
@@ -677,9 +677,17 @@ export const bondedBrasPage = {
       "That is why we laminate our own material.",
       "Our bonding is irreversible, so layers do not separate at the edges or under stress. The lamination also holds its washing fastness through repeated laundering, helping the finished bra retain its shape and edge finish wash after wash.",
     ],
-    image: {
-      src: "/img/bonded-bra-product.jpg",
+    /**
+     * The finished product, shown in a viewer the visitor can turn.
+     *
+     * `frames` are photographs taken around the product, in order. One frame
+     * renders as a still image; drop the 360 sequence in here, in order, and
+     * the viewer becomes interactive with no other change. Roughly 24 to 36
+     * frames gives a smooth turn.
+     */
+    product: {
       alt: "The finished seamless bonded bra, shown against a plain ground",
+      frames: ["/img/bonded-bra-product.jpg"],
     },
   },
   construction: {

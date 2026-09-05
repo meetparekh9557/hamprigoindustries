@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@/components/container";
 import { RequestSample } from "@/components/request-sample";
+import { SpinViewer } from "@/components/spin-viewer";
 import { HeroCta, SplitHero } from "@/components/split-hero";
 import {
   bondedBrasPage as page,
@@ -70,16 +71,13 @@ export default function SeamlessBondedBrasPage() {
 
             {/* Portrait product shot on a white ground. The frame matches
                 the file's own proportions, so nothing is cropped and there
-                are no bars either side. */}
-            <div className="relative mx-auto aspect-[3/4] w-full max-w-md overflow-hidden bg-white lg:max-w-none">
-              <Image
-                src={page.material.image.src}
-                alt={page.material.image.alt}
-                fill
-                sizes="(min-width: 64rem) 48vw, 100vw"
-                className="object-cover"
-              />
-            </div>
+                are no bars either side. Once the 360 sequence is in place
+                this is the same element, turnable. */}
+            <SpinViewer
+              frames={page.material.product.frames}
+              alt={page.material.product.alt}
+              className="mx-auto aspect-[3/4] w-full max-w-md bg-white lg:max-w-none"
+            />
           </div>
         </Container>
       </section>
