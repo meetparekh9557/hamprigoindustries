@@ -1,14 +1,8 @@
-import Link from "next/link";
 import { Container } from "@/components/container";
 import { CtaLink } from "@/components/cta-link";
 import { LaminateDiagram, type Layer } from "@/components/laminate-diagram";
-import {
-  capabilities,
-  company,
-  hero,
-  serviceLayers,
-  services,
-} from "@/content/site";
+import { ServiceRail } from "@/components/service-rail";
+import { capabilities, company, hero, serviceLayers } from "@/content/site";
 
 export default function HomePage() {
   return (
@@ -52,7 +46,8 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* The four techniques, each with its own cross-section. */}
+      {/* The four techniques, as one rail. Each is a sliver until it is
+          hovered, then it opens into a full card with its cross-section. */}
       <section className="border-b border-line py-20 sm:py-24">
         <Container>
           <div className="rule-tick pt-6">
@@ -62,42 +57,8 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="mt-14 grid gap-x-12 gap-y-14 sm:grid-cols-2">
-            {services.map((service, index) => (
-              <Link
-                key={service.slug}
-                href={`/lamination#${service.slug}`}
-                className="group block"
-              >
-                <div className="rounded-sm border border-line bg-surface p-6 transition-colors group-hover:border-ink-strong">
-                  <LaminateDiagram
-                    layers={
-                      [
-                        ...serviceLayers[
-                          service.slug as keyof typeof serviceLayers
-                        ],
-                      ] as Layer[]
-                    }
-                    caption={`Construction 0${index + 1}`}
-                  />
-                </div>
-                <h3 className="mt-5 text-lg font-semibold text-ink-strong">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {service.summary}
-                </p>
-                <span className="mt-4 inline-block text-sm font-semibold text-brand">
-                  Read more
-                  <span
-                    aria-hidden="true"
-                    className="ml-1.5 inline-block transition-transform group-hover:translate-x-1"
-                  >
-                    &rarr;
-                  </span>
-                </span>
-              </Link>
-            ))}
+          <div className="mt-12">
+            <ServiceRail />
           </div>
         </Container>
       </section>

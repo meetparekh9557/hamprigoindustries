@@ -53,9 +53,18 @@ export const hero = {
 } as const;
 
 /** The four lamination techniques. Order is deliberate. */
+/**
+ * The four lamination techniques.
+ *
+ * `short` is the label that runs up the spine of a collapsed panel in the
+ * homepage rail. It names the material rather than repeating the title,
+ * so the sliver stays scannable and the open card is not saying the same
+ * thing twice.
+ */
 export const services = [
   {
     slug: "pu-foam-laminated-fabric",
+    short: "PU Foam",
     title: "PU Foam Laminated Fabric",
     summary:
       "Custom densities and thicknesses, with irreversible bonding and excellent washing fastness.",
@@ -69,6 +78,7 @@ export const services = [
   },
   {
     slug: "fabric-laminated-with-fabric",
+    short: "Fabric on Fabric",
     title: "Fabric Laminated with Fabric",
     summary:
       "Two fabrics bonded into one composite material, for furnishing fabrics and headwear.",
@@ -81,6 +91,7 @@ export const services = [
   },
   {
     slug: "fabric-laminated-with-films",
+    short: "Films",
     title: "Fabric Laminated with Films",
     summary:
       "PVC, TPU, PE and blackout films to make fabric waterproof, stronger, or light-controlling.",
@@ -94,6 +105,7 @@ export const services = [
   },
   {
     slug: "eva-laminated-fabric",
+    short: "EVA",
     title: "EVA Laminated Fabric",
     summary:
       "EVA foam in custom colors and thicknesses, for products that must hold their form.",
