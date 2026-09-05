@@ -263,6 +263,29 @@ export const about = {
 } as const;
 
 /** Enquiry form. Six required fields, the rest optional. */
+/**
+ * The floating WhatsApp button.
+ *
+ * NOTE: this number is not the one in `contact` above. The site's phone is
+ * ...7268 and this is ...7286, the last two digits transposed. It was given
+ * separately and deliberately, so it stands, but it is worth confirming: a
+ * wrong digit here sends every WhatsApp enquiry into the void silently.
+ *
+ * Messages are short on purpose. The point is to open the chat with the
+ * subject already stated, leaving the person room to write their own
+ * question rather than deleting a paragraph first.
+ */
+export const whatsapp = {
+  number: "919619337286",
+  messages: {
+    default: "Hello Hamprigo Industries, I would like to make an enquiry.",
+    lamination:
+      "Hello Hamprigo Industries, I would like to enquire about laminated fabric.",
+    bondedBras:
+      "Hello Hamprigo Industries, I would like to enquire about seamless bonded bras.",
+  },
+} as const;
+
 export const enquiryForm = {
   heading: "Send us an enquiry",
   intro:
