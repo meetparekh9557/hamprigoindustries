@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "./container";
+import { Logo } from "./logo";
 import { company, contact, nav } from "@/content/site";
 
 export function SiteFooter() {
@@ -8,12 +9,7 @@ export function SiteFooter() {
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <span className="block text-lg font-bold tracking-tight">
-              {company.name}
-            </span>
-            <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.18em] text-brand">
-              {company.descriptor}
-            </span>
+            <Logo tone="light" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
               Laminating fabric since {company.foundedYear}.
             </p>

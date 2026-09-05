@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 /**
- * Palette taken from the existing Hamprigo identity: the red from the logo
- * and the near-black used across the previous site.
+ * Palette taken from the Hamprigo logo: the vermilion from the wordmark and
+ * the navy from the diamond mark. The previous site used a near-black, but
+ * the mark itself is navy, so the site follows the mark.
  *
  * Deliberately NOT the navy-and-blue the design tooling suggested. That is
  * the default B2B SaaS palette, it is what every competitor's template looks
@@ -17,14 +18,17 @@
   --background: #ffffff;
   --foreground: #16181d;
 
-  --ink: #16181d;
-  --ink-strong: #0b0c0f;
+  --ink: #1f2433;
+  /* Navy from the logo mark, not black. The identity's dark is blue. */
+  --ink-strong: #16213e;
   --muted: #5b6270;
   --line: #e2e5ea;
   --surface: #f6f7f9;
 
-  --brand: #c8102e;
-  --brand-dark: #a30d26;
+  /* Vermilion from the logo wordmark. Estimated from the supplied scan,
+     so worth checking against the original artwork if it turns up. */
+  --brand: #d8232a;
+  --brand-dark: #b01c22;
   --brand-ink: #ffffff;
 }
 

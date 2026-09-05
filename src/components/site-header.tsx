@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Container } from "./container";
-import { company, nav } from "@/content/site";
+import { Logo } from "./logo";
+import { nav } from "@/content/site";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -14,17 +15,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-line bg-white/95 backdrop-blur">
       <Container>
         <div className="flex h-20 items-center justify-between gap-6">
-          <Link
-            href="/"
-            className="flex flex-col leading-none"
-            onClick={() => setOpen(false)}
-          >
-            <span className="text-lg font-bold tracking-tight text-ink-strong">
-              {company.name}
-            </span>
-            <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand">
-              {company.descriptor}
-            </span>
+          <Link href="/" onClick={() => setOpen(false)} aria-label="Hamprigo Industries, home">
+            <Logo />
           </Link>
 
           <nav className="hidden items-center gap-7 lg:flex">
