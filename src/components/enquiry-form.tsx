@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { contact, enquiryForm } from "@/content/site";
+import { contact, enquiryPlaceholders as ph } from "@/content/site";
 
 /**
  * Static export, so there is no server action. The form posts JSON directly
@@ -11,24 +11,43 @@ import { contact, enquiryForm } from "@/content/site";
  * With the variable unset the form refuses to submit and shows the phone
  * number and email instead. That is deliberate: a form that appears to work
  * but drops enquiries is worse than one that tells you to call.
+ *
+ * The Service field is scoped by whoever renders the form. Pass `services`
+ * for a dropdown, or `lockedService` for a page where the answer is already
+ * known. A locked field is read only rather than disabled, because a disabled
+ * control is left out of the submission entirely and the enquiry would
+ * arrive with no service on it.
  */
 const ENDPOINT = process.env.NEXT_PUBLIC_ENQUIRY_ENDPOINT;
 
+/** City and country are asked for but not insisted on. Seven mandatory
+ *  fields is a lot to put in front of someone who just wants a price. */
 const REQUIRED: Array<[string, string]> = [
   ["name", "Name"],
-  ["company", "Company"],
+  ["mobile", "Mobile"],
   ["email", "Email"],
-  ["need", "What do you need"],
-  ["making", "What are you making"],
+  ["service", "Service"],
+  ["message", "Message"],
 ];
 
 const fieldClass =
-  "mt-2 w-full rounded-sm border border-line bg-white px-3.5 py-2.5 text-base text-ink outline-none transition-colors focus:border-ink";
+  "mt-2 w-full rounded-sm border border-line bg-white px-3.5 py-2.5 text-base text-ink outline-none transition-colors focus:border-ink-strong";
+const lockedClass =
+  "mt-2 w-full cursor-default rounded-sm border border-line bg-surface px-3.5 py-2.5 text-base font-medium text-ink-strong outline-none";
 const labelClass = "block text-sm font-medium text-ink-strong";
+const errorClass = "mt-1.5 text-sm text-brand";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-export function EnquiryForm() {
+export function EnquiryForm({
+  services,
+  lockedService,
+}: {
+  /** Options for the Service dropdown. Ignored when lockedService is set. */
+  services?: readonly string[];
+  /** Fixes Service to this value and makes it unchangeable. */
+  lockedService?: string;
+}) {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -37,7 +56,6 @@ export function EnquiryForm() {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
-
     const read = (key: string) => String(data.get(key) ?? "").trim();
 
     // Honeypot. Bots fill hidden fields; people do not.
@@ -51,9 +69,15 @@ export function EnquiryForm() {
     for (const [name, label] of REQUIRED) {
       if (!read(name)) nextErrors[name] = `${label} is required.`;
     }
+
     const email = read("email");
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       nextErrors.email = "Enter a valid email address.";
+    }
+    // Loose on purpose: numbers arrive with spaces, dashes and country codes.
+    const mobile = read("mobile");
+    if (mobile && (mobile.match(/\d/g) ?? []).length < 7) {
+      nextErrors.mobile = "Enter a valid mobile number.";
     }
 
     setErrors(nextErrors);
@@ -76,15 +100,12 @@ export function EnquiryForm() {
 
     const payload = {
       name: read("name"),
-      company: read("company"),
+      mobile,
       email,
-      phone: read("phone"),
-      need: read("need"),
-      making: read("making"),
-      baseFabric: read("baseFabric"),
-      width: read("width"),
-      volume: read("volume"),
-      notes: read("notes"),
+      city: read("city"),
+      country: read("country"),
+      service: read("service"),
+      message: read("message"),
       submittedAt: new Date().toISOString(),
     };
 
@@ -120,7 +141,7 @@ export function EnquiryForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       {status === "error" && message ? (
         <p
           role="alert"
@@ -130,103 +151,124 @@ export function EnquiryForm() {
         </p>
       ) : null}
 
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label className={labelClass} htmlFor="name">
             Name <span aria-hidden="true">*</span>
           </label>
-          <input id="name" name="name" className={fieldClass} />
-          {errors.name ? (
-            <p className="mt-1.5 text-sm text-brand">{errors.name}</p>
-          ) : null}
+          <input
+            id="name"
+            name="name"
+            autoComplete="name"
+            placeholder={ph.name}
+            className={fieldClass}
+          />
+          {errors.name ? <p className={errorClass}>{errors.name}</p> : null}
         </div>
 
         <div>
-          <label className={labelClass} htmlFor="company">
-            Company <span aria-hidden="true">*</span>
+          <label className={labelClass} htmlFor="mobile">
+            Mobile <span aria-hidden="true">*</span>
           </label>
-          <input id="company" name="company" className={fieldClass} />
-          {errors.company ? (
-            <p className="mt-1.5 text-sm text-brand">{errors.company}</p>
-          ) : null}
-        </div>
-
-        <div>
-          <label className={labelClass} htmlFor="email">
-            Email <span aria-hidden="true">*</span>
-          </label>
-          <input id="email" name="email" type="email" className={fieldClass} />
-          {errors.email ? (
-            <p className="mt-1.5 text-sm text-brand">{errors.email}</p>
-          ) : null}
-        </div>
-
-        <div>
-          <label className={labelClass} htmlFor="phone">
-            Phone or WhatsApp
-          </label>
-          <input id="phone" name="phone" className={fieldClass} />
+          <input
+            id="mobile"
+            name="mobile"
+            type="tel"
+            autoComplete="tel"
+            placeholder={ph.mobile}
+            className={fieldClass}
+          />
+          {errors.mobile ? <p className={errorClass}>{errors.mobile}</p> : null}
         </div>
       </div>
 
       <div>
-        <label className={labelClass} htmlFor="need">
-          What do you need? <span aria-hidden="true">*</span>
-        </label>
-        <select id="need" name="need" defaultValue="" className={fieldClass}>
-          <option value="">Please choose</option>
-          {enquiryForm.needOptions.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        {errors.need ? (
-          <p className="mt-1.5 text-sm text-brand">{errors.need}</p>
-        ) : null}
-      </div>
-
-      <div>
-        <label className={labelClass} htmlFor="making">
-          What are you making? <span aria-hidden="true">*</span>
+        <label className={labelClass} htmlFor="email">
+          Email <span aria-hidden="true">*</span>
         </label>
         <input
-          id="making"
-          name="making"
-          placeholder="For example, mattress protectors or trolley bag panels"
+          id="email"
+          name="email"
+          type="email"
+          autoComplete="email"
+          placeholder={ph.email}
           className={fieldClass}
         />
-        {errors.making ? (
-          <p className="mt-1.5 text-sm text-brand">{errors.making}</p>
-        ) : null}
+        {errors.email ? <p className={errorClass}>{errors.email}</p> : null}
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label className={labelClass} htmlFor="baseFabric">
-            Base fabric, if known
+          <label className={labelClass} htmlFor="city">
+            City
           </label>
-          <input id="baseFabric" name="baseFabric" className={fieldClass} />
+          <input
+            id="city"
+            name="city"
+            autoComplete="address-level2"
+            placeholder={ph.city}
+            className={fieldClass}
+          />
         </div>
+
         <div>
-          <label className={labelClass} htmlFor="width">
-            Width required
+          <label className={labelClass} htmlFor="country">
+            Country
           </label>
-          <input id="width" name="width" className={fieldClass} />
-        </div>
-        <div>
-          <label className={labelClass} htmlFor="volume">
-            Approximate annual volume
-          </label>
-          <input id="volume" name="volume" className={fieldClass} />
+          <input
+            id="country"
+            name="country"
+            autoComplete="country-name"
+            placeholder={ph.country}
+            className={fieldClass}
+          />
         </div>
       </div>
 
       <div>
-        <label className={labelClass} htmlFor="notes">
-          Anything else
+        <label className={labelClass} htmlFor="service">
+          Service <span aria-hidden="true">*</span>
         </label>
-        <textarea id="notes" name="notes" rows={4} className={fieldClass} />
+        {lockedService ? (
+          <input
+            id="service"
+            name="service"
+            readOnly
+            aria-readonly="true"
+            tabIndex={-1}
+            value={lockedService}
+            className={lockedClass}
+          />
+        ) : (
+          <select
+            id="service"
+            name="service"
+            defaultValue=""
+            className={fieldClass}
+          >
+            <option value="">{ph.service}</option>
+            {(services ?? []).map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        )}
+        {errors.service ? <p className={errorClass}>{errors.service}</p> : null}
+      </div>
+
+      <div>
+        <label className={labelClass} htmlFor="message">
+          Message <span aria-hidden="true">*</span>
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          rows={4}
+          placeholder={ph.message}
+          className={fieldClass}
+        />
+        {errors.message ? <p className={errorClass}>{errors.message}</p> : null}
       </div>
 
       {/* Honeypot, off screen and hidden from assistive tech. */}

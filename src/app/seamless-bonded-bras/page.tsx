@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/container";
 import { ClosingCta } from "@/components/closing-cta";
 import { PageHero } from "@/components/page-hero";
-import { bondedBras } from "@/content/site";
+import { bondedBras, serviceOptions } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Seamless Bonded Bra Manufacturer",
@@ -47,6 +47,7 @@ export default function SeamlessBondedBrasPage() {
       <ClosingCta
         heading={bondedBras.close.heading}
         body={[...bondedBras.close.body]}
+        form={{ lockedService: serviceOptions.bondedBras }}
       />
     </>
   );

@@ -173,6 +173,8 @@ export const laminationClose = {
 
 export const bondedBras = {
   title: "Seamless Bonded Bras",
+  /** How this reads in the enquiry form's Service field. */
+  formLabel: "Seamless Bonded Bras",
   intro:
     "Stitched seams show through fabric, chafe against skin, and add assembly steps. We manufacture seamless, tagless bras using bonding technology instead: no visible seam lines, less production complexity, and a smoother finish your end customer notices.",
   sections: [
@@ -265,13 +267,36 @@ export const enquiryForm = {
   heading: "Send us an enquiry",
   intro:
     "Tell us what you are trying to make and we will come back with a construction and a sample. You do not need a finished specification to start a conversation.",
-  needOptions: [
-    "PU foam laminated fabric",
-    "Fabric laminated with fabric",
-    "Fabric laminated with films",
-    "EVA laminated fabric",
-    "Seamless bonded bras",
-    "Fabric development and sourcing",
-    "Not sure yet",
-  ],
+} as const;
+
+/**
+ * What the Service dropdown offers.
+ *
+ * Narrowed to the page it sits on. The lamination page offers only the four
+ * techniques, so an enquiry from there arrives already scoped, and the bonded
+ * bra page offers no choice at all. Home and Contact list everything.
+ *
+ * Titles come from `services` rather than being retyped, so the dropdown
+ * cannot drift out of step with the pages. Fabric development and sourcing is
+ * deliberately absent: the client was explicit that it sits under lamination
+ * rather than standing as a service of its own.
+ */
+const laminationServiceTitles = services.map((service) => service.title);
+
+export const serviceOptions = {
+  all: [...laminationServiceTitles, bondedBras.formLabel],
+  lamination: laminationServiceTitles,
+  bondedBras: bondedBras.formLabel,
+} as const;
+
+/** Example text for every field, so nobody has to guess the format. */
+export const enquiryPlaceholders = {
+  name: "Rajesh Mehta",
+  mobile: "+91 98200 12345",
+  email: "rajesh@yourcompany.com",
+  city: "Mumbai",
+  country: "India",
+  service: "Select a service",
+  message:
+    "Enquiry for 5,000 metres of PU foam laminated fabric, 3 mm. Or 500 pieces of seamless bonded bras. Or anything else you need.",
 } as const;

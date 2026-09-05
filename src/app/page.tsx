@@ -3,7 +3,13 @@ import { ClosingCta } from "@/components/closing-cta";
 import { CtaLink } from "@/components/cta-link";
 import { LaminateDiagram, type Layer } from "@/components/laminate-diagram";
 import { ServiceRail } from "@/components/service-rail";
-import { capabilities, company, hero, serviceLayers } from "@/content/site";
+import {
+  capabilities,
+  company,
+  hero,
+  serviceLayers,
+  serviceOptions,
+} from "@/content/site";
 
 export default function HomePage() {
   return (
@@ -131,6 +137,7 @@ export default function HomePage() {
         body={[
           `Send us the substrate and the end application and we will laminate a sample for you to handle and test. You do not need a finished specification to start a conversation with ${company.name}.`,
         ]}
+        form={{ services: serviceOptions.all }}
       />
     </>
   );

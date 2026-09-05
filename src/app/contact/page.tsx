@@ -3,7 +3,12 @@ import { ClosingCta } from "@/components/closing-cta";
 import { Container } from "@/components/container";
 import { EnquiryForm } from "@/components/enquiry-form";
 import { PageHero } from "@/components/page-hero";
-import { company, contact, enquiryForm } from "@/content/site";
+import {
+  company,
+  contact,
+  enquiryForm,
+  serviceOptions,
+} from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -28,7 +33,7 @@ export default function ContactPage() {
                 {enquiryForm.heading}
               </h2>
               <div className="mt-8">
-                <EnquiryForm />
+                <EnquiryForm services={serviceOptions.all} />
               </div>
             </div>
 

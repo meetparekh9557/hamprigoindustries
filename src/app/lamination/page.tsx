@@ -7,6 +7,7 @@ import {
   capabilities,
   laminationClose,
   serviceLayers,
+  serviceOptions,
   services,
 } from "@/content/site";
 
@@ -105,6 +106,7 @@ export default function LaminationPage() {
       <ClosingCta
         heading={laminationClose.heading}
         body={[...laminationClose.body]}
+        form={{ services: serviceOptions.lamination }}
       />
     </>
   );
