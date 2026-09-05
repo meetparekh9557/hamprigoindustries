@@ -125,22 +125,26 @@ export const services = [
  * Cross-section layers for each technique, used by the laminate diagram.
  * Weights are relative thicknesses, chosen to read correctly rather than to
  * be dimensionally exact.
+ *
+ * An empty label draws the layer without naming it. The fabric layers are
+ * unlabelled by request: the diagram's point is what is bonded to the
+ * fabric, and the fabric itself needs no caption to be recognised.
  */
 export const serviceLayers = {
   "pu-foam-laminated-fabric": [
-    { kind: "fabric", label: "Face fabric", weight: 1 },
+    { kind: "fabric", label: "", weight: 1 },
     { kind: "foam", label: "PU foam", weight: 3 },
   ],
   "fabric-laminated-with-fabric": [
-    { kind: "fabric", label: "Face fabric", weight: 1 },
+    { kind: "fabric", label: "", weight: 1 },
     { kind: "fabric", label: "Backing fabric", weight: 1 },
   ],
   "fabric-laminated-with-films": [
-    { kind: "fabric", label: "Base fabric", weight: 3 },
+    { kind: "fabric", label: "", weight: 3 },
     { kind: "film", label: "Film", weight: 0.5 },
   ],
   "eva-laminated-fabric": [
-    { kind: "fabric", label: "Face fabric", weight: 1 },
+    { kind: "fabric", label: "", weight: 1 },
     { kind: "eva", label: "EVA foam", weight: 2.4 },
   ],
 } as const;

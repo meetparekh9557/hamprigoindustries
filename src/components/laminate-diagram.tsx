@@ -14,6 +14,7 @@ type LayerKind = "fabric" | "foam" | "film" | "eva";
 
 export type Layer = {
   kind: LayerKind;
+  /** Empty draws the layer without naming it. */
   label: string;
   /** Relative thickness. Roughly proportional to the real material. */
   weight: number;
@@ -114,14 +115,16 @@ export function LaminateDiagram({
               strokeWidth="1"
               rx="1.5"
             />
-            <text
-              x={gutter + 12}
-              y={r.y + r.h / 2 + 4}
-              className="fill-ink-strong font-mono"
-              style={{ fontSize: 11, letterSpacing: "0.04em" }}
-            >
-              {r.label.toUpperCase()}
-            </text>
+            {r.label ? (
+              <text
+                x={gutter + 12}
+                y={r.y + r.h / 2 + 4}
+                className="fill-ink-strong font-mono"
+                style={{ fontSize: 11, letterSpacing: "0.04em" }}
+              >
+                {r.label.toUpperCase()}
+              </text>
+            ) : null}
           </g>
         ))}
 
