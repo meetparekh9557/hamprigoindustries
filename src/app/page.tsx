@@ -1,31 +1,39 @@
-import { Container } from "@/components/container";
+import Image from "next/image";
+import Link from "next/link";
 import { ClosingCta } from "@/components/closing-cta";
+import { Container } from "@/components/container";
 import { CtaLink } from "@/components/cta-link";
-import { LaminateDiagram, type Layer } from "@/components/laminate-diagram";
-import { ServiceRail } from "@/components/service-rail";
+import { WorkRail } from "@/components/work-rail";
 import {
-  capabilities,
-  company,
+  bondedBrasHome,
   hero,
-  serviceLayers,
+  homeClose,
+  materialStory,
   serviceOptions,
+  whyHamprigo,
 } from "@/content/site";
 
+/**
+ * Two layout rules run through this page. Visual sections go edge to edge;
+ * text sits in a Container at a readable width inside them. That is what
+ * stops the site reading as a narrow column parked in the middle of a wide
+ * screen, without letting the paragraphs run to 200 characters.
+ */
 export default function HomePage() {
   return (
     <>
-      {/* Hero. Split: the claim on the left, the product itself on the right.
-          The h1 leads on the product term rather than a slogan, because that
-          is what buyers search for. */}
-      <section className="border-b border-line bg-ink-strong text-white">
-        <Container className="py-20 sm:py-24">
-          <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
-            <div>
-              <p className="spec-label text-brand">{hero.since}</p>
-              <h1 className="mt-5 max-w-2xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+      {/* 01. Hero. Both halves of the business in the first screen: the
+          material on the left of the visual, the finished product on the
+          right, blended rather than butted together. */}
+      <section className="relative bg-brand-blue text-white">
+        <div className="grid lg:grid-cols-[1fr_1.05fr] lg:items-stretch">
+          <div className="order-2 flex items-center py-16 sm:py-20 lg:order-1 lg:py-28">
+            <Container className="lg:mr-0 lg:max-w-[38rem] lg:pr-12">
+              <p className="spec-label text-white/60">{hero.eyebrow}</p>
+              <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
                 {hero.headline}
               </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
                 {hero.subhead}
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
@@ -36,107 +44,203 @@ export default function HomePage() {
                   {hero.secondaryCta.label}
                 </CtaLink>
               </div>
-            </div>
-
-            {/* The signature visual: what a laminate actually is. */}
-            <div className="rounded-sm bg-white p-7">
-              <LaminateDiagram
-                layers={[...serviceLayers["pu-foam-laminated-fabric"]] as Layer[]}
-                caption="Cross-section: fabric bonded to PU foam"
-              />
-              <p className="mt-5 border-t border-line pt-4 text-sm leading-relaxed text-muted">
-                The red line is the bond. It is the part that has to survive
-                cutting, stitching and the wash, and it is the part we control.
-              </p>
-            </div>
+            </Container>
           </div>
-        </Container>
+
+          <div className="relative order-1 min-h-[18rem] sm:min-h-[24rem] lg:order-2 lg:min-h-[38rem]">
+            <Image
+              src="/img/pu-foam.jpg"
+              alt="Knitted fabric peeled back to show the PU foam laminated behind it"
+              fill
+              sizes="(min-width: 64rem) 55vw, 100vw"
+              className="object-cover"
+              priority
+            />
+            {/* The bra fades into the laminate instead of sitting beside it,
+                so the two halves read as one composition. */}
+            <Image
+              src="/img/bonded-bra.jpg"
+              alt="A seamless bonded bra"
+              fill
+              sizes="(min-width: 64rem) 28vw, 50vw"
+              className="object-cover"
+              style={{
+                // The fade has to sit where the two images meet. Clipping
+                // first and fading from the element's own left edge put the
+                // whole gradient in the clipped-away part, leaving a hard
+                // seam, so the mask does both jobs and there is no clip.
+                maskImage:
+                  "linear-gradient(to right, transparent 42%, black 64%)",
+                WebkitMaskImage:
+                  "linear-gradient(to right, transparent 42%, black 64%)",
+                objectPosition: "60% center",
+              }}
+            />
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 lg:bg-gradient-to-r lg:from-[#152559] lg:via-transparent lg:to-transparent"
+            />
+          </div>
+        </div>
       </section>
 
-      {/* The four techniques, as one rail. Each is a sliver until it is
-          hovered, then it opens into a full card with its cross-section. */}
+      {/* 02. The rail. Edge to edge, heading in a container. */}
+      <section className="bg-brand-blue pb-20 pt-16 sm:pb-24">
+        <Container>
+          <div className="pt-2">
+            <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
+            <h2 className="mt-6 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+              What we work with
+            </h2>
+          </div>
+        </Container>
+        <div className="mt-12">
+          <WorkRail />
+        </div>
+      </section>
+
+      {/* 03. What connects the four techniques. */}
       <section className="border-b border-line py-20 sm:py-24">
         <Container>
-          <div className="rule-tick pt-6">
-            <p className="spec-label text-muted">What we bond</p>
-            <h2 className="mt-3 max-w-2xl text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-              Four techniques, all under one roof
+          <div className="rule-tick max-w-3xl pt-6">
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+              {materialStory.heading}
             </h2>
-          </div>
-
-          <div className="mt-12">
-            <ServiceRail />
+            <p className="mt-5 text-base leading-relaxed text-muted">
+              {materialStory.body}
+            </p>
           </div>
         </Container>
-      </section>
 
-      {/* Capabilities that apply across every technique. Deliberately not
-          presented as a fifth service. */}
-      <section className="border-b border-line bg-ink-strong py-20 text-white sm:py-24">
-        <Container>
-          <div className="pt-6" style={{ borderTop: "1px solid rgba(255,255,255,0.15)" }}>
-            <p className="spec-label text-brand">Across all four</p>
-            <h2 className="mt-3 max-w-2xl text-2xl font-bold tracking-tight sm:text-3xl">
-              {capabilities.heading}
-            </h2>
-          </div>
-          <div className="mt-12 grid gap-10 md:grid-cols-2">
-            {capabilities.items.map((item, i) => (
-              <div key={item.title}>
-                <span className="spec-label text-white/40">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-3 text-xl font-semibold">{item.title}</h3>
-                <p className="mt-3 text-base leading-relaxed text-white/70">
-                  {item.body}
-                </p>
+        <div className="mt-14 grid gap-px bg-line sm:grid-cols-3">
+          {[
+            { src: "/img/fabric-to-fabric.jpg", alt: "Woven fabric" },
+            { src: "/img/eva.jpg", alt: "Foam, fabric or film" },
+            { src: "/img/film.jpg", alt: "The finished laminated material" },
+          ].map((image, i) => (
+            <figure key={image.src} className="relative bg-white">
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(min-width: 40rem) 33vw, 100vw"
+                  className="object-cover"
+                />
               </div>
-            ))}
+              <figcaption className="spec-label absolute left-0 top-0 m-4 bg-ink-strong px-3 py-2 text-white">
+                {materialStory.chain[i]}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <Container>
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <p className="spec-label text-muted">
+              {materialStory.techniques}
+            </p>
+            <Link
+              href={materialStory.cta.href}
+              className="text-sm font-semibold text-brand"
+            >
+              {materialStory.cta.label}
+              <span aria-hidden="true" className="ml-1.5">
+                &rarr;
+              </span>
+            </Link>
           </div>
         </Container>
       </section>
 
-      {/* Seamless bonded bras. The only finished product on the site. */}
-      <section className="border-b border-line py-20 sm:py-24">
+      {/* 04. The finished product. */}
+      <section className="border-b border-line bg-surface py-20 sm:py-24">
         <Container>
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="relative aspect-[3/2] overflow-hidden rounded-sm">
+              <Image
+                src="/img/bonded-bra.jpg"
+                alt="A seamless bonded bra, showing no stitched seams"
+                fill
+                sizes="(min-width: 64rem) 45vw, 100vw"
+                className="object-cover"
+              />
+            </div>
             <div>
-              <p className="spec-label text-brand">Finished products</p>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-                We also manufacture seamless bonded bras
+              <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
+              <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+                {bondedBrasHome.heading}
               </h2>
               <p className="mt-5 text-base leading-relaxed text-muted">
-                Bonded construction replaces sewn seams with permanent bonds, so
-                there are no visible seam lines and nothing to chafe. Built on
-                material we laminate ourselves, which is what lets a bonded edge
-                survive repeated laundering.
+                {bondedBrasHome.body}
               </p>
-              <div className="mt-8">
-                <CtaLink href="/seamless-bonded-bras" variant="outline">
-                  About our bonded bras
+
+              <ul className="mt-10 grid gap-px bg-line">
+                {bondedBrasHome.technologies.map((technology, i) => (
+                  <li
+                    key={technology}
+                    className="flex items-baseline gap-5 bg-surface py-5"
+                  >
+                    <span className="spec-label text-brand">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-lg font-semibold text-ink-strong">
+                      {technology}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-10">
+                <CtaLink href={bondedBrasHome.cta.href} variant="outline">
+                  {bondedBrasHome.cta.label}
                 </CtaLink>
               </div>
             </div>
-            <div className="rounded-sm border border-line bg-surface p-7">
-              <LaminateDiagram
-                layers={[
-                  { kind: "fabric", label: "Face fabric", weight: 1 },
-                  { kind: "foam", label: "PU foam", weight: 2.2 },
-                  { kind: "fabric", label: "Lining", weight: 1 },
-                ]}
-                caption="Bonded construction, no stitched seam"
-              />
-            </div>
           </div>
         </Container>
       </section>
 
-      {/* Closing band. Shared across every page, in the logo's blue. */}
+      {/* 05. Why Hamprigo. The factory photograph runs full bleed behind it,
+          under a heavy scrim, so it reads as ground rather than as a
+          portrait of the building. */}
+      <section className="relative isolate overflow-hidden py-20 text-white sm:py-24">
+        <Image
+          src="/img/factory.jpg"
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          className="-z-10 object-cover"
+        />
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-brand-blue/95"
+        />
+        <Container>
+          <div className="max-w-3xl">
+            <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
+            <h2 className="mt-6 text-2xl font-bold tracking-tight sm:text-3xl">
+              {whyHamprigo.heading}
+            </h2>
+          </div>
+          <dl className="mt-14 grid gap-10 sm:grid-cols-3">
+            {whyHamprigo.items.map((item) => (
+              <div key={item.label}>
+                <dt className="text-xl font-semibold">{item.label}</dt>
+                <dd className="mt-3 text-base leading-relaxed text-white/75">
+                  {item.body}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </Container>
+      </section>
+
+      {/* 06. Closing band, shared with every other page. */}
       <ClosingCta
-        heading="Tell us what your material has to do"
-        body={[
-          `Send us the substrate and the end application and we will laminate a sample for you to handle and test. You do not need a finished specification to start a conversation with ${company.name}.`,
-        ]}
+        heading={homeClose.heading}
+        body={[homeClose.body]}
         form={{ services: serviceOptions.all }}
       />
     </>

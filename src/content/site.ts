@@ -44,12 +44,15 @@ export const contact = {
 
 /** Homepage hero. */
 export const hero = {
-  headline: "Laminated Fabric Manufacturer",
+  eyebrow: "Textile Lamination \u00b7 Seamless Bonded Bras",
+  headline: "The material is where the product begins.",
   subhead:
-    "We laminate woven, non-woven, knitted fabric and Rexine to PU foam, EVA foam, films and other fabrics. Everything is bonded to your specification, at any width you need.",
-  since: `Laminating fabric since ${company.foundedYear}.`,
-  primaryCta: { label: "Request a sample", href: "/contact" },
-  secondaryCta: { label: "See what we laminate", href: "/lamination" },
+    "Hamprigo Industries has been laminating woven, non-woven, knitted fabrics and Rexine since 1989, and also manufactures seamless bonded bras using material we laminate ourselves.",
+  primaryCta: { label: "Explore Lamination", href: "/lamination" },
+  secondaryCta: {
+    label: "Explore Seamless Bonded Bras",
+    href: "/seamless-bonded-bras",
+  },
 } as const;
 
 /** The four lamination techniques. Order is deliberate. */
@@ -263,6 +266,117 @@ export const about = {
 } as const;
 
 /** Enquiry form. Six required fields, the rest optional. */
+/**
+ * The five things the homepage rail shows: the four lamination techniques
+ * and the finished product. Bonded bras sit alongside lamination here rather
+ * than below it, because the business has two sides and the homepage should
+ * say so before a visitor scrolls.
+ *
+ * Titles are shortened from the service pages': the rail is a rail, not a
+ * spec sheet, and "PU Foam Lamination" reads better on a card than "PU Foam
+ * Laminated Fabric".
+ */
+export const workItems = [
+  {
+    slug: "pu-foam-laminated-fabric",
+    spine: "PU Foam",
+    title: "PU Foam Lamination",
+    summary:
+      "Woven, non-woven, knitted fabric and Rexine bonded to PU foam in custom densities and thicknesses.",
+    image: "/img/pu-foam.jpg",
+    alt: "Knitted fabric peeled back to show the PU foam laminated behind it",
+    href: "/lamination#pu-foam-laminated-fabric",
+  },
+  {
+    slug: "fabric-laminated-with-fabric",
+    spine: "Fabric on Fabric",
+    title: "Fabric-to-Fabric Lamination",
+    summary:
+      "Two fabrics bonded into one composite, for body and structure a single layer cannot give.",
+    image: "/img/fabric-to-fabric.jpg",
+    alt: "Two fabrics bonded together as one composite material",
+    href: "/lamination#fabric-laminated-with-fabric",
+  },
+  {
+    slug: "fabric-laminated-with-films",
+    spine: "Films",
+    title: "Film Lamination",
+    summary:
+      "PVC, TPU, PE and blackout films, to make a fabric waterproof, stronger or light-controlling.",
+    image: "/img/film.jpg",
+    alt: "Fabric laminated with a film layer",
+    href: "/lamination#fabric-laminated-with-films",
+  },
+  {
+    slug: "eva-laminated-fabric",
+    spine: "EVA",
+    title: "EVA Lamination",
+    summary:
+      "EVA foam in custom colours and thicknesses, for parts that must hold their form under pressure.",
+    image: "/img/eva.jpg",
+    alt: "Fabric laminated to EVA foam",
+    href: "/lamination#eva-laminated-fabric",
+  },
+  {
+    slug: "seamless-bonded-bras",
+    spine: "Bonded Bras",
+    title: "Seamless Bonded Bras",
+    summary:
+      "Finished bras built by bonding rather than stitching, on material we laminate ourselves.",
+    image: "/img/bonded-bra.jpg",
+    alt: "A seamless bonded bra, showing no stitched seams",
+    href: "/seamless-bonded-bras",
+  },
+] as const;
+
+/** The section that explains what connects the four techniques. */
+export const materialStory = {
+  heading: "Different materials. One core capability.",
+  body: "Whatever the second layer is, the job is the same: put two materials together so they behave as one and stay that way. The bond is what we control, and it is what has to survive cutting, stitching and the wash.",
+  chain: ["Fabric", "Foam, fabric or film", "Laminated material"],
+  techniques: "PU Foam \u00b7 Fabric-to-Fabric \u00b7 Film \u00b7 EVA",
+  cta: { label: "See all lamination capabilities", href: "/lamination" },
+} as const;
+
+/**
+ * The bonded bra section on the homepage.
+ *
+ * The three technologies are named and nothing more. The client has not yet
+ * supplied an approved explanation of any of them, and inventing one would
+ * put a technical claim in their mouth. Descriptions go in when they arrive.
+ */
+export const bondedBrasHome = {
+  heading: "From laminated material to seamless bonded bras.",
+  body: "We also manufacture seamless bonded bras using material we laminate ourselves, bringing the material and the finished construction together.",
+  technologies: [
+    "Hotmelt PUR Dispensing",
+    "Silicone Printing",
+    "Tape Bonding",
+  ],
+  cta: { label: "Explore Seamless Bonded Bras", href: "/seamless-bonded-bras" },
+} as const;
+
+/** Three facts, drawn from what the client has already published. */
+export const whyHamprigo = {
+  heading: "One supplier from material to finished product.",
+  items: [
+    { label: "1989", body: "Laminating fabric since 1989." },
+    {
+      label: "Your material",
+      body: "Send your fabric, or work with material developed or sourced by Hamprigo.",
+    },
+    {
+      label: "Your specification",
+      body: "Density, thickness, colour, film type and width can be specified to the requirement.",
+    },
+  ],
+} as const;
+
+export const homeClose = {
+  heading: "Have a material requirement? Start with a sample.",
+  body: "Tell us what you are working with and what you need the finished material to do. We can start with a sample and move from there.",
+} as const;
+
 /**
  * The floating WhatsApp button.
  *
