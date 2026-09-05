@@ -39,6 +39,11 @@ jobs:
 
       - run: npm run build
 
+      # public/ is copied to the site root verbatim, so the upload
+      # instructions in public/photos would otherwise be served as a page.
+      # The photos themselves stay.
+      - run: rm -f out/photos/README.md
+
       - uses: actions/configure-pages@v5
 
       # next.config.ts writes the static site to out/
