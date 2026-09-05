@@ -298,5 +298,5 @@ export const enquiryPlaceholders = {
   country: "India",
   service: "Select a service",
   message:
-    "Enquiry for 5,000 metres of PU foam laminated fabric, 3 mm. Or 500 pieces of seamless bonded bras. Or anything else you need.",
+    "Enquiry for 5,000 metres of PU foam laminated fabric, 3 mm. Or 500 pieces of seamless bonded bras.",
 } as const;
