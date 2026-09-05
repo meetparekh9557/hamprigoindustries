@@ -46,13 +46,12 @@ export default function SeamlessBondedBrasPage() {
         }
       />
 
-      {/* 02. The material explanation. Copy on one side, the composition
-          on the other: face fabric, the laminate it becomes, the garment
-          it ends as. This is the key visual on the page. */}
+      {/* 02. The material explanation. Copy on one side, the finished
+          product on the other. */}
       <section className="py-16 sm:py-20 lg:py-24">
         <Container>
-          <div className="grid gap-14 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
-            <div className="lg:sticky lg:top-24 lg:self-start">
+          <div className="grid items-center gap-14 lg:grid-cols-[1fr_1fr] lg:gap-20">
+            <div>
               <p className="spec-label text-brand">{page.material.eyebrow}</p>
               <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-ink-strong sm:text-4xl">
                 {page.material.heading}
@@ -69,47 +68,18 @@ export default function SeamlessBondedBrasPage() {
               </div>
             </div>
 
-            <ol>
-              {page.material.composition.map((step, i) => (
-                <li key={step.label}>
-                  {/* A hairline and a mark between stages, not an arrow
-                      graphic. The reading order does the explaining. */}
-                  {i > 0 ? (
-                    <div
-                      aria-hidden="true"
-                      className="flex flex-col items-center py-6"
-                    >
-                      <span className="h-10 w-px bg-line" />
-                      <span className="mt-1 h-2 w-2 rotate-45 border-b border-r border-brand" />
-                    </div>
-                  ) : null}
-                  <p className="spec-label text-muted">
-                    {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <p className="mt-1.5 text-xl font-semibold text-ink-strong">
-                    {step.label}
-                  </p>
-                  {/* The product shot is portrait and on a white ground,
-                      so it gets its own frame rather than being cropped
-                      into the landscape one the close-ups use. */}
-                  <div
-                    className={`relative mt-4 overflow-hidden ${
-                      "aspect" in step
-                        ? "aspect-[3/4] bg-white"
-                        : "aspect-[16/10]"
-                    }`}
-                  >
-                    <Image
-                      src={step.src}
-                      alt={step.alt}
-                      fill
-                      sizes="(min-width: 64rem) 48vw, 100vw"
-                      className="object-cover"
-                    />
-                  </div>
-                </li>
-              ))}
-            </ol>
+            {/* Portrait product shot on a white ground. The frame matches
+                the file's own proportions, so nothing is cropped and there
+                are no bars either side. */}
+            <div className="relative mx-auto aspect-[3/4] w-full max-w-md overflow-hidden bg-white lg:max-w-none">
+              <Image
+                src={page.material.image.src}
+                alt={page.material.image.alt}
+                fill
+                sizes="(min-width: 64rem) 48vw, 100vw"
+                className="object-cover"
+              />
+            </div>
           </div>
         </Container>
       </section>

@@ -677,28 +677,10 @@ export const bondedBrasPage = {
       "That is why we laminate our own material.",
       "Our bonding is irreversible, so layers do not separate at the edges or under stress. The lamination also holds its washing fastness through repeated laundering, helping the finished bra retain its shape and edge finish wash after wash.",
     ],
-    /** The one photographic explanation on the page. Fabric, then the same
-     *  fabric laminated, then the finished garment. */
-    composition: [
-      {
-        label: "Face Fabric",
-        src: "/img/fabric-to-fabric.jpg",
-        alt: "Close up of a face fabric before lamination",
-      },
-      {
-        label: "Laminated Material",
-        src: "/img/pu-foam.jpg",
-        alt: "The same fabric laminated to PU foam",
-      },
-      {
-        label: "Bonded Bra",
-        src: "/img/bonded-bra-product.jpg",
-        alt: "The finished seamless bonded bra, shown against a plain ground",
-        /** A product shot on a white ground, not a material close-up. The
-         *  file is exactly 3:4, so its own slot crops nothing. */
-        aspect: "portrait",
-      },
-    ],
+    image: {
+      src: "/img/bonded-bra-product.jpg",
+      alt: "The finished seamless bonded bra, shown against a plain ground",
+    },
   },
   construction: {
     heading: "Material And Construction, Specified Together.",
