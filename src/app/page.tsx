@@ -84,12 +84,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 02. The rail. Edge to edge, heading in a container. */}
-      <section className="bg-brand-blue pb-20 pt-16 sm:pb-24">
+      {/* 02. The rail. Edge to edge, heading in a container.
+          Light ground on purpose: blue here ran straight on from the hero
+          and gave the page a 1,469px block of unbroken colour. The cards
+          carry their own blue scrim, so the rail still reads dark against
+          it without the whole section being blue. */}
+      <section className="bg-surface pb-20 pt-16 sm:pb-24">
         <Container>
           <div className="pt-2">
             <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
-            <h2 className="mt-6 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
               What we work with
             </h2>
           </div>
