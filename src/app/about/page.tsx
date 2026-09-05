@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/container";
 import { ClosingCta } from "@/components/closing-cta";
 import { PageHero } from "@/components/page-hero";
@@ -17,6 +18,20 @@ export default function AboutPage() {
         eyebrow={`Laminating fabric since ${company.foundedYear}`}
         title={about.title}
       />
+
+      {/* The material itself, full bleed, between the hero and the story.
+          The About copy is about what Hamprigo makes, so it should be
+          visible before the reader has to imagine it. */}
+      <div className="relative aspect-[21/9] w-full sm:aspect-[3/1]">
+        <Image
+          src="/img/pu-foam.jpg"
+          alt="Knitted fabric peeled back to show the PU foam laminated behind it"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          priority
+        />
+      </div>
 
       <section className="py-16 sm:py-20">
         <Container>

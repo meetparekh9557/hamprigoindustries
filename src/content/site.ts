@@ -331,6 +331,16 @@ export const workItems = [
   },
 ] as const;
 
+/**
+ * Photograph per technique, keyed by slug, derived from workItems rather
+ * than retyped so the rail and the service page cannot show different
+ * pictures of the same thing.
+ */
+export const serviceImages: Record<string, { src: string; alt: string }> =
+  Object.fromEntries(
+    workItems.map((item) => [item.slug, { src: item.image, alt: item.alt }]),
+  );
+
 /** The section that explains what connects the four techniques. */
 export const materialStory = {
   heading: "Different materials. One core capability.",

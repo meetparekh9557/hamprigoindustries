@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/container";
 import { ClosingCta } from "@/components/closing-cta";
 import { LaminateDiagram, type Layer } from "@/components/laminate-diagram";
@@ -7,6 +8,7 @@ import {
   capabilities,
   laminationClose,
   serviceLayers,
+  serviceImages,
   serviceOptions,
   services,
 } from "@/content/site";
@@ -63,17 +65,35 @@ export default function LaminationPage() {
                     </p>
                   </div>
 
-                  <div className="rounded-sm border border-line bg-surface p-6">
-                    <LaminateDiagram
-                      layers={
-                        [
-                          ...serviceLayers[
-                            service.slug as keyof typeof serviceLayers
-                          ],
-                        ] as Layer[]
-                      }
-                      caption={`${service.title} cross-section`}
-                    />
+                  {/* The material, then the construction. The photograph
+                      shows what it looks and feels like; the diagram shows
+                      what is actually bonded to what. Neither does the
+                      other's job. */}
+                  <div className="space-y-6">
+                    {serviceImages[service.slug] ? (
+                      <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
+                        <Image
+                          src={serviceImages[service.slug].src}
+                          alt={serviceImages[service.slug].alt}
+                          fill
+                          sizes="(min-width: 64rem) 33vw, 100vw"
+                          className="object-cover"
+                        />
+                      </div>
+                    ) : null}
+
+                    <div className="rounded-sm border border-line bg-surface p-6">
+                      <LaminateDiagram
+                        layers={
+                          [
+                            ...serviceLayers[
+                              service.slug as keyof typeof serviceLayers
+                            ],
+                          ] as Layer[]
+                        }
+                        caption={`${service.title} cross-section`}
+                      />
+                    </div>
                   </div>
                 </div>
               </article>
