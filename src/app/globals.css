@@ -1,9 +1,23 @@
 @import "tailwindcss";
 
 /**
- * Palette taken from the Hamprigo logo: the vermilion from the wordmark and
- * the navy from the diamond mark. The previous site used a near-black, but
- * the mark itself is navy, so the site follows the mark.
+ * Palette measured off the client's own logo artwork, not estimated.
+ * Sampled from public/photos/, median of a patch per element:
+ *
+ *   wordmark red      #C00305   (also the red column in the mark)
+ *   mark, top + left  #000000
+ *   mark, right face  #152559
+ *   "TEXTILE LAMINATION"  #172175
+ *
+ * Two corrections to what was here before, which was read off a low
+ * resolution scan. The red was #D8232A, a vermilion: too bright and too
+ * orange. It is a deeper scarlet. And the mark's dark is not navy
+ * throughout, as the old note claimed. It is black on two faces with navy
+ * on the third.
+ *
+ * The dark sections stay navy anyway. That is a design choice rather than a
+ * reading of the mark: navy is in the artwork, and large fields of near
+ * black are harsh on screen. Worth revisiting with the client.
  *
  * Deliberately NOT the navy-and-blue the design tooling suggested. That is
  * the default B2B SaaS palette, it is what every competitor's template looks
@@ -19,16 +33,17 @@
   --foreground: #16181d;
 
   --ink: #1f2433;
-  /* Navy from the logo mark, not black. The identity's dark is blue. */
+  /* Navy. See the note above: chosen, not measured. */
   --ink-strong: #16213e;
   --muted: #5b6270;
   --line: #e2e5ea;
   --surface: #f6f7f9;
 
-  /* Vermilion from the logo wordmark. Estimated from the supplied scan,
-     so worth checking against the original artwork if it turns up. */
-  --brand: #d8232a;
-  --brand-dark: #b01c22;
+  /* The wordmark red, measured. 6.4:1 on white, so it carries body text and
+     white-on-red buttons at AA. The logo image now sits in the header, so
+     any drift between this and the artwork reads as a mistake. */
+  --brand: #c00305;
+  --brand-dark: #96070a;
   --brand-ink: #ffffff;
 }
 

@@ -14,8 +14,15 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-white/95 backdrop-blur">
       <Container>
-        <div className="flex h-20 items-center justify-between gap-6">
-          <Link href="/" onClick={() => setOpen(false)} aria-label="Hamprigo Industries, home">
+        {/* Taller than a usual nav bar: the supplied logo is a stacked
+            lockup, so it needs height before the wordmark is readable. */}
+        <div className="flex h-20 items-center justify-between gap-6 lg:h-24">
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            aria-label="Hamprigo Industries, home"
+            className="block w-[140px] shrink-0 sm:w-[160px] lg:w-[180px]"
+          >
             <Logo />
           </Link>
 

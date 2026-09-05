@@ -9,7 +9,11 @@ export function SiteFooter() {
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <Logo tone="light" />
+            <span className="inline-block rounded-sm bg-white px-5 py-4">
+              <span className="block w-[180px]">
+                <Logo />
+              </span>
+            </span>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
               Laminating fabric since {company.foundedYear}.
             </p>
