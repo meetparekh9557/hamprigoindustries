@@ -127,9 +127,16 @@ export default function LaminationPage() {
                   <h2 className="mt-4 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
                     {technique.heading}
                   </h2>
-                  <p className="mt-5 text-base leading-relaxed text-muted">
-                    {technique.body}
-                  </p>
+                  <div className="mt-5 space-y-4">
+                    {technique.body.map((paragraph) => (
+                      <p
+                        key={paragraph}
+                        className="text-base leading-relaxed text-muted"
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
 
                   {"points" in technique && technique.points ? (
                     <ul className="mt-7 space-y-2.5">

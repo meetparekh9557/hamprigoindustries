@@ -509,7 +509,10 @@ export const laminationPage = {
       number: "01",
       label: "PU Foam Lamination",
       heading: "PU Foam Lamination",
-      body: "Woven, non-woven, knitted fabrics and Rexine can be laminated with PU foam in custom densities and thicknesses.",
+      body: [
+        "We laminate woven, non-woven, knitted fabric, and Rexine with PU foam in custom densities and thicknesses. Both are specified per order rather than pulled from a fixed range, because they are what decide whether a cup holds its volume, a seat feels right, or a padded panel reads as premium.",
+        "Two properties define the bond. It is irreversible, so the foam does not lift or separate at cut edges. And it holds its washing fastness, so the material survives repeated laundering without losing bond, hand, or shape. For lingerie and bra cup applications, the second one is what decides whether a product comes back as a return.",
+      ],
       points: [
         "Custom densities",
         "Custom thicknesses",
@@ -526,7 +529,10 @@ export const laminationPage = {
       number: "02",
       label: "Fabric-to-Fabric Lamination",
       heading: "Fabric-to-Fabric Lamination",
-      body: "Two fabrics can be bonded together to create a single composite material.",
+      body: [
+        "We bond two fabrics into one composite material, giving furnishing and cap manufacturers performance a single layer cannot deliver: added body, texture, or durability behind the face fabric you want to show.",
+        "It is the practical answer when no one fabric gives you both the appearance you need and the structure the product demands.",
+      ],
       points: ["You can provide both fabrics, or we can help develop the second material."],
       note: "Two fabrics. One composite construction.",
       layers: ["Fabric A", "Bond", "Fabric B"],
@@ -538,7 +544,10 @@ export const laminationPage = {
       number: "03",
       label: "Film Lamination",
       heading: "Film Lamination",
-      body: "Fabric can be laminated with PVC, TPU, PE and blackout films according to the required construction.",
+      body: [
+        "Laminating fabric with PVC, TPU, PE, or blackout film turns it into a functional material: waterproof, stronger, and light-controlling. This is what makes the difference between a raincoat that leaks and one that doesn't, or a blackout curtain that actually blocks light.",
+        "Each film does a different job. TPU stays flexible and keeps a softer handle, which suits garments and mattress protectors. PVC gives a more durable, wipe-clean barrier. PE is the economical moisture barrier. Blackout film controls how much light passes through the fabric.",
+      ],
       films: [
         { name: "TPU", body: "Flexible and softer handle." },
         { name: "PVC", body: "Durable and wipe-clean barrier." },
@@ -553,7 +562,10 @@ export const laminationPage = {
       number: "04",
       label: "EVA Lamination",
       heading: "EVA Lamination",
-      body: "EVA lamination adds cushioning and structure to the finished material, with thickness and colour specified according to the requirement.",
+      body: [
+        "EVA lamination adds cushioning and structure that fabric alone cannot provide. That matters for products which need to hold form under repeated impact or pressure, like trolley bags, footwear, and laptop bags.",
+        "We laminate EVA to any fabric in custom colors and thicknesses, with thickness selected against the rigidity and cushioning the part needs.",
+      ],
       points: ["Custom thickness", "Custom colours"],
       layers: ["Fabric", "EVA", "Fabric"],
       image: "/img/eva.jpg",
@@ -651,35 +663,79 @@ export const bondedBrasPage = {
   hero: {
     eyebrow: "Finished Products",
     heading: "Seamless Bonded Bras",
-    body: "We manufacture seamless bonded bras using material we laminate ourselves, bringing material development, lamination and finished garment construction together under one roof.",
-    cta: { label: "Request a Sample", href: "/contact" },
+    body: "We manufacture seamless bonded bras using material we laminate ourselves, bringing material development, lamination and finished garment construction together under one supplier.",
+    cta: { label: "Request a Sample", href: "#request-a-sample" },
   },
-  why: {
-    heading: "Why The Laminate Decides The Bra",
+  material: {
+    eyebrow: "The Material Matters",
+    heading: "The Laminate Decides The Bra.",
     body: [
-      "Bonding replaces the mechanical hold of a stitch, so the bond itself carries everything the garment goes through. A bonded edge cannot fray or unravel the way a stitched seam can, but it will only survive laundering if the lamination underneath has genuine washing fastness.",
-      "That is why we laminate our own material. Our bonding is irreversible, so layers do not separate at edges or under stress, and it holds its washing fastness through repeated laundering. Those two properties are what let a bonded bra keep its shape and its edges wash after wash.",
+      "A bonded bra depends on the material beneath the finished construction. The laminate has to hold the layers together and maintain its performance through repeated laundering.",
+      "That is why we laminate our own material.",
+      "Our bonding is irreversible, so layers do not separate at the edges or under stress. The lamination also holds its washing fastness through repeated laundering, helping the finished bra retain its shape and edge finish wash after wash.",
     ],
-    chain: [
-      { label: "Face Fabric", src: "/img/fabric-to-fabric.jpg", alt: "Face fabric" },
-      { label: "Laminated Material", src: "/img/pu-foam.jpg", alt: "Fabric laminated to PU foam" },
-      { label: "Bonded Bra", src: "/img/bonded-bra.jpg", alt: "A seamless bonded bra" },
+    /** The one photographic explanation on the page. Fabric, then the same
+     *  fabric laminated, then the finished garment. */
+    composition: [
+      {
+        label: "Face Fabric",
+        src: "/img/fabric-to-fabric.jpg",
+        alt: "Close up of a face fabric before lamination",
+      },
+      {
+        label: "Laminated Material",
+        src: "/img/pu-foam.jpg",
+        alt: "The same fabric laminated to PU foam",
+      },
+      {
+        label: "Bonded Bra",
+        src: "/img/bonded-bra.jpg",
+        alt: "A seamless bonded bra with clean bonded edges and no stitched seams",
+      },
+    ],
+  },
+  construction: {
+    heading: "Material And Construction, Specified Together.",
+    body: [
+      "You can provide the fabric you want to work with, or we can develop and source the face fabric for you.",
+      "The lamination and finished seamless bonded bra are both manufactured by Hamprigo. This means the material and construction can be considered together rather than coordinated through separate suppliers.",
+    ],
+    sequence: [
+      { label: "Your Fabric", body: "The fabric you want to work with." },
+      {
+        label: "Hamprigo Lamination",
+        body: "Material laminated according to your requirement.",
+      },
+      {
+        label: "Finished Bra",
+        body: "Seamless bonded construction manufactured by Hamprigo.",
+      },
     ],
   },
   technologies: {
-    heading: "Technologies We Use",
+    eyebrow: "Our Technologies",
+    heading: "Bonding Technologies",
+    body: "Our seamless bonded-bra manufacturing uses three bonding technologies:",
   },
-  together: {
-    heading: "Material And Construction, Specified Together",
-    body: "We can develop and source the face fabric, or laminate the one you supply. Either way the lamination and the finished garment are done here, so the material and the construction are decided together rather than coordinated across separate suppliers. In bonded construction that matters more than in sewn, because the material and the assembly method are not separable decisions.",
-    chain: ["Your Fabric", "Hamprigo Lamination", "Finished Seamless Bonded Bra"],
+  finished: {
+    eyebrow: "Finished Construction",
+    heading: "From Laminated Material To Finished Product.",
+    body: [
+      "Hamprigo manufactures seamless bonded bras using material laminated by us, bringing material development, lamination and finished construction together under one supplier.",
+      "This allows the material and finished construction to be considered together from the beginning.",
+    ],
+    image: {
+      src: "/img/bonded-bra.jpg",
+      alt: "The finished seamless bonded bra manufactured by Hamprigo",
+    },
   },
   close: {
-    heading: "Request A Sample",
+    heading: "Request A Sample.",
     body: [
-      "Tell us the style you are planning and we will put a sample together so you can assess the hand, the edge finish, and how it sits.",
+      "Tell us the style you are planning and we will put a sample together so you can assess the hand, edge finish and how it sits.",
       "If you are working to a settled specification, send it across and we will come back on construction and quantities.",
     ],
+    cta: "Request a Sample",
   },
 } as const;
 
