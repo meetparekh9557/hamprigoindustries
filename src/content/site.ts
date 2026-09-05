@@ -492,7 +492,6 @@ export const homeClose = {
  */
 export const laminationPage = {
   hero: {
-    eyebrow: "Textile Lamination",
     heading: "Lamination Built Around Your Material.",
     body: "We laminate woven, non-woven, knitted fabrics and Rexine with PU foam, EVA foam, films and other fabrics. Materials can be laminated to your required width, thickness and specification.",
     primary: { label: "Request a Sample", href: "/contact" },
@@ -513,14 +512,15 @@ export const laminationPage = {
         "We laminate woven, non-woven, knitted fabric, and Rexine with PU foam in custom densities and thicknesses. Both are specified per order rather than pulled from a fixed range, because they are what decide whether a cup holds its volume, a seat feels right, or a padded panel reads as premium.",
         "Two properties define the bond. It is irreversible, so the foam does not lift or separate at cut edges. And it holds its washing fastness, so the material survives repeated laundering without losing bond, hand, or shape. For lingerie and bra cup applications, the second one is what decides whether a product comes back as a return.",
       ],
-      points: [
-        "Custom densities",
-        "Custom thicknesses",
-        "Irreversible bonding",
-        "Bond remains through repeated laundering",
-        "Material retains its hand and shape",
+      usedFor: [
+        "Lingerie",
+        "Bra cups",
+        "Car seat upholstery",
+        "Blouse pads",
+        "Footwear",
+        "Auditorium seating",
+        "Jewelry boxes",
       ],
-      layers: ["Fabric", "PU Foam", "Fabric"],
       image: "/img/pu-foam.jpg",
       alt: "Knitted fabric laminated to PU foam",
     },
@@ -533,9 +533,10 @@ export const laminationPage = {
         "We bond two fabrics into one composite material, giving furnishing and cap manufacturers performance a single layer cannot deliver: added body, texture, or durability behind the face fabric you want to show.",
         "It is the practical answer when no one fabric gives you both the appearance you need and the structure the product demands.",
       ],
-      points: ["You can provide both fabrics, or we can help develop the second material."],
-      note: "Two fabrics. One composite construction.",
-      layers: ["Fabric A", "Bond", "Fabric B"],
+      usedFor: [
+        "Furnishing fabrics",
+        "Cap manufacturing",
+      ],
       image: "/img/fabric-to-fabric.jpg",
       alt: "Two fabrics bonded into one composite material",
     },
@@ -548,11 +549,12 @@ export const laminationPage = {
         "Laminating fabric with PVC, TPU, PE, or blackout film turns it into a functional material: waterproof, stronger, and light-controlling. This is what makes the difference between a raincoat that leaks and one that doesn't, or a blackout curtain that actually blocks light.",
         "Each film does a different job. TPU stays flexible and keeps a softer handle, which suits garments and mattress protectors. PVC gives a more durable, wipe-clean barrier. PE is the economical moisture barrier. Blackout film controls how much light passes through the fabric.",
       ],
-      films: [
-        { name: "TPU", body: "Flexible and softer handle." },
-        { name: "PVC", body: "Durable and wipe-clean barrier." },
-        { name: "PE", body: "Moisture-barrier option." },
-        { name: "Blackout Film", body: "Light-control construction." },
+      usedFor: [
+        "Military tents",
+        "Raincoats",
+        "Trolley bags",
+        "Mattress protectors",
+        "Blackout curtains",
       ],
       image: "/img/film.jpg",
       alt: "Fabric laminated with a transparent film",
@@ -566,8 +568,11 @@ export const laminationPage = {
         "EVA lamination adds cushioning and structure that fabric alone cannot provide. That matters for products which need to hold form under repeated impact or pressure, like trolley bags, footwear, and laptop bags.",
         "We laminate EVA to any fabric in custom colors and thicknesses, with thickness selected against the rigidity and cushioning the part needs.",
       ],
-      points: ["Custom thickness", "Custom colours"],
-      layers: ["Fabric", "EVA", "Fabric"],
+      usedFor: [
+        "Trolley bags",
+        "Laptop bags",
+        "Footwear",
+      ],
       image: "/img/eva.jpg",
       alt: "Fabric laminated to EVA foam",
     },
@@ -604,7 +609,6 @@ export const laminationPage = {
 /** The About page, written to the client's brief. */
 export const aboutPage = {
   hero: {
-    eyebrow: "About Hamprigo",
     heading: "Built On Experience. Driven By What We Make.",
     body: "Founded in 1989, Hamprigo Industries has built its expertise around textile lamination and material construction. Today, our capabilities extend across four lamination techniques and the manufacture of seamless bonded bras using material laminated by us.",
   },
@@ -661,7 +665,6 @@ export const aboutPage = {
 /** The Seamless Bonded Bras page, written to the client's brief. */
 export const bondedBrasPage = {
   hero: {
-    eyebrow: "Finished Products",
     heading: "Seamless Bonded Bras",
     body: "We manufacture seamless bonded bras using material we laminate ourselves, bringing material development, lamination and finished garment construction together under one supplier.",
     cta: { label: "Request a Sample", href: "#request-a-sample" },
@@ -689,8 +692,11 @@ export const bondedBrasPage = {
       },
       {
         label: "Bonded Bra",
-        src: "/img/bonded-bra.jpg",
-        alt: "A seamless bonded bra with clean bonded edges and no stitched seams",
+        src: "/img/bonded-bra-product.jpg",
+        alt: "The finished seamless bonded bra, shown against a plain ground",
+        /** A product shot on a white ground, not a material close-up. The
+         *  file is exactly 3:4, so its own slot crops nothing. */
+        aspect: "portrait",
       },
     ],
   },

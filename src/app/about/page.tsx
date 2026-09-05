@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ClosingCta } from "@/components/closing-cta";
 import { Container } from "@/components/container";
+import { SplitHero } from "@/components/split-hero";
 import { CtaLink } from "@/components/cta-link";
 import {
   aboutPage as page,
@@ -23,35 +24,14 @@ const capabilities = workItems.filter((item) => item.slug !== "seamless-bonded-b
 export default function AboutPage() {
   return (
     <>
-      {/* 01. Hero. The real works photograph, large and uncropped into a
-          card, because its job is to say that this is a real factory. */}
-      <section className="relative bg-brand-blue text-white">
-        <div className="relative h-72 sm:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-1/2">
-          <Image
-            src="/img/factory.jpg"
-            alt={`The ${company.name} works`}
-            fill
-            sizes="(min-width: 64rem) 50vw, 100vw"
-            className="object-cover"
-            priority
-          />
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-t from-[#152559] via-[#152559]/40 to-transparent lg:bg-gradient-to-r lg:via-[#152559]/25"
-          />
-        </div>
-        <Container className="relative py-16 sm:py-20 lg:py-24">
-          <div className="lg:max-w-[32rem]">
-            <p className="spec-label text-white/60">{page.hero.eyebrow}</p>
-            <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-              {page.hero.heading}
-            </h1>
-            <p className="mt-6 text-base leading-relaxed text-white/75 sm:text-lg">
-              {page.hero.body}
-            </p>
-          </div>
-        </Container>
-      </section>
+      {/* 01. Hero. The works photograph, large, because its job is to say
+          that this is a real factory. */}
+      <SplitHero
+        title={page.hero.heading}
+        body={page.hero.body}
+        image="/img/works.jpg"
+        alt={`The ${company.name} works`}
+      />
 
       {/* 02. Our story. Typographic, not another factory photograph. No
           intermediate milestones: none have been supplied. */}

@@ -3,8 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ClosingCta } from "@/components/closing-cta";
 import { Container } from "@/components/container";
-import { CtaLink } from "@/components/cta-link";
-import { LayerStack } from "@/components/layer-stack";
+import { HeroCta, SplitHero } from "@/components/split-hero";
 import { laminationPage as page, serviceOptions } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -20,50 +19,32 @@ export const metadata: Metadata = {
  * alternating down the page, so a buyer can scan the four constructions
  * without reading a word if they choose to.
  *
- * Nothing is claimed that the brief did not supply. In particular there is
- * no maximum width, no applications, no industries and no capacity.
+ * Nothing is claimed that the client did not supply. The applications under
+ * each technique are the approved ones, word for word; there is no maximum
+ * width, no industries and no capacity.
  */
 export default function LaminationPage() {
   return (
     <>
-      {/* 01. Hero. The material itself, full width. The factory photograph
-          belongs to the homepage; this page opens on what is being made. */}
-      <section className="relative bg-brand-blue text-white">
-        <div className="relative h-72 sm:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-1/2">
-          <Image
-            src="/img/pu-foam.jpg"
-            alt="Knitted fabric peeled back to show the PU foam laminated behind it"
-            fill
-            sizes="(min-width: 64rem) 50vw, 100vw"
-            className="object-cover"
-            priority
-          />
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-t from-[#152559] via-[#152559]/40 to-transparent lg:bg-gradient-to-r lg:via-[#152559]/25"
-          />
-        </div>
-
-        <Container className="relative py-16 sm:py-20 lg:py-24">
-          <div className="lg:max-w-[32rem]">
-            <p className="spec-label text-white/60">{page.hero.eyebrow}</p>
-            <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-              {page.hero.heading}
-            </h1>
-            <p className="mt-6 text-base leading-relaxed text-white/75 sm:text-lg">
-              {page.hero.body}
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <CtaLink href={page.hero.primary.href}>
-                {page.hero.primary.label}
-              </CtaLink>
-              <CtaLink href={page.hero.secondary.href} variant="quiet">
-                {page.hero.secondary.label}
-              </CtaLink>
-            </div>
-          </div>
-        </Container>
-      </section>
+      {/* 01. Hero. Same construction as About and Seamless Bonded Bras,
+          on the brand red. */}
+      <SplitHero
+        ground="red"
+        title={page.hero.heading}
+        body={page.hero.body}
+        image="/img/pu-foam.jpg"
+        alt="Knitted fabric peeled back to show the PU foam laminated behind it"
+        actions={
+          <>
+            <HeroCta ground="red" href={page.hero.primary.href}>
+              {page.hero.primary.label}
+            </HeroCta>
+            <HeroCta ground="red" variant="quiet" href={page.hero.secondary.href}>
+              {page.hero.secondary.label}
+            </HeroCta>
+          </>
+        }
+      />
 
       {/* 02. The four techniques, introduced before they are explained. */}
       <section id="techniques" className="scroll-mt-24 py-16 sm:py-20">
@@ -138,46 +119,23 @@ export default function LaminationPage() {
                     ))}
                   </div>
 
-                  {"points" in technique && technique.points ? (
-                    <ul className="mt-7 space-y-2.5">
-                      {technique.points.map((point) => (
+                  {/* What the construction is actually made into. The
+                      applications the client approved, set as a list rather
+                      than a sentence so they can be scanned. */}
+                  <div className="mt-8 border-t border-line pt-6">
+                    <p className="spec-label text-muted">Used To Make</p>
+                    <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-2">
+                      {technique.usedFor.map((use) => (
                         <li
-                          key={point}
-                          className="flex gap-3 text-base text-ink-strong"
+                          key={use}
+                          className="rounded-sm border border-line px-3 py-1.5 text-sm font-medium text-ink-strong"
                         >
-                          <span aria-hidden="true" className="text-brand">
-                            &mdash;
-                          </span>
-                          {point}
+                          {use}
                         </li>
                       ))}
                     </ul>
-                  ) : null}
+                  </div>
 
-                  {"note" in technique && technique.note ? (
-                    <p className="mt-7 border-l-2 border-brand pl-5 text-lg font-semibold text-ink-strong">
-                      {technique.note}
-                    </p>
-                  ) : null}
-
-                  {"films" in technique && technique.films ? (
-                    <dl className="mt-8 grid gap-px bg-line sm:grid-cols-2">
-                      {technique.films.map((film) => (
-                        <div key={film.name} className="bg-inherit py-4 sm:pr-6">
-                          <dt className="spec-label text-brand">{film.name}</dt>
-                          <dd className="mt-2 text-base text-ink-strong">
-                            {film.body}
-                          </dd>
-                        </div>
-                      ))}
-                    </dl>
-                  ) : null}
-
-                  {"layers" in technique && technique.layers ? (
-                    <div className="mt-8 max-w-xs">
-                      <LayerStack layers={technique.layers} />
-                    </div>
-                  ) : null}
                 </div>
               </div>
             </Container>

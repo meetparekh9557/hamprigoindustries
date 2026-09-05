@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Container } from "@/components/container";
 import { RequestSample } from "@/components/request-sample";
+import { HeroCta, SplitHero } from "@/components/split-hero";
 import {
   bondedBrasPage as page,
   bondingTechnologies,
@@ -31,45 +31,20 @@ export const metadata: Metadata = {
 export default function SeamlessBondedBrasPage() {
   return (
     <>
-      {/* 01. Split hero. Type on the left, the product on the right, at
-          size, with nothing laid over it.
-
-          The image is positioned rather than made a grid column, so the
-          heading sits in an ordinary Container and lines up with the left
-          edge of every other section on the site. Text inside a grid
-          column centres within that column, not the page. */}
-      <section className="relative bg-brand-blue text-white">
-        <div className="relative h-80 sm:h-[26rem] lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-1/2">
-          <Image
-            src="/img/bonded-bra.jpg"
-            alt="A seamless bonded bra with clean bonded edges and no stitched seams"
-            fill
-            sizes="(min-width: 64rem) 50vw, 100vw"
-            className="object-cover"
-            priority
-          />
-        </div>
-
-        <Container className="relative py-16 sm:py-20 lg:min-h-[36rem] lg:py-28">
-          <div className="lg:flex lg:min-h-[28rem] lg:max-w-[30rem] lg:flex-col lg:justify-center">
-            <p className="spec-label text-white/60">{page.hero.eyebrow}</p>
-            <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.4rem]">
-              {page.hero.heading}
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
-              {page.hero.body}
-            </p>
-            <div>
-              <Link
-                href={page.hero.cta.href}
-                className="mt-10 inline-flex items-center justify-center rounded-sm bg-brand px-6 py-3 text-sm font-semibold tracking-wide text-brand-ink transition-colors hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              >
-                {page.hero.cta.label}
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </section>
+      {/* 01. Hero. Same construction as About and Lamination, on the
+          brand red. */}
+      <SplitHero
+        ground="red"
+        title={page.hero.heading}
+        body={page.hero.body}
+        image="/img/bonded-bra.jpg"
+        alt="A seamless bonded bra with clean bonded edges and no stitched seams"
+        actions={
+          <HeroCta ground="red" href={page.hero.cta.href}>
+            {page.hero.cta.label}
+          </HeroCta>
+        }
+      />
 
       {/* 02. The material explanation. Copy on one side, the composition
           on the other: face fabric, the laminate it becomes, the garment
@@ -114,7 +89,16 @@ export default function SeamlessBondedBrasPage() {
                   <p className="mt-1.5 text-xl font-semibold text-ink-strong">
                     {step.label}
                   </p>
-                  <div className="relative mt-4 aspect-[16/10] overflow-hidden">
+                  {/* The product shot is portrait and on a white ground,
+                      so it gets its own frame rather than being cropped
+                      into the landscape one the close-ups use. */}
+                  <div
+                    className={`relative mt-4 overflow-hidden ${
+                      "aspect" in step
+                        ? "aspect-[3/4] bg-white"
+                        : "aspect-[16/10]"
+                    }`}
+                  >
                     <Image
                       src={step.src}
                       alt={step.alt}
