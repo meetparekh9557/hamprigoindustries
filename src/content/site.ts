@@ -272,15 +272,17 @@ export const about = {
  * than below it, because the business has two sides and the homepage should
  * say so before a visitor scrolls.
  *
- * Titles are shortened from the service pages': the rail is a rail, not a
- * spec sheet, and "PU Foam Lamination" reads better on a card than "PU Foam
- * Laminated Fabric".
+ * Titles here name the pairing in full. They differ slightly from the
+ * service page headings, which stay as they are because those are the terms
+ * buyers actually search for. The rail describes; the page ranks.
+ *
+ * "with" is set lowercase throughout, matching "Fabric to Fabric".
  */
 export const workItems = [
   {
     slug: "pu-foam-laminated-fabric",
     spine: "PU Foam",
-    title: "PU Foam Lamination",
+    title: "PU Foam Lamination with Fabric",
     summary:
       "Woven, non-woven, knitted fabric and Rexine bonded to PU foam in custom densities and thicknesses.",
     image: "/img/pu-foam.jpg",
@@ -290,7 +292,7 @@ export const workItems = [
   {
     slug: "fabric-laminated-with-fabric",
     spine: "Fabric on Fabric",
-    title: "Fabric-to-Fabric Lamination",
+    title: "Fabric to Fabric Lamination",
     summary:
       "Two fabrics bonded into one composite, for body and structure a single layer cannot give.",
     image: "/img/fabric-to-fabric.jpg",
@@ -300,7 +302,7 @@ export const workItems = [
   {
     slug: "fabric-laminated-with-films",
     spine: "Films",
-    title: "Film Lamination",
+    title: "Film Lamination with Fabric",
     summary:
       "PVC, TPU, PE and blackout films, to make a fabric waterproof, stronger or light-controlling.",
     image: "/img/film.jpg",
@@ -310,7 +312,7 @@ export const workItems = [
   {
     slug: "eva-laminated-fabric",
     spine: "EVA",
-    title: "EVA Lamination",
+    title: "EVA Foam Lamination with Fabric",
     summary:
       "EVA foam in custom colours and thicknesses, for parts that must hold their form under pressure.",
     image: "/img/eva.jpg",
