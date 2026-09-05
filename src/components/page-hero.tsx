@@ -4,13 +4,18 @@ export function PageHero({
   eyebrow,
   title,
   lede,
+  flush = false,
 }: {
   eyebrow?: string;
   title: string;
   lede?: string;
+  /** Drops the bottom rule, for when the section below is the same blue. */
+  flush?: boolean;
 }) {
   return (
-    <section className="border-b border-line bg-ink-strong text-white">
+    <section
+      className={`bg-ink-strong text-white ${flush ? "" : "border-b border-line"}`}
+    >
       <Container className="py-16 sm:py-20">
         {eyebrow ? (
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">

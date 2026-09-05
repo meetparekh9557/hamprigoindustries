@@ -23,26 +23,24 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow="Contact"
-        title={`Contact ${company.name}`}
-        lede={enquiryForm.intro}
-      />
+      <PageHero flush title={`Contact ${company.name}`} lede={enquiryForm.intro} />
 
-      <section className="py-16 sm:py-20">
+      {/* No top padding: the hero above is the same blue and already
+          carries its own, so keeping both leaves a dead gap. */}
+      <section className="bg-brand-blue pb-16 text-white sm:pb-20">
         <Container>
           <div className="grid gap-14 lg:grid-cols-[1.4fr_1fr]">
             <div>
-              <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
                 {enquiryForm.heading}
               </h2>
               <div className="mt-8">
-                <EnquiryForm services={serviceOptions.all} />
+                <EnquiryForm services={serviceOptions.all} tone="dark" />
               </div>
             </div>
 
-            <div className="lg:border-l lg:border-line lg:pl-12">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+            <div className="lg:border-l lg:border-white/20 lg:pl-12">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-white/60">
                 Get in touch
               </h2>
               {/* The two actions first, then the details themselves. A
@@ -51,7 +49,7 @@ export default function ContactPage() {
               <div className="mt-5 flex flex-wrap gap-3">
                 <a
                   href={`tel:${contact.phoneHref}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-sm bg-brand px-5 py-3 text-sm font-semibold tracking-wide text-brand-ink transition-colors hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                  className="inline-flex items-center justify-center gap-2 rounded-sm bg-white px-5 py-3 text-sm font-semibold tracking-wide text-ink-strong transition-colors hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -83,11 +81,11 @@ export default function ContactPage() {
                 </a>
               </div>
 
-              <address className="mt-6 space-y-2 text-base not-italic text-ink">
+              <address className="mt-6 space-y-2 text-base not-italic text-white">
                 <p>
                   <a
                     href={`tel:${contact.phoneHref}`}
-                    className="font-medium transition-colors hover:text-brand"
+                    className="font-medium transition-colors hover:text-white/70"
                   >
                     {contact.phone}
                   </a>
@@ -95,17 +93,17 @@ export default function ContactPage() {
                 <p>
                   <a
                     href={`mailto:${contact.email}`}
-                    className="break-all font-medium transition-colors hover:text-brand"
+                    className="break-all font-medium transition-colors hover:text-white/70"
                   >
                     {contact.email}
                   </a>
                 </p>
               </address>
 
-              <h2 className="mt-10 text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+              <h2 className="mt-10 text-xs font-semibold uppercase tracking-[0.16em] text-white/60">
                 Address
               </h2>
-              <address className="mt-5 space-y-1 text-base not-italic leading-relaxed text-muted">
+              <address className="mt-5 space-y-1 text-base not-italic leading-relaxed text-white/75">
                 {contact.addressLines.map((line) => (
                   <span key={line} className="block">
                     {line}

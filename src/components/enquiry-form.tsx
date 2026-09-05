@@ -34,20 +34,48 @@ const fieldClass =
   "mt-2 w-full rounded-sm border border-line bg-white px-3.5 py-2.5 text-base text-ink outline-none transition-colors focus:border-ink-strong";
 const lockedClass =
   "mt-2 w-full cursor-default rounded-sm border border-line bg-surface px-3.5 py-2.5 text-base font-medium text-ink-strong outline-none";
-const labelClass = "block text-sm font-medium text-ink-strong";
-const errorClass = "mt-1.5 text-sm text-brand";
+
+/**
+ * The inputs are white boxes either way, so only the surrounding type
+ * changes with the ground. On blue the error red drops to 2.3:1 and is
+ * unreadable, hence the light tint: that holds 8.6:1.
+ */
+const TONE = {
+  light: {
+    label: "block text-sm font-medium text-ink-strong",
+    error: "mt-1.5 text-sm text-brand",
+    banner:
+      "rounded-sm border border-brand/30 bg-brand/5 px-4 py-3 text-sm leading-relaxed text-ink-strong",
+    panel: "rounded-sm border border-line bg-surface p-8",
+    panelHeading: "text-lg font-semibold text-ink-strong",
+    panelBody: "mt-3 text-base leading-relaxed text-muted",
+  },
+  dark: {
+    label: "block text-sm font-medium text-white",
+    error: "mt-1.5 text-sm text-[#ffb4b4]",
+    banner:
+      "rounded-sm border border-white/30 bg-white/10 px-4 py-3 text-sm leading-relaxed text-white",
+    panel: "rounded-sm border border-white/20 bg-white/10 p-8",
+    panelHeading: "text-lg font-semibold text-white",
+    panelBody: "mt-3 text-base leading-relaxed text-white/75",
+  },
+} as const;
 
 type Status = "idle" | "sending" | "sent" | "error";
 
 export function EnquiryForm({
   services,
   lockedService,
+  tone = "light",
 }: {
   /** Options for the Service dropdown. Ignored when lockedService is set. */
   services?: readonly string[];
   /** Fixes Service to this value and makes it unchangeable. */
   lockedService?: string;
+  /** "dark" when the form sits directly on a dark ground. */
+  tone?: keyof typeof TONE;
 }) {
+  const t = TONE[tone];
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -131,11 +159,9 @@ export function EnquiryForm({
 
   if (status === "sent") {
     return (
-      <div role="status" className="rounded-sm border border-line bg-surface p-8">
-        <h3 className="text-lg font-semibold text-ink-strong">
-          Enquiry received
-        </h3>
-        <p className="mt-3 text-base leading-relaxed text-muted">{message}</p>
+      <div role="status" className={t.panel}>
+        <h3 className={t.panelHeading}>Enquiry received</h3>
+        <p className={t.panelBody}>{message}</p>
       </div>
     );
   }
@@ -143,17 +169,14 @@ export function EnquiryForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
       {status === "error" && message ? (
-        <p
-          role="alert"
-          className="rounded-sm border border-brand/30 bg-brand/5 px-4 py-3 text-sm leading-relaxed text-ink-strong"
-        >
+        <p role="alert" className={t.banner}>
           {message}
         </p>
       ) : null}
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label className={labelClass} htmlFor="name">
+          <label className={t.label} htmlFor="name">
             Name <span aria-hidden="true">*</span>
           </label>
           <input
@@ -163,11 +186,11 @@ export function EnquiryForm({
             placeholder={ph.name}
             className={fieldClass}
           />
-          {errors.name ? <p className={errorClass}>{errors.name}</p> : null}
+          {errors.name ? <p className={t.error}>{errors.name}</p> : null}
         </div>
 
         <div>
-          <label className={labelClass} htmlFor="mobile">
+          <label className={t.label} htmlFor="mobile">
             Mobile <span aria-hidden="true">*</span>
           </label>
           <input
@@ -178,12 +201,12 @@ export function EnquiryForm({
             placeholder={ph.mobile}
             className={fieldClass}
           />
-          {errors.mobile ? <p className={errorClass}>{errors.mobile}</p> : null}
+          {errors.mobile ? <p className={t.error}>{errors.mobile}</p> : null}
         </div>
       </div>
 
       <div>
-        <label className={labelClass} htmlFor="email">
+        <label className={t.label} htmlFor="email">
           Email <span aria-hidden="true">*</span>
         </label>
         <input
@@ -194,12 +217,12 @@ export function EnquiryForm({
           placeholder={ph.email}
           className={fieldClass}
         />
-        {errors.email ? <p className={errorClass}>{errors.email}</p> : null}
+        {errors.email ? <p className={t.error}>{errors.email}</p> : null}
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label className={labelClass} htmlFor="city">
+          <label className={t.label} htmlFor="city">
             City
           </label>
           <input
@@ -212,7 +235,7 @@ export function EnquiryForm({
         </div>
 
         <div>
-          <label className={labelClass} htmlFor="country">
+          <label className={t.label} htmlFor="country">
             Country
           </label>
           <input
@@ -226,7 +249,7 @@ export function EnquiryForm({
       </div>
 
       <div>
-        <label className={labelClass} htmlFor="service">
+        <label className={t.label} htmlFor="service">
           Service <span aria-hidden="true">*</span>
         </label>
         {lockedService ? (
@@ -254,11 +277,11 @@ export function EnquiryForm({
             ))}
           </select>
         )}
-        {errors.service ? <p className={errorClass}>{errors.service}</p> : null}
+        {errors.service ? <p className={t.error}>{errors.service}</p> : null}
       </div>
 
       <div>
-        <label className={labelClass} htmlFor="message">
+        <label className={t.label} htmlFor="message">
           Message <span aria-hidden="true">*</span>
         </label>
         <textarea
@@ -268,7 +291,7 @@ export function EnquiryForm({
           placeholder={ph.message}
           className={fieldClass}
         />
-        {errors.message ? <p className={errorClass}>{errors.message}</p> : null}
+        {errors.message ? <p className={t.error}>{errors.message}</p> : null}
       </div>
 
       {/* Honeypot, off screen and hidden from assistive tech. */}
