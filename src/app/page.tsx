@@ -141,18 +141,13 @@ export default function HomePage() {
           </div>
         </Container>
 
-        {/* 02 Seamless Bonded Bras, with the product and the technologies. */}
-        <Container className="mt-20">
-          <div className="grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:gap-14">
-            <div className="relative aspect-[3/2] overflow-hidden rounded-sm">
-              <Image
-                src="/img/bonded-bra.jpg"
-                alt="A seamless bonded bra, showing no stitched seams"
-                fill
-                sizes="(min-width: 64rem) 45vw, 100vw"
-                className="object-cover"
-              />
-            </div>
+        {/* 02 Seamless Bonded Bras. The technologies take the visual slot
+            the product photograph had, so this block mirrors Service 01:
+            the argument on the left, the three things on the right. The
+            product itself is already on the rail above and on its own
+            page, so the photograph was the third showing of it. */}
+        <Container className="mt-16">
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.25fr] lg:gap-14">
             <div>
               <p className="spec-label text-muted">{twoServices[1].eyebrow}</p>
               <h3 className="mt-3 text-2xl font-bold tracking-tight text-ink-strong">
@@ -161,30 +156,32 @@ export default function HomePage() {
               <p className="mt-4 text-base leading-relaxed text-muted">
                 {twoServices[1].body}
               </p>
-
-              {/* Named only. No approved explanation has been supplied. */}
-              <h4 className="spec-label mt-8 text-muted">Technologies We Use</h4>
-              <ul className="mt-4 grid gap-px bg-line">
-                {bondingTechnologies.map((technology, i) => (
-                  <li
-                    key={technology}
-                    className="flex items-baseline gap-4 bg-white py-4"
-                  >
-                    <span className="spec-label text-brand">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="text-base font-semibold text-ink-strong">
-                      {technology}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
               <div className="mt-8">
                 <CtaLink href={twoServices[1].cta.href} variant="outline">
                   {twoServices[1].cta.label}
                 </CtaLink>
               </div>
+            </div>
+
+            <div>
+              <p className="spec-label text-muted">Technologies We Use</p>
+              {/* Named only. No approved explanation has been supplied for
+                  any of the three. */}
+              <ul className="mt-4 grid grid-cols-3 gap-3 sm:gap-5">
+                {bondingTechnologies.map((technology, i) => (
+                  <li
+                    key={technology}
+                    className="border-t-2 border-brand bg-surface p-5 sm:p-6"
+                  >
+                    <span className="spec-label text-brand">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p className="mt-3 text-base font-semibold leading-snug text-ink-strong">
+                      {technology}
+                    </p>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </Container>
