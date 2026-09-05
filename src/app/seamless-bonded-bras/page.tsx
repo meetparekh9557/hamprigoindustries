@@ -49,7 +49,7 @@ export default function SeamlessBondedBrasPage() {
 
       {/* 02. The material explanation. Copy on one side, the finished
           product on the other. */}
-      <section className="py-16 sm:py-20 lg:py-24">
+      <section className="py-16 sm:py-20">
         <Container>
           <div className="grid items-center gap-14 lg:grid-cols-[1fr_1fr] lg:gap-20">
             <div>
@@ -101,7 +101,7 @@ export default function SeamlessBondedBrasPage() {
             </div>
           </div>
 
-          <ol className="mt-14 grid border-t border-line sm:grid-cols-3">
+          <ol className="mt-10 grid border-t border-line sm:grid-cols-3">
             {page.construction.sequence.map((stage, i) => (
               <li
                 key={stage.label}
@@ -155,7 +155,7 @@ export default function SeamlessBondedBrasPage() {
 
       {/* 05. The finished product, at scale, with the copy kept out of
           its way. */}
-      <section className="border-t border-line bg-surface py-16 sm:py-20 lg:py-24">
+      <section className="border-t border-line bg-surface py-16 sm:py-20">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-[1.25fr_1fr] lg:gap-20">
             <div className="relative aspect-[4/3] overflow-hidden">

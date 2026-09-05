@@ -83,14 +83,14 @@ export default function HomePage() {
           padding after it read as a stray grey band. */}
       <section className="bg-surface pt-16 sm:pt-20">
         <Container>
-          <div className="pt-2">
+          <div>
             <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
             <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
               {homeHeadings.work}
             </h2>
           </div>
         </Container>
-        <div className="mt-12">
+        <div className="mt-10">
           <WorkRail />
         </div>
       </section>
@@ -105,7 +105,7 @@ export default function HomePage() {
         </Container>
 
         {/* 01 Textile Lamination, with the material progression. */}
-        <Container className="mt-14">
+        <Container className="mt-10">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.25fr] lg:gap-14">
             <div>
               <p className="spec-label text-muted">{twoServices[0].eyebrow}</p>
@@ -202,7 +202,7 @@ export default function HomePage() {
               {whyHamprigo.heading}
             </h2>
           </div>
-          <dl className="mt-12 grid gap-10 md:grid-cols-3">
+          <dl className="mt-10 grid gap-10 md:grid-cols-3">
             {whyHamprigo.items.map((item) => {
               const Icon = ICONS[item.icon as IconName];
               return (
@@ -229,7 +229,7 @@ export default function HomePage() {
           <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
             {homeHeadings.values}
           </h2>
-          <div className="mt-12 grid gap-10 md:grid-cols-3">
+          <div className="mt-10 grid gap-10 md:grid-cols-3">
             {about.values.map((value, i) => (
               <div key={value.title} className="border-t-2 border-brand pt-5">
                 <span className="spec-label text-brand">

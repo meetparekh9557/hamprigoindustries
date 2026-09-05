@@ -89,7 +89,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {capabilities.map((item, i) => (
               <li key={item.slug}>
                 <Link href={item.href} className="group block">
@@ -182,9 +182,12 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-px bg-line md:grid-cols-3">
+          <div className="mt-10 grid border-t border-line md:grid-cols-3">
             {page.how.blocks.map((block) => (
-              <div key={block.title} className="bg-white py-8 md:pr-8">
+              <div
+                key={block.title}
+                className="border-b border-line py-7 last:border-b-0 md:border-b-0 md:pr-8 md:[&:not(:first-child)]:border-l md:[&:not(:first-child)]:pl-8"
+              >
                 <h3 className="spec-label text-brand">{block.title}</h3>
                 <p className="mt-4 text-lg leading-snug text-ink-strong">
                   {block.body}
@@ -193,7 +196,7 @@ export default function AboutPage() {
             ))}
           </div>
 
-          <p className="mt-12 max-w-2xl text-base leading-relaxed text-muted">
+          <p className="mt-10 max-w-2xl text-base leading-relaxed text-muted">
             {page.how.close}
           </p>
           <div className="mt-8">

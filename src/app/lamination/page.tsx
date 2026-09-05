@@ -59,9 +59,12 @@ export default function LaminationPage() {
             </p>
           </div>
 
-          <ol className="mt-12 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-10 grid border-t border-line sm:grid-cols-2 lg:grid-cols-4">
             {page.techniques.map((technique) => (
-              <li key={technique.slug} className="bg-white py-6 lg:px-6 lg:py-0">
+              <li
+                key={technique.slug}
+                className="border-b border-line py-5 last:border-b-0 sm:border-b-0 sm:py-6 sm:pr-6 sm:[&:not(:first-child)]:border-l sm:[&:not(:first-child)]:pl-6"
+              >
                 <Link href={`#${technique.slug}`} className="group block">
                   <span className="spec-label text-brand">
                     {technique.number}
@@ -154,9 +157,12 @@ export default function LaminationPage() {
               {page.materials.body}
             </p>
           </div>
-          <div className="mt-12 grid gap-px bg-line md:grid-cols-2">
+          <div className="mt-10 grid border-t border-line md:grid-cols-2">
             {page.materials.blocks.map((block) => (
-              <div key={block.title} className="bg-white py-8 md:pr-10">
+              <div
+                key={block.title}
+                className="border-b border-line py-7 last:border-b-0 md:border-b-0 md:pr-10 md:[&:not(:first-child)]:border-l md:[&:not(:first-child)]:pl-10"
+              >
                 <h3 className="spec-label text-brand">{block.title}</h3>
                 <p className="mt-4 text-xl leading-snug text-ink-strong">
                   {block.body}
