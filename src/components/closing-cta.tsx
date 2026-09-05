@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { Container } from "./container";
 import { CtaLink } from "./cta-link";
@@ -20,6 +21,11 @@ import { EnquiryForm } from "./enquiry-form";
  * where form controls behave, and the page still closes on the blue. Without
  * one, it falls back to a link, which is what About and Contact use, since
  * About takes no enquiries and Contact already has the form above.
+ *
+ * The blue is a translucent wash over a photograph rather than a flat fill,
+ * so the material reads through it. 88 percent: enough to keep white text at
+ * roughly the same contrast as the solid colour gave, light enough that the
+ * fabric is plainly there rather than hinted at.
  */
 export function ClosingCta({
   heading,
@@ -66,7 +72,19 @@ export function ClosingCta({
   );
 
   return (
-    <section className="bg-brand-blue py-20 text-white sm:py-24">
+    <section className="relative isolate overflow-hidden py-20 text-white sm:py-24">
+      <Image
+        src="/img/textile.jpg"
+        alt=""
+        aria-hidden="true"
+        fill
+        sizes="100vw"
+        className="-z-10 object-cover"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-brand-blue/[0.88]"
+      />
       <Container>
         {form ? (
           <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">

@@ -3,7 +3,11 @@ import Image from "next/image";
 import { Container } from "@/components/container";
 import { ClosingCta } from "@/components/closing-cta";
 import { PageHero } from "@/components/page-hero";
-import { bondedBras, serviceOptions } from "@/content/site";
+import {
+  bondedBras,
+  bondingTechnologies,
+  serviceOptions,
+} from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Seamless Bonded Bra Manufacturer",
@@ -58,6 +62,27 @@ export default function SeamlessBondedBrasPage() {
                   priority
                 />
               </div>
+
+              {/* Named only. No approved explanation has been supplied for
+                  any of them. */}
+              <h2 className="spec-label mt-8 text-muted">
+                Technologies we use
+              </h2>
+              <ul className="mt-4 grid gap-px bg-line">
+                {bondingTechnologies.map((technology, i) => (
+                  <li
+                    key={technology}
+                    className="flex items-baseline gap-4 bg-white py-4"
+                  >
+                    <span className="spec-label text-brand">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-base font-semibold text-ink-strong">
+                      {technology}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </Container>

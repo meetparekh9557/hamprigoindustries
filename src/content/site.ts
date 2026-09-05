@@ -242,22 +242,22 @@ export const about = {
       ],
     },
   ],
+  /**
+   * The client's own three values, supplied to replace the four that were
+   * here. These are the ones from their previous site.
+   */
   values: [
     {
-      title: "Innovation",
-      body: "We continuously seek new ways to improve our products and processes, staying ahead of industry trends and delivering cutting edge solutions.",
+      title: "Honesty",
+      body: "Integrity is the cornerstone of our business. We believe in conducting ourselves with honesty, transparency, and accountability in all our interactions. Our clients can trust us to deliver on our promises and uphold the highest ethical standards.",
     },
     {
-      title: "Customer Focus",
-      body: "Our clients are at the center of our business. We listen to their needs and work diligently to provide solutions that align with their goals.",
+      title: "Passion",
+      body: "We are driven by a passion for innovation, creativity, and continuous improvement. Our team is dedicated to pushing the boundaries of what is possible, exploring new ideas, and finding innovative solutions to meet the evolving needs of our clients.",
     },
     {
-      title: "Integrity",
-      body: "We conduct our business with honesty, transparency, and respect for our clients and partners.",
-    },
-    {
-      title: "Sustainability",
-      body: "We strive to minimize our environmental impact by implementing eco friendly practices and sourcing materials responsibly.",
+      title: "Quality Work",
+      body: "We take pride in our meticulous attention to detail, rigorous quality control processes, and unwavering dedication to delivering products of the highest caliber. From the materials to the craftsmanship of our work, excellence is at the heart of everything we do.",
     },
   ],
   closing: {
@@ -345,45 +345,84 @@ export const serviceImages: Record<string, { src: string; alt: string }> =
     workItems.map((item) => [item.slug, { src: item.image, alt: item.alt }]),
   );
 
-/** The section that explains what connects the four techniques. */
-export const materialStory = {
-  heading: "Different materials. One core capability.",
-  body: "Whatever the second layer is, the job is the same: put two materials together so they behave as one and stay that way. The bond is what we control, and it is what has to survive cutting, stitching and the wash.",
-  chain: ["Fabric", "Foam, fabric or film", "Laminated material"],
-  techniques: "PU Foam \u00b7 Fabric-to-Fabric \u00b7 Film \u00b7 EVA",
-  cta: { label: "See all lamination capabilities", href: "/lamination" },
-} as const;
+/**
+ * The three bonding technologies, named and nothing more. The client has not
+ * supplied an approved explanation of any of them and inventing one would put
+ * a technical claim in their mouth. They sit on the bonded bra page now
+ * rather than the homepage.
+ */
+export const bondingTechnologies = [
+  "Hotmelt PUR Dispensing",
+  "Silicone Printing",
+  "Tape Bonding",
+] as const;
 
 /**
- * The bonded bra section on the homepage.
- *
- * The three technologies are named and nothing more. The client has not yet
- * supplied an approved explanation of any of them, and inventing one would
- * put a technical claim in their mouth. Descriptions go in when they arrive.
+ * The two sides of the business, as the homepage now leads with them.
+ * Both bodies reuse copy already approved elsewhere on the site rather than
+ * being written fresh. Icon names refer to src/components/icons.tsx.
  */
-export const bondedBrasHome = {
-  heading: "From laminated material to seamless bonded bras.",
-  body: "We also manufacture seamless bonded bras using material we laminate ourselves, bringing the material and the finished construction together.",
-  technologies: [
-    "Hotmelt PUR Dispensing",
-    "Silicone Printing",
-    "Tape Bonding",
+export const twoServices = [
+  {
+    icon: "layers",
+    eyebrow: "Service 01",
+    title: "Textile Lamination",
+    body: "We laminate woven, non-woven, knitted fabric and Rexine to PU foam, EVA foam, films and other fabrics. Everything is bonded to your specification, at any width you need.",
+    cta: { label: "Explore Lamination", href: "/lamination" },
+  },
+  {
+    icon: "garment",
+    eyebrow: "Service 02",
+    title: "Seamless Bonded Bras",
+    body: "We also manufacture seamless bonded bras using material we laminate ourselves, bringing the material and the finished construction together.",
+    cta: {
+      label: "Explore Seamless Bonded Bras",
+      href: "/seamless-bonded-bras",
+    },
+  },
+] as const;
+
+/**
+ * Restored from the previous site at the client's request. The six points are
+ * their words. The trailing full stops are dropped because these set as card
+ * headings rather than as sentences.
+ */
+export const whyChoose = {
+  eyebrow: "Why choose us",
+  heading: "Why choose our services?",
+  intro:
+    "At Hamprigo Industries, we understand that choosing a partner for your laminated fabric needs is a significant decision. Here is why we stand out as the preferred choice for clients across industries.",
+  items: [
+    { icon: "award", title: "Unmatched Industry Expertise" },
+    { icon: "adjust", title: "Customization and Flexibility" },
+    { icon: "checkBadge", title: "Consistent Quality and Reliability" },
+    { icon: "shield", title: "Strong Ethical Practices" },
+    { icon: "leaf", title: "Sustainable Practices" },
+    { icon: "support", title: "Comprehensive Customer Support" },
   ],
-  cta: { label: "Explore Seamless Bonded Bras", href: "/seamless-bonded-bras" },
+  close:
+    "Choosing Hamprigo Industries means partnering with a company that values your success as much as you do. Let us bring your projects to life with our superior laminated fabric solutions. Contact us today to get started.",
 } as const;
 
-/** Three facts, drawn from what the client has already published. */
+/** Wording taken verbatim from the design the client supplied. */
 export const whyHamprigo = {
+  eyebrow: "Why Hamprigo",
   heading: "One supplier from material to finished product.",
   items: [
-    { label: "1989", body: "Laminating fabric since 1989." },
     {
-      label: "Your material",
-      body: "Send your fabric, or work with material developed or sourced by Hamprigo.",
+      icon: "calendar",
+      label: "Since 1989",
+      body: "Textile lamination experience dating back to 1989.",
     },
     {
-      label: "Your specification",
-      body: "Density, thickness, colour, film type and width can be specified to the requirement.",
+      icon: "swatch",
+      label: "Your fabric or ours",
+      body: "Customers can provide their fabric, or we can develop, source or treat it for you.",
+    },
+    {
+      icon: "sliders",
+      label: "Specified to your requirement",
+      body: "Density, thickness, colour, film type and width can be specified per order.",
     },
   ],
 } as const;

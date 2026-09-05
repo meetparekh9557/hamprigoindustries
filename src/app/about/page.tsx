@@ -64,10 +64,13 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
             Our Values
           </h2>
-          <div className="mt-10 grid gap-8 sm:grid-cols-2">
-            {about.values.map((value) => (
+          <div className="mt-10 grid gap-8 md:grid-cols-3">
+            {about.values.map((value, i) => (
               <div key={value.title} className="border-t-2 border-brand pt-5">
-                <h3 className="text-lg font-semibold text-ink-strong">
+                <span className="spec-label text-brand">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-3 text-lg font-semibold text-ink-strong">
                   {value.title}
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-muted">

@@ -1,94 +1,81 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ClosingCta } from "@/components/closing-cta";
 import { Container } from "@/components/container";
 import { CtaLink } from "@/components/cta-link";
+import { ICONS, type IconName } from "@/components/icons";
 import { WorkRail } from "@/components/work-rail";
 import {
-  bondedBrasHome,
+  company,
   hero,
   homeClose,
-  materialStory,
   serviceOptions,
+  twoServices,
+  whyChoose,
   whyHamprigo,
 } from "@/content/site";
 
 /**
  * Two layout rules run through this page. Visual sections go edge to edge;
- * text sits in a Container at a readable width inside them. That is what
- * stops the site reading as a narrow column parked in the middle of a wide
- * screen, without letting the paragraphs run to 200 characters.
+ * text sits in a Container so every heading and paragraph on the site starts
+ * and ends on the same two vertical lines. The hero used to break that by
+ * pinning its container to the right, which left its text 50px inside every
+ * other section's; it now uses a plain Container and constrains the column
+ * inside it instead.
  */
 export default function HomePage() {
   return (
     <>
-      {/* 01. Hero. Both halves of the business in the first screen: the
-          material on the left of the visual, the finished product on the
-          right, blended rather than butted together. */}
-      <section className="relative bg-brand-blue text-white">
-        <div className="grid lg:grid-cols-[1fr_1.05fr] lg:items-stretch">
-          <div className="order-2 flex items-center py-16 sm:py-20 lg:order-1 lg:py-28">
-            <Container className="lg:mr-0 lg:max-w-[38rem] lg:pr-12">
-              <p className="spec-label text-white/60">{hero.eyebrow}</p>
-              <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-                {hero.headline}
-              </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
-                {hero.subhead}
-              </p>
-              <div className="mt-10 flex flex-wrap gap-3">
-                <CtaLink href={hero.primaryCta.href}>
-                  {hero.primaryCta.label}
-                </CtaLink>
-                <CtaLink href={hero.secondaryCta.href} variant="quiet">
-                  {hero.secondaryCta.label}
-                </CtaLink>
-              </div>
-            </Container>
-          </div>
+      {/* 01. Hero. The works on the right, captioned, as in the supplied
+          design.
 
-          <div className="relative order-1 min-h-[18rem] sm:min-h-[24rem] lg:order-2 lg:min-h-[38rem]">
-            <Image
-              src="/img/pu-foam.jpg"
-              alt="Knitted fabric peeled back to show the PU foam laminated behind it"
-              fill
-              sizes="(min-width: 64rem) 55vw, 100vw"
-              className="object-cover"
-              priority
-            />
-            {/* The bra fades into the laminate instead of sitting beside it,
-                so the two halves read as one composition. */}
-            <Image
-              src="/img/bonded-bra.jpg"
-              alt="A seamless bonded bra"
-              fill
-              sizes="(min-width: 64rem) 28vw, 50vw"
-              className="object-cover"
-              style={{
-                // The fade has to sit where the two images meet. Clipping
-                // first and fading from the element's own left edge put the
-                // whole gradient in the clipped-away part, leaving a hard
-                // seam, so the mask does both jobs and there is no clip.
-                maskImage:
-                  "linear-gradient(to right, transparent 42%, black 64%)",
-                WebkitMaskImage:
-                  "linear-gradient(to right, transparent 42%, black 64%)",
-                objectPosition: "60% center",
-              }}
-            />
-            <span
-              aria-hidden="true"
-              className="absolute inset-0 lg:bg-gradient-to-r lg:from-[#152559] lg:via-transparent lg:to-transparent"
-            />
-          </div>
+          The image is positioned rather than gridded. A Container inside a
+          grid column centres within that column, not the page, which put the
+          hero's text 144px inside every other section's. Absolute-positioning
+          the image lets the text sit in an ordinary Container and line up. */}
+      <section className="relative bg-brand-blue text-white">
+        <div className="relative h-72 sm:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-1/2">
+          <Image
+            src="/img/factory.jpg"
+            alt={`The ${company.name} works`}
+            fill
+            sizes="(min-width: 64rem) 50vw, 100vw"
+            className="object-cover"
+            priority
+          />
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-t from-[#152559] via-[#152559]/40 to-transparent lg:bg-gradient-to-r lg:via-[#152559]/25"
+          />
+          <p className="absolute bottom-6 right-6 text-right">
+            <span className="spec-label block text-white/70">Our facility</span>
+            <span className="mt-1 block font-mono text-sm text-white">
+              Since {company.foundedYear}
+            </span>
+          </p>
         </div>
+
+        <Container className="relative py-16 sm:py-20 lg:py-28">
+          <div className="lg:max-w-[32rem]">
+            <p className="spec-label text-white/60">{hero.eyebrow}</p>
+            <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+              {hero.headline}
+            </h1>
+            <p className="mt-6 text-base leading-relaxed text-white/75 sm:text-lg">
+              {hero.subhead}
+            </p>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <CtaLink href={hero.primaryCta.href}>
+                {hero.primaryCta.label}
+              </CtaLink>
+              <CtaLink href={hero.secondaryCta.href} variant="quiet">
+                {hero.secondaryCta.label}
+              </CtaLink>
+            </div>
+          </div>
+        </Container>
       </section>
 
-      {/* 02. The rail. Edge to edge, heading in a container.
-          Light ground on purpose: blue here ran straight on from the hero
-          and gave the page a 1,469px block of unbroken colour. The cards
-          carry their own blue scrim, so the rail still reads dark against
-          it without the whole section being blue. */}
+      {/* 02. The rail, edge to edge. */}
       <section className="bg-surface pb-20 pt-16 sm:pb-24">
         <Container>
           <div className="pt-2">
@@ -103,140 +90,97 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 03. What connects the four techniques. */}
+      {/* 03. The two sides of the business, as icons rather than photographs.
+          The rail above already carries the imagery. */}
       <section className="border-b border-line py-20 sm:py-24">
         <Container>
-          <div className="rule-tick max-w-3xl pt-6">
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-              {materialStory.heading}
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-muted">
-              {materialStory.body}
-            </p>
-          </div>
-        </Container>
-
-        <div className="mt-14 grid gap-px bg-line sm:grid-cols-3">
-          {[
-            { src: "/img/fabric-to-fabric.jpg", alt: "Woven fabric" },
-            { src: "/img/eva.jpg", alt: "Foam, fabric or film" },
-            { src: "/img/film.jpg", alt: "The finished laminated material" },
-          ].map((image, i) => (
-            <figure key={image.src} className="relative bg-white">
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(min-width: 40rem) 33vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-              <figcaption className="spec-label absolute left-0 top-0 m-4 bg-ink-strong px-3 py-2 text-white">
-                {materialStory.chain[i]}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-
-        <Container>
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-            <p className="spec-label text-muted">
-              {materialStory.techniques}
-            </p>
-            <Link
-              href={materialStory.cta.href}
-              className="text-sm font-semibold text-brand"
-            >
-              {materialStory.cta.label}
-              <span aria-hidden="true" className="ml-1.5">
-                &rarr;
-              </span>
-            </Link>
+          <div className="grid gap-px bg-line md:grid-cols-2">
+            {twoServices.map((service) => {
+              const Icon = ICONS[service.icon as IconName];
+              return (
+                <div
+                  key={service.title}
+                  className="flex flex-col bg-white p-8 sm:p-10"
+                >
+                  <Icon className="h-10 w-10 text-brand" />
+                  <p className="spec-label mt-6 text-muted">
+                    {service.eyebrow}
+                  </p>
+                  <h2 className="mt-3 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+                    {service.title}
+                  </h2>
+                  <p className="mt-4 flex-1 text-base leading-relaxed text-muted">
+                    {service.body}
+                  </p>
+                  <div className="mt-8">
+                    <CtaLink href={service.cta.href} variant="outline">
+                      {service.cta.label}
+                    </CtaLink>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </Container>
       </section>
 
-      {/* 04. The finished product. */}
+      {/* 04. Why choose our services. Restored from the previous site. */}
       <section className="border-b border-line bg-surface py-20 sm:py-24">
-        <Container>
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            <div className="relative aspect-[3/2] overflow-hidden rounded-sm">
-              <Image
-                src="/img/bonded-bra.jpg"
-                alt="A seamless bonded bra, showing no stitched seams"
-                fill
-                sizes="(min-width: 64rem) 45vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
-              <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-                {bondedBrasHome.heading}
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-muted">
-                {bondedBrasHome.body}
-              </p>
-
-              <ul className="mt-10 grid gap-px bg-line">
-                {bondedBrasHome.technologies.map((technology, i) => (
-                  <li
-                    key={technology}
-                    className="flex items-baseline gap-5 bg-surface py-5"
-                  >
-                    <span className="spec-label text-brand">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="text-lg font-semibold text-ink-strong">
-                      {technology}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-10">
-                <CtaLink href={bondedBrasHome.cta.href} variant="outline">
-                  {bondedBrasHome.cta.label}
-                </CtaLink>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* 05. Why Hamprigo. The factory photograph runs full bleed behind it,
-          under a heavy scrim, so it reads as ground rather than as a
-          portrait of the building. */}
-      <section className="relative isolate overflow-hidden py-20 text-white sm:py-24">
-        <Image
-          src="/img/factory.jpg"
-          alt=""
-          aria-hidden="true"
-          fill
-          sizes="100vw"
-          className="-z-10 object-cover"
-        />
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-brand-blue/95"
-        />
         <Container>
           <div className="max-w-3xl">
             <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
-            <h2 className="mt-6 text-2xl font-bold tracking-tight sm:text-3xl">
+            <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+              {whyChoose.heading}
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-muted">
+              {whyChoose.intro}
+            </p>
+          </div>
+
+          <ul className="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            {whyChoose.items.map((item) => {
+              const Icon = ICONS[item.icon as IconName];
+              return (
+                <li key={item.title} className="flex items-start gap-4">
+                  <Icon className="h-7 w-7 shrink-0 text-brand" />
+                  <h3 className="text-lg font-semibold leading-snug text-ink-strong">
+                    {item.title}
+                  </h3>
+                </li>
+              );
+            })}
+          </ul>
+
+          <p className="mt-14 max-w-3xl text-base leading-relaxed text-muted">
+            {whyChoose.close}
+          </p>
+        </Container>
+      </section>
+
+      {/* 05. One supplier from material to finished product. */}
+      <section className="border-b border-line py-20 sm:py-24">
+        <Container>
+          <div className="max-w-3xl">
+            <p className="spec-label text-brand">{whyHamprigo.eyebrow}</p>
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
               {whyHamprigo.heading}
             </h2>
           </div>
-          <dl className="mt-14 grid gap-10 sm:grid-cols-3">
-            {whyHamprigo.items.map((item) => (
-              <div key={item.label}>
-                <dt className="text-xl font-semibold">{item.label}</dt>
-                <dd className="mt-3 text-base leading-relaxed text-white/75">
-                  {item.body}
-                </dd>
-              </div>
-            ))}
+          <dl className="mt-14 grid gap-10 md:grid-cols-3">
+            {whyHamprigo.items.map((item) => {
+              const Icon = ICONS[item.icon as IconName];
+              return (
+                <div key={item.label}>
+                  <Icon className="h-8 w-8 text-brand" />
+                  <dt className="mt-5 text-lg font-semibold text-ink-strong">
+                    {item.label}
+                  </dt>
+                  <dd className="mt-3 text-base leading-relaxed text-muted">
+                    {item.body}
+                  </dd>
+                </div>
+              );
+            })}
           </dl>
         </Container>
       </section>
