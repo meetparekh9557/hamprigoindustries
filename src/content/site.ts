@@ -107,6 +107,30 @@ export const services = [
 ] as const;
 
 /**
+ * Cross-section layers for each technique, used by the laminate diagram.
+ * Weights are relative thicknesses, chosen to read correctly rather than to
+ * be dimensionally exact.
+ */
+export const serviceLayers = {
+  "pu-foam-laminated-fabric": [
+    { kind: "fabric", label: "Face fabric", weight: 1 },
+    { kind: "foam", label: "PU foam", weight: 3 },
+  ],
+  "fabric-laminated-with-fabric": [
+    { kind: "fabric", label: "Face fabric", weight: 1 },
+    { kind: "fabric", label: "Backing fabric", weight: 1 },
+  ],
+  "fabric-laminated-with-films": [
+    { kind: "fabric", label: "Base fabric", weight: 3 },
+    { kind: "film", label: "Film", weight: 0.5 },
+  ],
+  "eva-laminated-fabric": [
+    { kind: "fabric", label: "Face fabric", weight: 1 },
+    { kind: "eva", label: "EVA foam", weight: 2.4 },
+  ],
+} as const;
+
+/**
  * Capabilities that apply across all four techniques.
  * These are NOT services. The client was explicit that they sit under
  * lamination rather than standing alongside it.
@@ -223,17 +247,6 @@ export const about = {
     ],
   },
 } as const;
-
-export const industries = [
-  "Intimate apparel",
-  "Automotive interiors",
-  "Footwear",
-  "Luggage and bags",
-  "Home furnishing",
-  "Defence",
-  "Contract furniture",
-  "Packaging",
-] as const;
 
 /** Enquiry form. Six required fields, the rest optional. */
 export const enquiryForm = {
