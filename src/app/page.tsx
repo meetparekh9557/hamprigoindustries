@@ -5,12 +5,15 @@ import { CtaLink } from "@/components/cta-link";
 import { ICONS, type IconName } from "@/components/icons";
 import { WorkRail } from "@/components/work-rail";
 import {
+  about,
+  bondingTechnologies,
   company,
   hero,
   homeClose,
+  homeHeadings,
+  materialChain,
   serviceOptions,
   twoServices,
-  whyChoose,
   whyHamprigo,
 } from "@/content/site";
 
@@ -75,13 +78,13 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 02. The rail, edge to edge. */}
+      {/* 02. What we work with. The overview, before any paragraphs. */}
       <section className="bg-surface pb-20 pt-16 sm:pb-24">
         <Container>
           <div className="pt-2">
             <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
             <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-              What we work with
+              {homeHeadings.work}
             </h2>
           </div>
         </Container>
@@ -90,75 +93,111 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 03. The two sides of the business, as icons rather than photographs.
-          The rail above already carries the imagery. */}
+      {/* 03. Our services. The two capabilities, each with its own visual. */}
       <section className="border-b border-line py-20 sm:py-24">
         <Container>
-          <div className="grid gap-px bg-line md:grid-cols-2">
-            {twoServices.map((service) => {
-              const Icon = ICONS[service.icon as IconName];
-              return (
-                <div
-                  key={service.title}
-                  className="flex flex-col bg-white p-8 sm:p-10"
-                >
-                  <Icon className="h-10 w-10 text-brand" />
-                  <p className="spec-label mt-6 text-muted">
-                    {service.eyebrow}
-                  </p>
-                  <h2 className="mt-3 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-                    {service.title}
-                  </h2>
-                  <p className="mt-4 flex-1 text-base leading-relaxed text-muted">
-                    {service.body}
-                  </p>
-                  <div className="mt-8">
-                    <CtaLink href={service.cta.href} variant="outline">
-                      {service.cta.label}
-                    </CtaLink>
+          <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
+          <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+            {homeHeadings.services}
+          </h2>
+        </Container>
+
+        {/* 01 Textile Lamination, with the material progression. */}
+        <Container className="mt-14">
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.25fr] lg:gap-14">
+            <div>
+              <p className="spec-label text-muted">{twoServices[0].eyebrow}</p>
+              <h3 className="mt-3 text-2xl font-bold tracking-tight text-ink-strong">
+                {twoServices[0].title}
+              </h3>
+              <p className="mt-4 text-base leading-relaxed text-muted">
+                {twoServices[0].body}
+              </p>
+              <div className="mt-8">
+                <CtaLink href={twoServices[0].cta.href} variant="outline">
+                  {twoServices[0].cta.label}
+                </CtaLink>
+              </div>
+            </div>
+
+            <ol className="grid grid-cols-3 items-center gap-3 sm:gap-5">
+              {materialChain.map((step, i) => (
+                <li key={step.label} className="relative">
+                  <div className="relative aspect-square overflow-hidden rounded-sm">
+                    <Image
+                      src={step.src}
+                      alt={step.alt}
+                      fill
+                      sizes="(min-width: 64rem) 18vw, 30vw"
+                      className="object-cover"
+                    />
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
-
-      {/* 04. Why choose our services. Restored from the previous site. */}
-      <section className="border-b border-line bg-surface py-20 sm:py-24">
-        <Container>
-          <div className="max-w-3xl">
-            <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
-            <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-              {whyChoose.heading}
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-muted">
-              {whyChoose.intro}
-            </p>
-          </div>
-
-          <ul className="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-            {whyChoose.items.map((item) => {
-              const Icon = ICONS[item.icon as IconName];
-              return (
-                <li key={item.title} className="flex items-start gap-4">
-                  <Icon className="h-7 w-7 shrink-0 text-brand" />
-                  <h3 className="text-lg font-semibold leading-snug text-ink-strong">
-                    {item.title}
-                  </h3>
+                  <p className="spec-label mt-3 text-ink-strong">{step.label}</p>
+                  {i < materialChain.length - 1 ? (
+                    <span
+                      aria-hidden="true"
+                      className="absolute -right-2 top-[28%] text-brand sm:-right-3.5"
+                    >
+                      &rarr;
+                    </span>
+                  ) : null}
                 </li>
-              );
-            })}
-          </ul>
+              ))}
+            </ol>
+          </div>
+        </Container>
 
-          <p className="mt-14 max-w-3xl text-base leading-relaxed text-muted">
-            {whyChoose.close}
-          </p>
+        {/* 02 Seamless Bonded Bras, with the product and the technologies. */}
+        <Container className="mt-20">
+          <div className="grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:gap-14">
+            <div className="relative aspect-[3/2] overflow-hidden rounded-sm">
+              <Image
+                src="/img/bonded-bra.jpg"
+                alt="A seamless bonded bra, showing no stitched seams"
+                fill
+                sizes="(min-width: 64rem) 45vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <p className="spec-label text-muted">{twoServices[1].eyebrow}</p>
+              <h3 className="mt-3 text-2xl font-bold tracking-tight text-ink-strong">
+                {twoServices[1].title}
+              </h3>
+              <p className="mt-4 text-base leading-relaxed text-muted">
+                {twoServices[1].body}
+              </p>
+
+              {/* Named only. No approved explanation has been supplied. */}
+              <h4 className="spec-label mt-8 text-muted">Technologies We Use</h4>
+              <ul className="mt-4 grid gap-px bg-line">
+                {bondingTechnologies.map((technology, i) => (
+                  <li
+                    key={technology}
+                    className="flex items-baseline gap-4 bg-white py-4"
+                  >
+                    <span className="spec-label text-brand">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-base font-semibold text-ink-strong">
+                      {technology}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-8">
+                <CtaLink href={twoServices[1].cta.href} variant="outline">
+                  {twoServices[1].cta.label}
+                </CtaLink>
+              </div>
+            </div>
+          </div>
         </Container>
       </section>
 
-      {/* 05. One supplier from material to finished product. */}
-      <section className="border-b border-line py-20 sm:py-24">
+      {/* 04. Why the structure is worth something to the buyer. Compact. */}
+      <section className="border-b border-line bg-surface py-16 sm:py-20">
         <Container>
           <div className="max-w-3xl">
             <p className="spec-label text-brand">{whyHamprigo.eyebrow}</p>
@@ -166,7 +205,7 @@ export default function HomePage() {
               {whyHamprigo.heading}
             </h2>
           </div>
-          <dl className="mt-14 grid gap-10 md:grid-cols-3">
+          <dl className="mt-12 grid gap-10 md:grid-cols-3">
             {whyHamprigo.items.map((item) => {
               const Icon = ICONS[item.icon as IconName];
               return (
@@ -182,6 +221,32 @@ export default function HomePage() {
               );
             })}
           </dl>
+        </Container>
+      </section>
+
+      {/* 05. What we stand for. Values come last, once the visitor knows what
+          the business actually does. */}
+      <section className="border-b border-line py-20 sm:py-24">
+        <Container>
+          <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
+          <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+            {homeHeadings.values}
+          </h2>
+          <div className="mt-12 grid gap-10 md:grid-cols-3">
+            {about.values.map((value, i) => (
+              <div key={value.title} className="border-t-2 border-brand pt-5">
+                <span className="spec-label text-brand">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-3 text-lg font-semibold text-ink-strong">
+                  {value.title}
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-muted">
+                  {value.body}
+                </p>
+              </div>
+            ))}
+          </div>
         </Container>
       </section>
 

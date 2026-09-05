@@ -45,7 +45,7 @@ export const contact = {
 /** Homepage hero. */
 export const hero = {
   eyebrow: "Textile Lamination \u00b7 Seamless Bonded Bras",
-  headline: "The material is where the product begins.",
+  headline: "The Material Is Where The Product Begins.",
   subhead:
     "Hamprigo Industries has been laminating woven, non-woven, knitted fabrics and Rexine since 1989, and also manufactures seamless bonded bras using material we laminate ourselves.",
   primaryCta: { label: "Explore Lamination", href: "/lamination" },
@@ -82,7 +82,7 @@ export const services = [
   {
     slug: "fabric-laminated-with-fabric",
     short: "Fabric on Fabric",
-    title: "Fabric Laminated with Fabric",
+    title: "Fabric Laminated With Fabric",
     summary:
       "Two fabrics bonded into one composite material, for furnishing fabrics and headwear.",
     body: [
@@ -95,7 +95,7 @@ export const services = [
   {
     slug: "fabric-laminated-with-films",
     short: "Films",
-    title: "Fabric Laminated with Films",
+    title: "Fabric Laminated With Films",
     summary:
       "PVC, TPU, PE and blackout films to make fabric waterproof, stronger, or light-controlling.",
     body: [
@@ -155,15 +155,15 @@ export const serviceLayers = {
  * lamination rather than standing alongside it.
  */
 export const capabilities = {
-  heading: "How we laminate, whichever technique you need",
+  heading: "How We Laminate, Whichever Technique You Need",
   intro: "Two things apply across all four.",
   items: [
     {
-      title: "Any width",
+      title: "Any Width",
       body: "Our machinery runs wider than standard, so any width is possible per your requirement. Panel size and cutting plans are not limited by what a standard laminator can hold.",
     },
     {
-      title: "Your fabric or ours",
+      title: "Your Fabric Or Ours",
       body: "Many customers send us their own fabric to laminate. Others ask us to develop, source, or treat it for them. We work either way, and we can supply finished products, so material development through to finished goods sits with one supplier when that is what you need.",
     },
   ],
@@ -171,7 +171,7 @@ export const capabilities = {
 
 /** Closing block used on the lamination page. */
 export const laminationClose = {
-  heading: "Start with a sample",
+  heading: "Start With A Sample",
   body: [
     "Tell us the substrate and what the finished material has to do, and we will laminate a sample for you to handle and test. No specification required at this stage.",
     "If your specification is already settled, send it across and we will come back with a construction and a quotation.",
@@ -186,21 +186,21 @@ export const bondedBras = {
     "Stitched seams show through fabric, chafe against skin, and add assembly steps. We manufacture seamless, tagless bras using bonding technology instead: no visible seam lines, less production complexity, and a smoother finish your end customer notices.",
   sections: [
     {
-      heading: "Why the laminate decides the bra",
+      heading: "Why The Laminate Decides The Bra",
       body: [
         "Bonding replaces the mechanical hold of a stitch, so the bond itself carries everything the garment goes through. A bonded edge cannot fray or unravel the way a stitched seam can, but it will only survive laundering if the lamination underneath has genuine washing fastness.",
         "That is why we laminate our own material. Our bonding is irreversible, so layers do not separate at edges or under stress, and it holds its washing fastness through repeated laundering. Those two properties are what let a bonded bra keep its shape and its edges wash after wash.",
       ],
     },
     {
-      heading: "Material and construction, specified together",
+      heading: "Material And Construction, Specified Together",
       body: [
         "We can develop and source the face fabric, or laminate the one you supply. Either way the lamination and the finished garment are done here, so the material and the construction are decided together rather than coordinated across separate suppliers. In bonded construction that matters more than in sewn, because the material and the assembly method are not separable decisions.",
       ],
     },
   ],
   close: {
-    heading: "Request a sample",
+    heading: "Request A Sample",
     body: [
       "Tell us the style you are planning and we will put a sample together so you can assess the hand, the edge finish, and how it sits.",
       "If you are working to a settled specification, send it across and we will come back on construction and quantities.",
@@ -235,7 +235,7 @@ export const about = {
       ],
     },
     {
-      heading: "Quality and Customization",
+      heading: "Quality And Customization",
       body: [
         "Quality is at the heart of everything we do. We adhere to strict quality control measures throughout the manufacturing process, ensuring that every product meets the highest standards of durability, performance, and reliability.",
         "We also offer a wide range of customization options. Density, thickness, color, film type, and width are specified per order rather than selected from a fixed range, so clients choose the exact materials, colors, and specifications their project calls for.",
@@ -286,7 +286,7 @@ export const workItems = [
   {
     slug: "pu-foam-laminated-fabric",
     spine: "PU Foam",
-    title: "PU Foam Lamination with Fabric",
+    title: "PU Foam Lamination With Fabric",
     summary:
       "Woven, non-woven, knitted fabric and Rexine bonded to PU foam in custom densities and thicknesses.",
     image: "/img/pu-foam.jpg",
@@ -296,7 +296,7 @@ export const workItems = [
   {
     slug: "fabric-laminated-with-fabric",
     spine: "Fabric on Fabric",
-    title: "Fabric to Fabric Lamination",
+    title: "Fabric To Fabric Lamination",
     summary:
       "Two fabrics bonded into one composite, for body and structure a single layer cannot give.",
     image: "/img/fabric-to-fabric.jpg",
@@ -306,7 +306,7 @@ export const workItems = [
   {
     slug: "fabric-laminated-with-films",
     spine: "Films",
-    title: "Film Lamination with Fabric",
+    title: "Film Lamination With Fabric",
     summary:
       "PVC, TPU, PE and blackout films, to make a fabric waterproof, stronger or light-controlling.",
     image: "/img/film.jpg",
@@ -316,7 +316,7 @@ export const workItems = [
   {
     slug: "eva-laminated-fabric",
     spine: "EVA",
-    title: "EVA Foam Lamination with Fabric",
+    title: "EVA Foam Lamination With Fabric",
     summary:
       "EVA foam in custom colours and thicknesses, for parts that must hold their form under pressure.",
     image: "/img/eva.jpg",
@@ -358,6 +358,28 @@ export const bondingTechnologies = [
 ] as const;
 
 /**
+ * The material progression shown beside Textile Lamination: fabric, then
+ * what is bonded to it, then the result. Photographic rather than an icon
+ * diagram, so the visitor understands lamination by looking at material.
+ */
+export const materialChain = [
+  { label: "Fabric", src: "/img/fabric-to-fabric.jpg", alt: "Woven fabric" },
+  { label: "Foam, Fabric Or Film", src: "/img/eva.jpg", alt: "Foam, fabric or film" },
+  {
+    label: "Laminated Material",
+    src: "/img/film.jpg",
+    alt: "The finished laminated material",
+  },
+] as const;
+
+/** Section headings that are not part of a content block of their own. */
+export const homeHeadings = {
+  work: "What We Work With",
+  services: "Our Services",
+  values: "What We Stand For",
+} as const;
+
+/**
  * The two sides of the business, as the homepage now leads with them.
  * Both bodies reuse copy already approved elsewhere on the site rather than
  * being written fresh. Icon names refer to src/components/icons.tsx.
@@ -389,13 +411,13 @@ export const twoServices = [
  */
 export const whyChoose = {
   eyebrow: "Why choose us",
-  heading: "Why choose our services?",
+  heading: "Why Choose Our Services?",
   intro:
     "At Hamprigo Industries, we understand that choosing a partner for your laminated fabric needs is a significant decision. Here is why we stand out as the preferred choice for clients across industries.",
   items: [
     { icon: "award", title: "Unmatched Industry Expertise" },
-    { icon: "adjust", title: "Customization and Flexibility" },
-    { icon: "checkBadge", title: "Consistent Quality and Reliability" },
+    { icon: "adjust", title: "Customization And Flexibility" },
+    { icon: "checkBadge", title: "Consistent Quality And Reliability" },
     { icon: "shield", title: "Strong Ethical Practices" },
     { icon: "leaf", title: "Sustainable Practices" },
     { icon: "support", title: "Comprehensive Customer Support" },
@@ -407,7 +429,7 @@ export const whyChoose = {
 /** Wording taken verbatim from the design the client supplied. */
 export const whyHamprigo = {
   eyebrow: "Why Hamprigo",
-  heading: "One supplier from material to finished product.",
+  heading: "One Supplier From Material To Finished Product.",
   items: [
     {
       icon: "calendar",
@@ -416,19 +438,19 @@ export const whyHamprigo = {
     },
     {
       icon: "swatch",
-      label: "Your fabric or ours",
+      label: "Your Fabric Or Ours",
       body: "Customers can provide their fabric, or we can develop, source or treat it for you.",
     },
     {
       icon: "sliders",
-      label: "Specified to your requirement",
+      label: "Specified To Your Requirement",
       body: "Density, thickness, colour, film type and width can be specified per order.",
     },
   ],
 } as const;
 
 export const homeClose = {
-  heading: "Have a material requirement? Start with a sample.",
+  heading: "Have A Material Requirement? Start With A Sample.",
   body: "Tell us what you are working with and what you need the finished material to do. We can start with a sample and move from there.",
 } as const;
 
@@ -456,7 +478,7 @@ export const whatsapp = {
 } as const;
 
 export const enquiryForm = {
-  heading: "Send us an enquiry",
+  heading: "Send Us An Enquiry",
   intro:
     "Tell us what you are trying to make and we will come back with a construction and a sample. You do not need a finished specification to start a conversation.",
 } as const;

@@ -37,7 +37,7 @@ export default function ContactPage() {
 
             <div className="lg:border-l lg:border-white/20 lg:pl-12">
               <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-white/60">
-                Get in touch
+                Get In Touch
               </h2>
               <ContactActions />
 

@@ -66,7 +66,7 @@ export default function SeamlessBondedBrasPage() {
               {/* Named only. No approved explanation has been supplied for
                   any of them. */}
               <h2 className="spec-label mt-8 text-muted">
-                Technologies we use
+                Technologies We Use
               </h2>
               <ul className="mt-4 grid gap-px bg-line">
                 {bondingTechnologies.map((technology, i) => (

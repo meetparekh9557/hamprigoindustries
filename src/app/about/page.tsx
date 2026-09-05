@@ -3,7 +3,8 @@ import Image from "next/image";
 import { Container } from "@/components/container";
 import { ClosingCta } from "@/components/closing-cta";
 import { PageHero } from "@/components/page-hero";
-import { about, company } from "@/content/site";
+import { ICONS, type IconName } from "@/components/icons";
+import { about, company, whyChoose } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -59,26 +60,37 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      {/* Why choose our services, from the previous site. The values that
+          used to sit here now lead the homepage's closing stretch, so the
+          two are not duplicated across pages. */}
       <section className="border-y border-line bg-surface py-16 sm:py-20">
         <Container>
-          <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-            Our Values
-          </h2>
-          <div className="mt-10 grid gap-8 md:grid-cols-3">
-            {about.values.map((value, i) => (
-              <div key={value.title} className="border-t-2 border-brand pt-5">
-                <span className="spec-label text-brand">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-3 text-lg font-semibold text-ink-strong">
-                  {value.title}
-                </h3>
-                <p className="mt-3 text-base leading-relaxed text-muted">
-                  {value.body}
-                </p>
-              </div>
-            ))}
+          <div className="max-w-3xl">
+            <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+              {whyChoose.heading}
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-muted">
+              {whyChoose.intro}
+            </p>
           </div>
+
+          <ul className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+            {whyChoose.items.map((item) => {
+              const Icon = ICONS[item.icon as IconName];
+              return (
+                <li key={item.title} className="flex items-start gap-4">
+                  <Icon className="h-7 w-7 shrink-0 text-brand" />
+                  <h3 className="text-lg font-semibold leading-snug text-ink-strong">
+                    {item.title}
+                  </h3>
+                </li>
+              );
+            })}
+          </ul>
+
+          <p className="mt-12 max-w-3xl text-base leading-relaxed text-muted">
+            {whyChoose.close}
+          </p>
         </Container>
       </section>
 
