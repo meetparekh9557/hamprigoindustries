@@ -358,17 +358,26 @@ export const bondingTechnologies = [
 ] as const;
 
 /**
- * The material progression shown beside Textile Lamination: fabric, then
- * what is bonded to it, then the result. Photographic rather than an icon
- * diagram, so the visitor understands lamination by looking at material.
+ * The three materials shown beside Textile Lamination. Photographic rather
+ * than an icon diagram, so the visitor understands what is being bonded by
+ * looking at it.
+ *
+ * These are three materials, not three stages, so there are no arrows
+ * between them. The foam frame uses the PU foam photograph rather than the
+ * EVA one because the open cell structure is unmistakably foam there, which
+ * is the whole job of the label.
  */
 export const materialChain = [
   { label: "Fabric", src: "/img/fabric-to-fabric.jpg", alt: "Woven fabric" },
-  { label: "Foam, Fabric Or Film", src: "/img/eva.jpg", alt: "Foam, fabric or film" },
   {
-    label: "Laminated Material",
+    label: "Foam",
+    src: "/img/pu-foam.jpg",
+    alt: "PU foam behind a knitted face fabric",
+  },
+  {
+    label: "Film",
     src: "/img/film.jpg",
-    alt: "The finished laminated material",
+    alt: "Fabric laminated with a film layer",
   },
 ] as const;
 

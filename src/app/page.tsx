@@ -120,9 +120,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            <ol className="grid grid-cols-3 items-center gap-3 sm:gap-5">
-              {materialChain.map((step, i) => (
-                <li key={step.label} className="relative">
+            <ul className="grid grid-cols-3 items-start gap-3 sm:gap-5">
+              {materialChain.map((step) => (
+                <li key={step.label}>
                   <div className="relative aspect-square overflow-hidden rounded-sm">
                     <Image
                       src={step.src}
@@ -133,17 +133,9 @@ export default function HomePage() {
                     />
                   </div>
                   <p className="spec-label mt-3 text-ink-strong">{step.label}</p>
-                  {i < materialChain.length - 1 ? (
-                    <span
-                      aria-hidden="true"
-                      className="absolute -right-2 top-[28%] text-brand sm:-right-3.5"
-                    >
-                      &rarr;
-                    </span>
-                  ) : null}
                 </li>
               ))}
-            </ol>
+            </ul>
           </div>
         </Container>
 
