@@ -138,8 +138,13 @@ body {
   gap: 0.75rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-padding-inline: 1.25rem;
-  padding: 0 1.25rem 1.25rem;
+  /* Side padding is half the space a card leaves over, so the first and last
+     cards can actually reach the centre line. Without it, mandatory snapping
+     has no valid snap point for the end card and bounces back: card 05 was
+     unreachable on touch, and its image never loaded because it never came
+     into view. */
+  scroll-padding-inline: 9%;
+  padding: 0 9% 1.25rem;
   /* The scroller is the only thing that scrolls sideways; the page never
      does, which is what keeps a full-bleed rail off the horizontal bar. */
   overscroll-behavior-x: contain;

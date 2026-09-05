@@ -26,7 +26,7 @@ export function SiteHeader() {
             <Logo />
           </Link>
 
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="ml-auto hidden items-center gap-7 lg:flex">
             {nav.map((item) => {
               const active =
                 item.href === "/"
@@ -46,6 +46,13 @@ export function SiteHeader() {
               );
             })}
           </nav>
+
+          <Link
+            href="/contact"
+            className="ml-auto hidden shrink-0 items-center rounded-sm bg-brand px-5 py-2.5 text-sm font-semibold tracking-wide text-brand-ink transition-colors hover:bg-brand-dark lg:inline-flex"
+          >
+            Request a Sample
+          </Link>
 
           <button
             type="button"
@@ -93,6 +100,13 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            <Link
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="mt-4 inline-flex items-center justify-center rounded-sm bg-brand px-5 py-3 text-sm font-semibold tracking-wide text-brand-ink"
+            >
+              Request a Sample
+            </Link>
           </nav>
         </Container>
       </div>

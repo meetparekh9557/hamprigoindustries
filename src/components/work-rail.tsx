@@ -81,6 +81,17 @@ function TouchRail() {
     const root = ref.current;
     if (!root) return;
 
+    // Chromium will not lazy-load the final card in a horizontal scroller
+    // even once it is fully in view, so card 05 rendered with no image and
+    // never requested one. Nudging the images to eager fixes it. Guarded on
+    // the rail actually being displayed, so the desktop build does not
+    // download five pictures it hides.
+    if (getComputedStyle(root).display !== "none") {
+      root.querySelectorAll("img").forEach((img) => {
+        img.loading = "eager";
+      });
+    }
+
     const cards = Array.from(root.querySelectorAll("[data-card]"));
     const observer = new IntersectionObserver(
       (entries) => {

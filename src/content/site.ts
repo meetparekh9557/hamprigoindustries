@@ -25,10 +25,17 @@ export const company = {
 
 export const nav = [
   { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
   { href: "/lamination", label: "Lamination" },
   { href: "/seamless-bonded-bras", label: "Seamless Bonded Bras" },
-  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
+] as const;
+
+/** Sits under the logo in the footer. */
+export const footerBlurb = [
+  "Textile lamination since 1989.",
+  "We laminate woven, non-woven, knitted fabrics and Rexine with PU foam, EVA foam, films and other fabrics.",
+  "We also manufacture seamless bonded bras using material we laminate ourselves.",
 ] as const;
 
 export const contact = {
@@ -461,6 +468,207 @@ export const whyHamprigo = {
 export const homeClose = {
   heading: "Have A Material Requirement? Start With A Sample.",
   body: "Tell us what you are working with and what you need the finished material to do. We can start with a sample and move from there.",
+} as const;
+
+/**
+ * The Lamination page, written to the client's brief.
+ *
+ * Nothing here is invented. No applications, industries, certifications,
+ * machinery, capacities, performance numbers or maximum widths: the brief
+ * forbids all of them until the client supplies and approves them, and the
+ * absence of a width figure in particular is deliberate.
+ */
+export const laminationPage = {
+  hero: {
+    eyebrow: "Textile Lamination",
+    heading: "Lamination Built Around Your Material.",
+    body: "We laminate woven, non-woven, knitted fabrics and Rexine with PU foam, EVA foam, films and other fabrics. Materials can be laminated to your required width, thickness and specification.",
+    primary: { label: "Request a Sample", href: "/contact" },
+    secondary: { label: "Explore Our Techniques", href: "#techniques" },
+  },
+  intro: {
+    eyebrow: "Our Capabilities",
+    heading: "Four Ways To Build A Laminated Material.",
+    body: "Different materials require different constructions. Hamprigo works across four lamination techniques, each designed around the materials and specifications required for the finished construction.",
+  },
+  techniques: [
+    {
+      slug: "pu-foam-laminated-fabric",
+      number: "01",
+      label: "PU Foam Lamination",
+      heading: "PU Foam Lamination",
+      body: "Woven, non-woven, knitted fabrics and Rexine can be laminated with PU foam in custom densities and thicknesses.",
+      points: [
+        "Custom densities",
+        "Custom thicknesses",
+        "Irreversible bonding",
+        "Bond remains through repeated laundering",
+        "Material retains its hand and shape",
+      ],
+      layers: ["Fabric", "PU Foam", "Fabric"],
+      image: "/img/pu-foam.jpg",
+      alt: "Knitted fabric laminated to PU foam",
+    },
+    {
+      slug: "fabric-laminated-with-fabric",
+      number: "02",
+      label: "Fabric-to-Fabric Lamination",
+      heading: "Fabric-to-Fabric Lamination",
+      body: "Two fabrics can be bonded together to create a single composite material.",
+      points: ["You can provide both fabrics, or we can help develop the second material."],
+      note: "Two fabrics. One composite construction.",
+      layers: ["Fabric A", "Bond", "Fabric B"],
+      image: "/img/fabric-to-fabric.jpg",
+      alt: "Two fabrics bonded into one composite material",
+    },
+    {
+      slug: "fabric-laminated-with-films",
+      number: "03",
+      label: "Film Lamination",
+      heading: "Film Lamination",
+      body: "Fabric can be laminated with PVC, TPU, PE and blackout films according to the required construction.",
+      films: [
+        { name: "TPU", body: "Flexible and softer handle." },
+        { name: "PVC", body: "Durable and wipe-clean barrier." },
+        { name: "PE", body: "Moisture-barrier option." },
+        { name: "Blackout Film", body: "Light-control construction." },
+      ],
+      image: "/img/film.jpg",
+      alt: "Fabric laminated with a transparent film",
+    },
+    {
+      slug: "eva-laminated-fabric",
+      number: "04",
+      label: "EVA Lamination",
+      heading: "EVA Lamination",
+      body: "EVA lamination adds cushioning and structure to the finished material, with thickness and colour specified according to the requirement.",
+      points: ["Custom thickness", "Custom colours"],
+      layers: ["Fabric", "EVA", "Fabric"],
+      image: "/img/eva.jpg",
+      alt: "Fabric laminated to EVA foam",
+    },
+  ],
+  materials: {
+    heading: "Your Fabric Or Ours.",
+    body: "You can send us your own fabric, or we can develop, source or treat the material required for your construction.",
+    blocks: [
+      { title: "Your Fabric", body: "Send us the material you want to work with." },
+      { title: "Our Material", body: "We can develop, source or treat material where required." },
+    ],
+  },
+  width: {
+    heading: "Built To Your Required Width.",
+    body: "Our machinery can run wider than standard requirements, allowing laminated material to be produced to the width you need.",
+  },
+  construction: {
+    heading: "From Individual Layers To One Material.",
+    body: "Lamination brings different material layers together into a single construction specified for your requirement.",
+    steps: [
+      { label: "Fabric", src: "/img/fabric-to-fabric.jpg", alt: "Woven fabric" },
+      { label: "Fabric + PU Foam", src: "/img/pu-foam.jpg", alt: "Fabric laminated to PU foam" },
+      { label: "Laminated Material", src: "/img/eva.jpg", alt: "The finished laminated material" },
+    ],
+  },
+  close: {
+    heading: "Start With A Sample.",
+    body: "Tell us the substrate and what the finished material needs to do. We can start with a sample before moving to construction and quotation.",
+    primary: { label: "Request a Sample", href: "/contact" },
+    secondary: { label: "Contact Hamprigo", href: "/contact" },
+  },
+} as const;
+
+/** The About page, written to the client's brief. */
+export const aboutPage = {
+  hero: {
+    eyebrow: "About Hamprigo",
+    heading: "Built On Experience. Driven By What We Make.",
+    body: "Founded in 1989, Hamprigo Industries has built its expertise around textile lamination and material construction. Today, our capabilities extend across four lamination techniques and the manufacture of seamless bonded bras using material laminated by us.",
+  },
+  story: {
+    eyebrow: "Our Story",
+    heading: "From 1989 To Today.",
+    body: [
+      "Founded in 1989, Hamprigo Industries began its journey in textile lamination.",
+      "Over the decades, we have developed experience across different materials and lamination techniques, working with woven, non-woven and knitted fabrics, as well as Rexine.",
+      "Today, our capabilities include PU foam lamination, fabric-to-fabric lamination, film lamination and EVA lamination. We also manufacture seamless bonded bras using material laminated by us.",
+      "What has remained consistent throughout this journey is our focus on understanding the material, the construction and the requirement behind every project.",
+    ],
+  },
+  expertise: {
+    eyebrow: "Our Expertise",
+    heading: "Our Expertise Is Built Around Lamination.",
+    body: [
+      "We laminate woven, non-woven, knitted fabrics and Rexine with PU foam, EVA foam, films and other fabrics.",
+      "Our lamination capabilities cover different material constructions and specifications, with requirements such as width, thickness, density and colour determined according to the application and customer requirement.",
+    ],
+  },
+  finished: {
+    heading: "From Laminated Material To Finished Product.",
+    body: "Hamprigo also manufactures seamless bonded bras using material that we laminate ourselves. This brings material and finished construction together under one supplier.",
+    cta: { label: "Explore Seamless Bonded Bras", href: "/seamless-bonded-bras" },
+  },
+  how: {
+    eyebrow: "How We Work",
+    heading: "Your Material Or Ours.",
+    body: "You can send us the fabric you want to work with, or we can develop, source or treat the material required for your construction.",
+    blocks: [
+      { title: "Your Fabric", body: "Send us the material you want to work with." },
+      { title: "Our Material", body: "We can develop, source or treat material where required." },
+      {
+        title: "Your Specification",
+        body: "Density, thickness, colour, film type and width can be specified according to your requirement.",
+      },
+    ],
+    close: "We can begin with a sample and develop the construction around your requirement.",
+    cta: { label: "Request a Sample", href: "/contact" },
+  },
+  quality: {
+    eyebrow: "Quality",
+    heading: "Quality Work Starts With Attention To Detail.",
+    body: "We take pride in our meticulous attention to detail, rigorous quality control processes, and unwavering dedication to delivering products of the highest caliber. From the materials to the craftsmanship of our work, excellence is at the heart of everything we do.",
+  },
+  close: {
+    heading: "Let's Work With Your Material.",
+    body: "Have a material, specification or finished product requirement? Talk to us about what you are looking to develop.",
+    cta: { label: "Get in Touch", href: "/contact" },
+  },
+} as const;
+
+/** The Seamless Bonded Bras page, written to the client's brief. */
+export const bondedBrasPage = {
+  hero: {
+    eyebrow: "Finished Products",
+    heading: "Seamless Bonded Bras",
+    body: "We manufacture seamless bonded bras using material we laminate ourselves, bringing material development, lamination and finished garment construction together under one roof.",
+    cta: { label: "Request a Sample", href: "/contact" },
+  },
+  why: {
+    heading: "Why The Laminate Decides The Bra",
+    body: [
+      "Bonding replaces the mechanical hold of a stitch, so the bond itself carries everything the garment goes through. A bonded edge cannot fray or unravel the way a stitched seam can, but it will only survive laundering if the lamination underneath has genuine washing fastness.",
+      "That is why we laminate our own material. Our bonding is irreversible, so layers do not separate at edges or under stress, and it holds its washing fastness through repeated laundering. Those two properties are what let a bonded bra keep its shape and its edges wash after wash.",
+    ],
+    chain: [
+      { label: "Face Fabric", src: "/img/fabric-to-fabric.jpg", alt: "Face fabric" },
+      { label: "Laminated Material", src: "/img/pu-foam.jpg", alt: "Fabric laminated to PU foam" },
+      { label: "Bonded Bra", src: "/img/bonded-bra.jpg", alt: "A seamless bonded bra" },
+    ],
+  },
+  technologies: {
+    heading: "Technologies We Use",
+  },
+  together: {
+    heading: "Material And Construction, Specified Together",
+    body: "We can develop and source the face fabric, or laminate the one you supply. Either way the lamination and the finished garment are done here, so the material and the construction are decided together rather than coordinated across separate suppliers. In bonded construction that matters more than in sewn, because the material and the assembly method are not separable decisions.",
+    chain: ["Your Fabric", "Hamprigo Lamination", "Finished Seamless Bonded Bra"],
+  },
+  close: {
+    heading: "Request A Sample",
+    body: [
+      "Tell us the style you are planning and we will put a sample together so you can assess the hand, the edge finish, and how it sits.",
+      "If you are working to a settled specification, send it across and we will come back on construction and quantities.",
+    ],
+  },
 } as const;
 
 /**

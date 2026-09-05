@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Container } from "./container";
 import { Logo } from "./logo";
-import { company, contact, nav } from "@/content/site";
+import { contact, footerBlurb, nav } from "@/content/site";
 
 /**
  * Light footer.
@@ -21,9 +21,11 @@ export function SiteFooter() {
             <span className="block w-[180px]">
               <Logo />
             </span>
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">
-              Laminating fabric since {company.foundedYear}.
-            </p>
+            <div className="mt-5 max-w-sm space-y-2 text-sm leading-relaxed text-muted">
+              {footerBlurb.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
+            </div>
           </div>
 
           <div>
@@ -73,7 +75,8 @@ export function SiteFooter() {
         </div>
 
         <p className="mt-12 border-t border-line pt-6 text-xs text-muted">
-          &copy; {new Date().getFullYear()} {company.name}. All rights reserved.
+          &copy; {new Date().getFullYear()} Hamprigo Industries. All rights
+          reserved.
         </p>
       </Container>
     </footer>

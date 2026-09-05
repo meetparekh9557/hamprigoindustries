@@ -1,102 +1,249 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Container } from "@/components/container";
+import Link from "next/link";
 import { ClosingCta } from "@/components/closing-cta";
-import { PageHero } from "@/components/page-hero";
-import { ICONS, type IconName } from "@/components/icons";
-import { about, company, whyChoose } from "@/content/site";
+import { Container } from "@/components/container";
+import { CtaLink } from "@/components/cta-link";
+import {
+  aboutPage as page,
+  bondingTechnologies,
+  company,
+  workItems,
+} from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: `Founded in ${company.foundedYear}, ${company.name} manufactures customized laminated fabric for automotive, apparel, home furnishing and industrial applications.`,
+  description: `Founded in ${company.foundedYear}, ${company.name} laminates woven, non-woven and knitted fabrics and Rexine, and manufactures seamless bonded bras using material laminated in house.`,
   alternates: { canonical: "/about" },
 };
+
+/** The four lamination techniques, for the expertise grid. */
+const capabilities = workItems.filter((item) => item.slug !== "seamless-bonded-bras");
 
 export default function AboutPage() {
   return (
     <>
-      <PageHero
-        eyebrow={`Laminating fabric since ${company.foundedYear}`}
-        title={about.title}
-      />
-
-      {/* The material itself, full bleed, between the hero and the story.
-          The About copy is about what Hamprigo makes, so it should be
-          visible before the reader has to imagine it. */}
-      <div className="relative aspect-[21/9] w-full sm:aspect-[3/1]">
-        <Image
-          src="/img/pu-foam.jpg"
-          alt="Knitted fabric peeled back to show the PU foam laminated behind it"
-          fill
-          sizes="100vw"
-          className="object-cover"
-          priority
-        />
-      </div>
-
-      <section className="py-16 sm:py-20">
-        <Container>
-          <div className="max-w-3xl space-y-12">
-            {about.sections.map((section, index) => (
-              <div key={section.heading ?? `intro-${index}`}>
-                {section.heading ? (
-                  <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-                    {section.heading}
-                  </h2>
-                ) : null}
-                <div className={section.heading ? "mt-5 space-y-4" : "space-y-4"}>
-                  {section.body.map((paragraph) => (
-                    <p
-                      key={paragraph.slice(0, 40)}
-                      className="text-base leading-relaxed text-muted"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            ))}
+      {/* 01. Hero. The real works photograph, large and uncropped into a
+          card, because its job is to say that this is a real factory. */}
+      <section className="relative bg-brand-blue text-white">
+        <div className="relative h-72 sm:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-1/2">
+          <Image
+            src="/img/factory.jpg"
+            alt={`The ${company.name} works`}
+            fill
+            sizes="(min-width: 64rem) 50vw, 100vw"
+            className="object-cover"
+            priority
+          />
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-t from-[#152559] via-[#152559]/40 to-transparent lg:bg-gradient-to-r lg:via-[#152559]/25"
+          />
+        </div>
+        <Container className="relative py-16 sm:py-20 lg:py-24">
+          <div className="lg:max-w-[32rem]">
+            <p className="spec-label text-white/60">{page.hero.eyebrow}</p>
+            <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
+              {page.hero.heading}
+            </h1>
+            <p className="mt-6 text-base leading-relaxed text-white/75 sm:text-lg">
+              {page.hero.body}
+            </p>
           </div>
         </Container>
       </section>
 
-      {/* Why choose our services, from the previous site. The values that
-          used to sit here now lead the homepage's closing stretch, so the
-          two are not duplicated across pages. */}
+      {/* 02. Our story. Typographic, not another factory photograph. No
+          intermediate milestones: none have been supplied. */}
+      <section className="py-16 sm:py-20">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
+            <div>
+              <p className="spec-label text-brand">{page.story.eyebrow}</p>
+              <h2 className="mt-4 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+                {page.story.heading}
+              </h2>
+              <div className="mt-10 border-t border-line pt-8">
+                <p className="text-6xl font-bold leading-none tracking-tight text-ink-strong sm:text-7xl">
+                  {company.foundedYear}
+                </p>
+                <span
+                  aria-hidden="true"
+                  className="my-6 block h-px w-full bg-line sm:my-8"
+                />
+                <p className="spec-label text-muted">Today</p>
+              </div>
+            </div>
+            <div className="space-y-5">
+              {page.story.body.map((paragraph) => (
+                <p
+                  key={paragraph.slice(0, 40)}
+                  className="text-base leading-relaxed text-muted"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 03. Expertise. Four material photographs, each linking into the
+          matching section of the lamination page. */}
       <section className="border-y border-line bg-surface py-16 sm:py-20">
         <Container>
           <div className="max-w-3xl">
-            <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-              {whyChoose.heading}
+            <p className="spec-label text-brand">{page.expertise.eyebrow}</p>
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+              {page.expertise.heading}
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-muted">
-              {whyChoose.intro}
-            </p>
+            <div className="mt-5 space-y-4">
+              {page.expertise.body.map((paragraph) => (
+                <p
+                  key={paragraph.slice(0, 40)}
+                  className="text-base leading-relaxed text-muted"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
           </div>
 
-          <ul className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-            {whyChoose.items.map((item) => {
-              const Icon = ICONS[item.icon as IconName];
-              return (
-                <li key={item.title} className="flex items-start gap-4">
-                  <Icon className="h-7 w-7 shrink-0 text-brand" />
-                  <h3 className="text-lg font-semibold leading-snug text-ink-strong">
+          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {capabilities.map((item, i) => (
+              <li key={item.slug}>
+                <Link href={item.href} className="group block">
+                  <div className="relative aspect-[4/5] overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.alt}
+                      fill
+                      sizes="(min-width: 64rem) 24vw, (min-width: 40rem) 48vw, 100vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <p className="spec-label mt-4 text-brand">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <p className="mt-2 text-lg font-semibold leading-snug text-ink-strong transition-colors group-hover:text-brand">
                     {item.title}
-                  </h3>
-                </li>
-              );
-            })}
+                  </p>
+                </Link>
+              </li>
+            ))}
           </ul>
-
-          <p className="mt-12 max-w-3xl text-base leading-relaxed text-muted">
-            {whyChoose.close}
-          </p>
         </Container>
       </section>
 
+      {/* 04. The finished product, without turning this into the bra page. */}
+      <section className="border-b border-line py-16 sm:py-20">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <Image
+                src="/img/bonded-bra.jpg"
+                alt="A seamless bonded bra, showing no stitched seams"
+                fill
+                sizes="(min-width: 64rem) 48vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+                {page.finished.heading}
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-muted">
+                {page.finished.body}
+              </p>
+
+              <p className="spec-label mt-10 text-muted">Technologies</p>
+              <ul className="mt-4 grid gap-px bg-line sm:grid-cols-3">
+                {bondingTechnologies.map((technology, i) => (
+                  <li key={technology} className="bg-white py-5 sm:pr-5">
+                    <span className="spec-label text-brand">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p className="mt-2 text-base font-semibold leading-snug text-ink-strong">
+                      {technology}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-10">
+                <CtaLink href={page.finished.cta.href} variant="outline">
+                  {page.finished.cta.label}
+                </CtaLink>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 05. How we work. */}
+      <section className="border-b border-line py-16 sm:py-20">
+        <Container>
+          <div className="max-w-3xl">
+            <p className="spec-label text-brand">{page.how.eyebrow}</p>
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+              {page.how.heading}
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-muted">
+              {page.how.body}
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-px bg-line md:grid-cols-3">
+            {page.how.blocks.map((block) => (
+              <div key={block.title} className="bg-white py-8 md:pr-8">
+                <h3 className="spec-label text-brand">{block.title}</h3>
+                <p className="mt-4 text-lg leading-snug text-ink-strong">
+                  {block.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-12 max-w-2xl text-base leading-relaxed text-muted">
+            {page.how.close}
+          </p>
+          <div className="mt-8">
+            <CtaLink href={page.how.cta.href}>{page.how.cta.label}</CtaLink>
+          </div>
+        </Container>
+      </section>
+
+      {/* 06. Quality. Material texture on one side, type on the other. */}
+      <section className="border-b border-line bg-surface">
+        <div className="grid lg:grid-cols-2">
+          <div className="relative h-64 lg:h-auto lg:min-h-[26rem]">
+            <Image
+              src="/img/eva.jpg"
+              alt="Close crop of a laminated material"
+              fill
+              sizes="(min-width: 64rem) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="flex items-center py-16 sm:py-20">
+            <Container className="lg:mx-0 lg:max-w-none lg:px-12">
+              <p className="spec-label text-brand">{page.quality.eyebrow}</p>
+              <h2 className="mt-4 max-w-xl text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+                {page.quality.heading}
+              </h2>
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-muted">
+                {page.quality.body}
+              </p>
+            </Container>
+          </div>
+        </div>
+      </section>
+
       <ClosingCta
-        heading={about.closing.heading}
-        body={[...about.closing.body]}
+        heading={page.close.heading}
+        body={[page.close.body]}
+        ctaLabel={page.close.cta.label}
+        ctaHref={page.close.cta.href}
       />
     </>
   );
