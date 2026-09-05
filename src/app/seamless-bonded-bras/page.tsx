@@ -30,7 +30,7 @@ export default function SeamlessBondedBrasPage() {
           <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
             <div className="divide-y divide-line">
               {bondedBras.sections.map((section) => (
-                <div key={section.heading} className="py-10 first:pt-0">
+                <div key={section.heading} className="py-10 first:pt-0 last:pb-0">
                   <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
                     {section.heading}
                   </h2>

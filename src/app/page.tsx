@@ -57,7 +57,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <Container className="relative py-16 sm:py-20 lg:py-28">
+        <Container className="relative py-16 sm:py-20 lg:py-24">
           <div className="lg:max-w-[32rem]">
             <p className="spec-label text-white/60">{hero.eyebrow}</p>
             <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
@@ -79,7 +79,9 @@ export default function HomePage() {
       </section>
 
       {/* 02. What we work with. The overview, before any paragraphs. */}
-      <section className="bg-surface pb-20 pt-16 sm:pb-24">
+      {/* No bottom padding: the rail is the end of this section, and
+          padding after it read as a stray grey band. */}
+      <section className="bg-surface pt-16 sm:pt-20">
         <Container>
           <div className="pt-2">
             <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
@@ -94,7 +96,7 @@ export default function HomePage() {
       </section>
 
       {/* 03. Our services. The two capabilities, each with its own visual. */}
-      <section className="border-b border-line py-20 sm:py-24">
+      <section className="border-b border-line py-16 sm:py-20">
         <Container>
           <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
           <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
@@ -218,7 +220,7 @@ export default function HomePage() {
 
       {/* 05. What we stand for. Values come last, once the visitor knows what
           the business actually does. */}
-      <section className="border-b border-line py-20 sm:py-24">
+      <section className="border-b border-line py-16 sm:py-20">
         <Container>
           <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
           <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">

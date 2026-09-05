@@ -36,7 +36,7 @@ export default function LaminationPage() {
               <article
                 key={service.slug}
                 id={service.slug}
-                className="scroll-mt-28 py-12 first:pt-0"
+                className="scroll-mt-28 py-12 first:pt-0 last:pb-0"
               >
                 <p className="spec-label text-brand">
                   Construction {String(index + 1).padStart(2, "0")}

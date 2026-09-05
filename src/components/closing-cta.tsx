@@ -72,7 +72,7 @@ export function ClosingCta({
   );
 
   return (
-    <section className="relative isolate overflow-hidden py-20 text-white sm:py-24">
+    <section className="relative isolate overflow-hidden py-16 text-white sm:py-20">
       <Image
         src="/img/textile.jpg"
         alt=""
