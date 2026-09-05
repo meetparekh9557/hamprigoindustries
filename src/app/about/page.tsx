@@ -157,14 +157,23 @@ export default function AboutPage() {
               </p>
 
               <p className="spec-label mt-10 text-muted">Technologies</p>
-              <ul className="mt-4 grid gap-px bg-line sm:grid-cols-3">
+              <ul className="mt-4 grid grid-cols-3 gap-3 sm:gap-4">
                 {bondingTechnologies.map((technology, i) => (
-                  <li key={technology} className="bg-white py-5 sm:pr-5">
-                    <span className="spec-label text-brand">
+                  <li key={technology.name}>
+                    <div className="relative aspect-square overflow-hidden">
+                      <Image
+                        src={technology.image}
+                        alt={technology.alt}
+                        fill
+                        sizes="(min-width: 64rem) 15vw, 30vw"
+                        className="object-cover"
+                      />
+                    </div>
+                    <span className="spec-label mt-3 block text-brand">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <p className="mt-2 text-base font-semibold leading-snug text-ink-strong">
-                      {technology}
+                    <p className="mt-1 text-sm font-semibold leading-snug text-ink-strong">
+                      {technology.name}
                     </p>
                   </li>
                 ))}

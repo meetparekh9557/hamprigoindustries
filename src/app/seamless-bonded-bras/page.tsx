@@ -111,14 +111,24 @@ export default function SeamlessBondedBrasPage() {
           <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
             {page.technologies.heading}
           </h2>
-          <ul className="mt-10 grid gap-px bg-line sm:grid-cols-3">
+          {/* Material close-ups, not machinery. */}
+          <ul className="mt-10 grid gap-6 sm:grid-cols-3 sm:gap-8">
             {bondingTechnologies.map((technology, i) => (
-              <li key={technology} className="bg-surface py-8 sm:pr-8">
-                <span className="spec-label text-brand">
+              <li key={technology.name}>
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={technology.image}
+                    alt={technology.alt}
+                    fill
+                    sizes="(min-width: 40rem) 32vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                <span className="spec-label mt-4 block text-brand">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="mt-3 text-xl font-semibold leading-snug text-ink-strong">
-                  {technology}
+                <p className="mt-2 text-xl font-semibold leading-snug text-ink-strong">
+                  {technology.name}
                 </p>
               </li>
             ))}

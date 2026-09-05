@@ -359,9 +359,21 @@ export const serviceImages: Record<string, { src: string; alt: string }> =
  * rather than the homepage.
  */
 export const bondingTechnologies = [
-  "Hotmelt PUR Dispensing",
-  "Silicone Printing",
-  "Tape Bonding",
+  {
+    name: "Hotmelt PUR Dispensing",
+    image: "/img/tech-hotmelt.jpg",
+    alt: "Close-up of adhesive beading applied along a bonded edge",
+  },
+  {
+    name: "Silicone Printing",
+    image: "/img/tech-silicone.jpg",
+    alt: "Close-up of silicone printed onto bonded fabric",
+  },
+  {
+    name: "Tape Bonding",
+    image: "/img/tech-tape.jpg",
+    alt: "Close-up of a bonded tape join in fabric",
+  },
 ] as const;
 
 /**

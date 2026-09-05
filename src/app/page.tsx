@@ -169,15 +169,21 @@ export default function HomePage() {
                   any of the three. */}
               <ul className="mt-4 grid grid-cols-3 gap-3 sm:gap-5">
                 {bondingTechnologies.map((technology, i) => (
-                  <li
-                    key={technology}
-                    className="border-t-2 border-brand bg-surface p-5 sm:p-6"
-                  >
-                    <span className="spec-label text-brand">
+                  <li key={technology.name}>
+                    <div className="relative aspect-square overflow-hidden">
+                      <Image
+                        src={technology.image}
+                        alt={technology.alt}
+                        fill
+                        sizes="(min-width: 64rem) 18vw, 30vw"
+                        className="object-cover"
+                      />
+                    </div>
+                    <span className="spec-label mt-3 block text-brand">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <p className="mt-3 text-base font-semibold leading-snug text-ink-strong">
-                      {technology}
+                    <p className="mt-1 text-base font-semibold leading-snug text-ink-strong">
+                      {technology.name}
                     </p>
                   </li>
                 ))}
