@@ -1,4 +1,5 @@
 import { Container } from "@/components/container";
+import { ClosingCta } from "@/components/closing-cta";
 import { CtaLink } from "@/components/cta-link";
 import { LaminateDiagram, type Layer } from "@/components/laminate-diagram";
 import { ServiceRail } from "@/components/service-rail";
@@ -124,24 +125,13 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Closing CTA. Sample request is the primary ask, not a spec. */}
-      <section className="bg-surface py-20 sm:py-24">
-        <Container>
-          <div className="rule-tick pt-6">
-            <h2 className="mt-3 max-w-2xl text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-              Tell us what your material has to do
-            </h2>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
-              Send us the substrate and the end application and we will laminate
-              a sample for you to handle and test. You do not need a finished
-              specification to start a conversation with {company.name}.
-            </p>
-            <div className="mt-10">
-              <CtaLink href="/contact">Request a sample</CtaLink>
-            </div>
-          </div>
-        </Container>
-      </section>
+      {/* Closing band. Shared across every page, in the logo's blue. */}
+      <ClosingCta
+        heading="Tell us what your material has to do"
+        body={[
+          `Send us the substrate and the end application and we will laminate a sample for you to handle and test. You do not need a finished specification to start a conversation with ${company.name}.`,
+        ]}
+      />
     </>
   );
 }

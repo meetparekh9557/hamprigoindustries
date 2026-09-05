@@ -33,8 +33,17 @@
   --foreground: #16181d;
 
   --ink: #1f2433;
-  /* Navy. See the note above: chosen, not measured. */
-  --ink-strong: #16213e;
+  /* The blue actually in the mark, measured off the right face of the
+     diamond. This is the site's single dark: the hero, the capabilities
+     band and the closing band on every page all sit on it, so the page
+     hands over to the white footer on the logo's own blue.
+
+     It replaced a hand-picked #16213e. Keeping both meant two darks a few
+     degrees apart, which reads as a mistake rather than a system. The
+     wordmark's descriptor is a second, more saturated blue, #172175, if
+     this ever wants to be bolder. */
+  --brand-blue: #152559;
+  --ink-strong: var(--brand-blue);
   --muted: #5b6270;
   --line: #e2e5ea;
   --surface: #f6f7f9;
@@ -52,6 +61,7 @@
   --color-foreground: var(--foreground);
   --color-ink: var(--ink);
   --color-ink-strong: var(--ink-strong);
+  --color-brand-blue: var(--brand-blue);
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-surface: var(--surface);

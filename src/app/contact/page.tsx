@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClosingCta } from "@/components/closing-cta";
 import { Container } from "@/components/container";
 import { EnquiryForm } from "@/components/enquiry-form";
 import { PageHero } from "@/components/page-hero";
@@ -68,6 +69,16 @@ export default function ContactPage() {
           </div>
         </Container>
       </section>
+
+      {/* Contact has no closing section of its own, and the form must stay on
+          a light ground. So the band here carries the phone number instead,
+          which is the real alternative to the form. */}
+      <ClosingCta
+        heading="Would you rather speak to someone?"
+        body={["Call us and describe what you need. There is no form to fill in first."]}
+        ctaLabel={contact.phone}
+        ctaHref={`tel:${contact.phoneHref}`}
+      />
     </>
   );
 }

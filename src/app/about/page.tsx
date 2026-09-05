@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/container";
-import { CtaLink } from "@/components/cta-link";
+import { ClosingCta } from "@/components/closing-cta";
 import { PageHero } from "@/components/page-hero";
 import { about, company } from "@/content/site";
 
@@ -64,28 +64,10 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
-        <Container>
-          <div className="max-w-3xl">
-            <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-              {about.closing.heading}
-            </h2>
-            <div className="mt-5 space-y-4">
-              {about.closing.body.map((paragraph) => (
-                <p
-                  key={paragraph.slice(0, 40)}
-                  className="text-base leading-relaxed text-muted"
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-            <div className="mt-10">
-              <CtaLink href="/contact">Request a sample</CtaLink>
-            </div>
-          </div>
-        </Container>
-      </section>
+      <ClosingCta
+        heading={about.closing.heading}
+        body={[...about.closing.body]}
+      />
     </>
   );
 }

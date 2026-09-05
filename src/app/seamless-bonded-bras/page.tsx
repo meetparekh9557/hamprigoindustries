@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/container";
-import { CtaLink } from "@/components/cta-link";
+import { ClosingCta } from "@/components/closing-cta";
 import { PageHero } from "@/components/page-hero";
 import { bondedBras } from "@/content/site";
 
@@ -44,26 +44,10 @@ export default function SeamlessBondedBrasPage() {
         </Container>
       </section>
 
-      <section className="border-t border-line bg-surface py-16 sm:py-20">
-        <Container>
-          <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-            {bondedBras.close.heading}
-          </h2>
-          <div className="mt-5 max-w-2xl space-y-4">
-            {bondedBras.close.body.map((paragraph) => (
-              <p
-                key={paragraph.slice(0, 40)}
-                className="text-base leading-relaxed text-muted"
-              >
-                {paragraph}
-              </p>
-            ))}
-          </div>
-          <div className="mt-10">
-            <CtaLink href="/contact">Request a sample</CtaLink>
-          </div>
-        </Container>
-      </section>
+      <ClosingCta
+        heading={bondedBras.close.heading}
+        body={[...bondedBras.close.body]}
+      />
     </>
   );
 }
