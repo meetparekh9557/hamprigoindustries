@@ -30,6 +30,22 @@ export const metadata: Metadata = {
     url: company.url,
   },
   robots: { index: true, follow: true },
+  /**
+   * Declared explicitly and served from public/, so the URLs are stable.
+   * Put in app/ instead, Next fingerprints them, and the favicon's address
+   * changes on every deploy. Google's favicon crawler wants one address that
+   * stays put, and it asks for a square whose dimensions are a multiple of
+   * 48px, which is why these are 48, 96 and 192 rather than 256 and 512.
+   */
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+      { url: "/icon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon-96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   // Emits the google-site-verification meta tag into <head>.
   verification: { google: analytics.searchConsoleToken },
 };
