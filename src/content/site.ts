@@ -721,8 +721,6 @@ export const bondedBrasPage = {
         "/img/bra-spin/31.jpg",
         "/img/bra-spin/32.jpg",
         "/img/bra-spin/33.jpg",
-        "/img/bra-spin/34.jpg",
-        "/img/bra-spin/35.jpg",
       ],
     },
   },
