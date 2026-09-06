@@ -4,7 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { WhatsAppButton } from "@/components/whatsapp-button";
-import { company, contact } from "@/content/site";
+import { analytics, company, contact } from "@/content/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +30,8 @@ export const metadata: Metadata = {
     url: company.url,
   },
   robots: { index: true, follow: true },
+  // Emits the google-site-verification meta tag into <head>.
+  verification: { google: analytics.searchConsoleToken },
 };
 
 /** Organization schema. Only facts the client has confirmed. */
@@ -58,6 +60,23 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        {/* Google Analytics. In <head> and async, as Google's own snippet
+            has it, so a pageview is recorded even if the visitor leaves
+            before the rest of the page finishes. */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${analytics.measurementId}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${analytics.measurementId}');`,
+          }}
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <script
           type="application/ld+json"

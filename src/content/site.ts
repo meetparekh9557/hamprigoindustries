@@ -72,6 +72,16 @@ export const footerBlurb = [
   "We also manufacture seamless bonded bras using material we laminate ourselves.",
 ] as const;
 
+/**
+ * Google properties. Neither value is a secret: both are meant to be public
+ * in the page's markup, and the verification token only proves ownership to
+ * Search Console rather than granting any access.
+ */
+export const analytics = {
+  searchConsoleToken: "adZr-FSSo-R01-WgO2Jcf1A4QPboRS95EVxabTJEtQA",
+  measurementId: "G-6FNMK9MPR3",
+} as const;
+
 export const contact = {
   phone: "+91 961 933 7268",
   phoneHref: "+919619337268",
