@@ -49,12 +49,6 @@ export default function HomePage() {
             aria-hidden="true"
             className="absolute inset-0 bg-gradient-to-t from-[#152559] via-[#152559]/40 to-transparent lg:bg-gradient-to-r lg:via-[#152559]/25"
           />
-          <p className="absolute bottom-6 right-6 text-right">
-            <span className="spec-label block text-white/70">Our facility</span>
-            <span className="mt-1 block font-mono text-sm text-white">
-              Since {company.foundedYear}
-            </span>
-          </p>
         </div>
 
         <Container className="relative py-16 sm:py-20 lg:py-24">
