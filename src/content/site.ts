@@ -680,14 +680,38 @@ export const bondedBrasPage = {
     /**
      * The finished product, shown in a viewer the visitor can turn.
      *
-     * `frames` are photographs taken around the product, in order. One frame
-     * renders as a still image; drop the 360 sequence in here, in order, and
-     * the viewer becomes interactive with no other change. Roughly 24 to 36
-     * frames gives a smooth turn.
+     * `frames` are views of the product taken around it, in order, cut from
+     * the 360 sheet the client supplied: 24 frames at 15 degree steps,
+     * starting front on. One frame would render as a still instead.
      */
     product: {
       alt: "The finished seamless bonded bra, shown against a plain ground",
-      frames: ["/img/bonded-bra-product.jpg"],
+      frames: [
+        "/img/bra-spin/00.jpg",
+        "/img/bra-spin/01.jpg",
+        "/img/bra-spin/02.jpg",
+        "/img/bra-spin/03.jpg",
+        "/img/bra-spin/04.jpg",
+        "/img/bra-spin/05.jpg",
+        "/img/bra-spin/06.jpg",
+        "/img/bra-spin/07.jpg",
+        "/img/bra-spin/08.jpg",
+        "/img/bra-spin/09.jpg",
+        "/img/bra-spin/10.jpg",
+        "/img/bra-spin/11.jpg",
+        "/img/bra-spin/12.jpg",
+        "/img/bra-spin/13.jpg",
+        "/img/bra-spin/14.jpg",
+        "/img/bra-spin/15.jpg",
+        "/img/bra-spin/16.jpg",
+        "/img/bra-spin/17.jpg",
+        "/img/bra-spin/18.jpg",
+        "/img/bra-spin/19.jpg",
+        "/img/bra-spin/20.jpg",
+        "/img/bra-spin/21.jpg",
+        "/img/bra-spin/22.jpg",
+        "/img/bra-spin/23.jpg",
+      ],
     },
   },
   construction: {

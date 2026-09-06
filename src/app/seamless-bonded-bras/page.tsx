@@ -73,10 +73,13 @@ export default function SeamlessBondedBrasPage() {
                 the file's own proportions, so nothing is cropped and there
                 are no bars either side. Once the 360 sequence is in place
                 this is the same element, turnable. */}
+            {/* Square, because the product is as wide as it is tall once
+                the straps are in frame. A portrait crop would have to cut
+                one or the other. */}
             <SpinViewer
               frames={page.material.product.frames}
               alt={page.material.product.alt}
-              className="mx-auto aspect-[3/4] w-full max-w-md bg-white lg:max-w-none"
+              className="mx-auto aspect-square w-full max-w-lg bg-white lg:max-w-none"
             />
           </div>
         </Container>

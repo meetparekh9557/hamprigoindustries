@@ -15,9 +15,10 @@ import { useEffect, useRef, useState } from "react";
  * `touch-action: pan-y` keeps vertical scrolling working on a phone while a
  * horizontal drag spins the product. A full-width drag is one full turn.
  *
- * Every frame is fetched and decoded before the viewer becomes interactive.
- * Swapping to a frame the browser has not decoded yet shows a blank for a
- * moment, which reads as broken rather than slow.
+ * Fetching starts when the viewer comes near the screen, and every frame is
+ * decoded before it becomes interactive. Swapping to a frame the browser has
+ * not decoded yet shows a blank for a moment, which reads as broken rather
+ * than slow.
  *
  * With fewer than two frames it renders the single image and nothing else,
  * so the page is correct before the sequence exists.
@@ -42,22 +43,50 @@ export function SpinViewer({
 
   useEffect(() => {
     if (!spinnable) return;
+    const el = box.current;
+    if (!el) return;
     let cancelled = false;
-    Promise.all(
-      frames.map(
-        (src) =>
-          new Promise<void>((resolve) => {
-            const img = new Image();
-            img.onload = () => resolve();
-            img.onerror = () => resolve();
-            img.src = src;
-          }),
-      ),
-    ).then(() => {
-      if (!cancelled) setReady(true);
-    });
+
+    /**
+     * The whole sequence is a few hundred KB, so it is not fetched until
+     * the viewer is near the screen. Someone who never scrolls this far
+     * pays nothing for it.
+     */
+    const preload = () =>
+      Promise.all(
+        frames.map(
+          (src) =>
+            new Promise<void>((resolve) => {
+              const img = new Image();
+              img.onload = () => resolve();
+              img.onerror = () => resolve();
+              img.src = src;
+            }),
+        ),
+      ).then(() => {
+        if (!cancelled) setReady(true);
+      });
+
+    if (typeof IntersectionObserver === "undefined") {
+      preload();
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect();
+          preload();
+        }
+      },
+      { rootMargin: "400px" },
+    );
+    io.observe(el);
     return () => {
       cancelled = true;
+      io.disconnect();
     };
   }, [frames, spinnable]);
 
