@@ -82,6 +82,50 @@ export const analytics = {
   measurementId: "G-6FNMK9MPR3",
 } as const;
 
+/**
+ * Titles and descriptions, exactly as the client supplied them.
+ *
+ * Each title is used absolutely rather than run through the site's
+ * "%s | Hamprigo Industries" template, because several already carry the
+ * company name and the template would append it twice.
+ */
+export const seo = {
+  home: {
+    title:
+      "Textile Lamination & Seamless Bonded Bra Manufacturer | Hamprigo Industries",
+    description:
+      "Hamprigo Industries provides textile lamination solutions including PU foam, EVA foam, film and fabric-to-fabric lamination, along with seamless bonded bra manufacturing.",
+  },
+  about: {
+    title:
+      "About Hamprigo Industries | Textile Lamination Manufacturer Since 1989",
+    description:
+      "Learn about Hamprigo Industries, a textile lamination manufacturer with decades of experience in bonded materials, custom lamination solutions and seamless bonded bras.",
+  },
+  lamination: {
+    title:
+      "Textile Lamination Manufacturer | PU Foam, EVA, Film & Fabric Bonding",
+    description:
+      "Hamprigo Industries provides textile lamination solutions including PU foam lamination, EVA foam lamination, film lamination and fabric-to-fabric bonding for various applications.",
+  },
+  bondedBras: {
+    title: "Seamless Bonded Bra Manufacturer | Hotmelt PUR & Tape Bonding",
+    description:
+      "Hamprigo Industries manufactures seamless bonded bras using Hotmelt PUR dispensing, tape bonding and advanced bonding technologies for modern lingerie manufacturing.",
+  },
+  contact: {
+    title:
+      "Contact Hamprigo Industries | Textile Lamination & Manufacturing Enquiries",
+    description:
+      "Contact Hamprigo Industries for textile lamination, bonded material solutions and seamless bonded bra manufacturing enquiries. Discuss your requirements with our team.",
+  },
+  thankYou: {
+    title: "Thank You | Hamprigo Industries",
+    description:
+      "Thank you for contacting Hamprigo Industries. We have received your enquiry and our team will get back to you shortly.",
+  },
+} as const;
+
 export const contact = {
   phone: "+91 961 933 7268",
   phoneHref: "+919619337268",
@@ -649,6 +693,71 @@ export const laminationPage = {
     secondary: { label: "Contact Hamprigo", href: "/contact" },
   },
 } as const;
+
+/**
+ * The questions industrial buyers, and the AI tools they increasingly search
+ * with, ask about a service. They are answered in visible copy on the page
+ * and the same text feeds the FAQ structured data, so the two can never
+ * disagree.
+ *
+ * Every answer is assembled from copy the client has already approved
+ * elsewhere on the site. Nothing is invented to fill a question, which is
+ * why there is no question about industries served or certifications: those
+ * have not been supplied.
+ */
+export const laminationFaq = [
+  {
+    q: "What is textile lamination?",
+    a: "Lamination bonds different material layers into a single construction. Hamprigo laminates woven, non-woven and knitted fabrics, and Rexine, with PU foam, EVA foam, films and other fabrics, to the width, thickness and specification the finished construction requires.",
+  },
+  {
+    q: "What materials can Hamprigo laminate?",
+    a: "Woven, non-woven and knitted fabrics, and Rexine. These can be laminated with PU foam, EVA foam, with PVC, TPU, PE or blackout film, or with a second fabric to make one composite material.",
+  },
+  {
+    q: "What can be customised?",
+    a: "Density, thickness, colour, film type and width can be specified per order rather than chosen from a fixed range.",
+  },
+  {
+    q: "What is laminated fabric used to make?",
+    a: "PU foam laminated fabric is used in lingerie, bra cups, car seat upholstery, blouse pads, footwear, auditorium seating and jewelry boxes. Fabric laminated with fabric is used in furnishing fabrics and cap manufacturing. Film lamination is used in military tents, raincoats, trolley bags, mattress protectors and blackout curtains. EVA lamination is used in trolley bags, laptop bags and footwear.",
+  },
+  {
+    q: "Can I send my own fabric?",
+    a: "Yes. You can send us your own fabric, or we can develop, source or treat the material required for your construction.",
+  },
+  {
+    q: "Can I request a sample, and how does the enquiry process work?",
+    a: "Yes. Tell us the substrate and what the finished material needs to do, and send the enquiry through the form on this page or by phone or email. We can start with a sample before moving to construction and quotation.",
+  },
+] as const;
+
+export const bondedBrasFaq = [
+  {
+    q: "What is a seamless bonded bra?",
+    a: "A bra whose construction is bonded rather than stitched. Hamprigo manufactures seamless bonded bras using material we laminate ourselves, bringing material development, lamination and finished garment construction together under one supplier.",
+  },
+  {
+    q: "What material are Hamprigo's bonded bras made from?",
+    a: "Material laminated by Hamprigo. A bonded bra depends on the material beneath the finished construction: the laminate has to hold the layers together and maintain its performance through repeated laundering. Our bonding is irreversible, so layers do not separate at the edges or under stress, and the lamination holds its washing fastness through repeated laundering.",
+  },
+  {
+    q: "Can I supply my own fabric?",
+    a: "Yes. You can provide the fabric you want to work with, or we can develop and source the face fabric for you. Either way the lamination and the finished bra are both manufactured by Hamprigo.",
+  },
+  {
+    q: "Which bonding technologies does Hamprigo use?",
+    a: "Three: Hotmelt PUR dispensing, silicone printing and tape bonding.",
+  },
+  {
+    q: "Can I request a sample?",
+    a: "Yes. Tell us the style you are planning and we will put a sample together so you can assess the hand, edge finish and how it sits.",
+  },
+  {
+    q: "How does the enquiry process work?",
+    a: "Send your requirement through the form on this page, or by phone or email. If you are working to a settled specification, send it across and we will come back on construction and quantities.",
+  },
+] as const;
 
 /** The About page, written to the client's brief. */
 export const aboutPage = {

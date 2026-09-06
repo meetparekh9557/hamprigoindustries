@@ -1,20 +1,27 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@/components/container";
+import { Faq } from "@/components/faq";
 import { RequestSample } from "@/components/request-sample";
 import { SpinViewer } from "@/components/spin-viewer";
 import { HeroCta, SplitHero } from "@/components/split-hero";
 import {
+  StructuredData,
+  faqNode,
+  serviceNode,
+} from "@/components/structured-data";
+import {
+  bondedBrasFaq,
   bondedBrasPage as page,
   bondingTechnologies,
+  seo,
   serviceOptions,
 } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Seamless Bonded Bra Manufacturer",
-  description:
-    "Hamprigo manufactures seamless bonded bras using material we laminate ourselves, bringing material development, lamination and finished construction together under one supplier.",
-  alternates: { canonical: "/seamless-bonded-bras" },
+  title: { absolute: seo.bondedBras.title },
+  description: seo.bondedBras.description,
+  alternates: { canonical: "/seamless-bonded-bras/" },
 };
 
 /**
@@ -32,6 +39,23 @@ export const metadata: Metadata = {
 export default function SeamlessBondedBrasPage() {
   return (
     <>
+      <StructuredData
+        crumbs={[
+          { name: "Seamless Bonded Bras", path: "/seamless-bonded-bras/" },
+        ]}
+        extra={[
+          serviceNode({
+            path: "/seamless-bonded-bras/",
+            name: "Seamless Bonded Bra Manufacturing",
+            description: seo.bondedBras.description,
+            offers: bondingTechnologies.map((t) => ({
+              name: t.name,
+              description: `${t.name}, one of the three bonding technologies used in Hamprigo's seamless bonded bra manufacturing.`,
+            })),
+          }),
+          faqNode("/seamless-bonded-bras/", bondedBrasFaq),
+        ]}
+      />
       {/* 01. Hero. Same construction as About and Lamination, on the
           brand red. */}
       <SplitHero
@@ -191,7 +215,10 @@ export default function SeamlessBondedBrasPage() {
         </Container>
       </section>
 
-      {/* 06. The blue hand-over to the footer. Form behind the button. */}
+      {/* 06. The questions a buyer asks, answered where they can be read. */}
+      <Faq heading="Seamless Bonded Bra Questions" items={bondedBrasFaq} />
+
+      {/* 07. The blue hand-over to the footer. */}
       <RequestSample
         heading={page.close.heading}
         body={page.close.body}

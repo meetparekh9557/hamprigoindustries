@@ -4,6 +4,7 @@ import { Container } from "@/components/container";
 import { CtaLink } from "@/components/cta-link";
 import { ICONS, type IconName } from "@/components/icons";
 import { WorkRail } from "@/components/work-rail";
+import { StructuredData } from "@/components/structured-data";
 import {
   about,
   bondingTechnologies,
@@ -29,6 +30,7 @@ import {
 export default function HomePage() {
   return (
     <>
+      <StructuredData />
       {/* 01. Hero. The works on the right, captioned, as in the supplied
           design.
 

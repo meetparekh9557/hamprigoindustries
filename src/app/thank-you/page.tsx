@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/container";
 import { CtaLink } from "@/components/cta-link";
-import { thankYouPage as page } from "@/content/site";
+import { seo, thankYouPage as page } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Thank You",
-  description: "Your enquiry has been received.",
-  // A confirmation page has nothing to offer a search result, and landing on
-  // one from search is confusing. It is out of the sitemap for the same
-  // reason: the sitemap is built from the nav.
+  title: { absolute: seo.thankYou.title },
+  description: seo.thankYou.description,
+  alternates: { canonical: "/thank-you/" },
+  // A confirmation page has nothing to offer a search result, and
+  // landing on one from search is confusing.
   robots: { index: false, follow: true },
 };
 

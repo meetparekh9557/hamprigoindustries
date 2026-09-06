@@ -3,22 +3,25 @@ import { ContactActions } from "@/components/contact-actions";
 import { Container } from "@/components/container";
 import { EnquiryForm } from "@/components/enquiry-form";
 import { PageHero } from "@/components/page-hero";
+import { StructuredData } from "@/components/structured-data";
 import {
   company,
   contact,
   enquiryForm,
+  seo,
   serviceOptions,
 } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
-  description: `Contact ${company.name} in Mumbai for laminated fabric enquiries. Tell us what you are making and we will propose a construction and send a sample.`,
-  alternates: { canonical: "/contact" },
+  title: { absolute: seo.contact.title },
+  description: seo.contact.description,
+  alternates: { canonical: "/contact/" },
 };
 
 export default function ContactPage() {
   return (
     <>
+      <StructuredData crumbs={[{ name: "Contact", path: "/contact/" }]} />
       <PageHero flush title={`Contact ${company.name}`} lede={enquiryForm.intro} />
 
       {/* No top padding: the hero above is the same blue and already

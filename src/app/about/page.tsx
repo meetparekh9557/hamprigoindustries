@@ -5,17 +5,19 @@ import { ClosingCta } from "@/components/closing-cta";
 import { Container } from "@/components/container";
 import { SplitHero } from "@/components/split-hero";
 import { CtaLink } from "@/components/cta-link";
+import { StructuredData } from "@/components/structured-data";
 import {
   aboutPage as page,
   bondingTechnologies,
   company,
+  seo,
   workItems,
 } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: `Founded in ${company.foundedYear}, ${company.name} laminates woven, non-woven and knitted fabrics and Rexine, and manufactures seamless bonded bras using material laminated in house.`,
-  alternates: { canonical: "/about" },
+  title: { absolute: seo.about.title },
+  description: seo.about.description,
+  alternates: { canonical: "/about/" },
 };
 
 /** The four lamination techniques, for the expertise grid. */
@@ -24,6 +26,7 @@ const capabilities = workItems.filter((item) => item.slug !== "seamless-bonded-b
 export default function AboutPage() {
   return (
     <>
+      <StructuredData crumbs={[{ name: "About", path: "/about/" }]} />
       {/* 01. Hero. The works photograph, large, because its job is to say
           that this is a real factory. */}
       <SplitHero

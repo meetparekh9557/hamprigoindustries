@@ -3,14 +3,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { ClosingCta } from "@/components/closing-cta";
 import { Container } from "@/components/container";
+import { Faq } from "@/components/faq";
+import {
+  StructuredData,
+  faqNode,
+  serviceNode,
+} from "@/components/structured-data";
 import { HeroCta, SplitHero } from "@/components/split-hero";
-import { laminationPage as page, serviceOptions } from "@/content/site";
+import {
+  laminationFaq,
+  laminationPage as page,
+  seo,
+  serviceOptions,
+} from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Fabric Lamination Services | PU Foam, Film, EVA",
-  description:
-    "PU foam, fabric to fabric, film and EVA lamination onto woven, non-woven, knitted fabric and Rexine. Any width, custom densities and thicknesses.",
-  alternates: { canonical: "/lamination" },
+  title: { absolute: seo.lamination.title },
+  description: seo.lamination.description,
+  alternates: { canonical: "/lamination/" },
 };
 
 /**
@@ -26,6 +36,21 @@ export const metadata: Metadata = {
 export default function LaminationPage() {
   return (
     <>
+      <StructuredData
+        crumbs={[{ name: "Lamination", path: "/lamination/" }]}
+        extra={[
+          serviceNode({
+            path: "/lamination/",
+            name: "Textile Lamination",
+            description: seo.lamination.description,
+            offers: page.techniques.map((t) => ({
+              name: t.heading,
+              description: t.body[0],
+            })),
+          }),
+          faqNode("/lamination/", laminationFaq),
+        ]}
+      />
       {/* 01. Hero. Same construction as About and Seamless Bonded Bras,
           on the brand red. */}
       <SplitHero
@@ -239,7 +264,10 @@ export default function LaminationPage() {
         </Container>
       </section>
 
-      {/* 10. Start with a sample. */}
+      {/* 10. The questions a buyer asks, answered where they can be read. */}
+      <Faq heading="Textile Lamination Questions" items={laminationFaq} />
+
+      {/* 11. Start with a sample. */}
       <ClosingCta
         heading={page.close.heading}
         body={[page.close.body]}
