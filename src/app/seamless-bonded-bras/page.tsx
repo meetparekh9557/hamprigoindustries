@@ -195,7 +195,6 @@ export default function SeamlessBondedBrasPage() {
       <RequestSample
         heading={page.close.heading}
         body={page.close.body}
-        ctaLabel={page.close.cta}
         lockedService={serviceOptions.bondedBras}
       />
     </>

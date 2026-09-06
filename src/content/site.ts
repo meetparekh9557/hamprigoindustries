@@ -765,7 +765,6 @@ export const bondedBrasPage = {
       "Tell us the style you are planning and we will put a sample together so you can assess the hand, edge finish and how it sits.",
       "If you are working to a settled specification, send it across and we will come back on construction and quantities.",
     ],
-    cta: "Request a Sample",
   },
 } as const;
 
