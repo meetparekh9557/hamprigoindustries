@@ -53,7 +53,7 @@ export default function HomePage() {
         </div>
 
         <Container className="relative py-16 sm:py-20 lg:py-24">
-          <div className="lg:max-w-[32rem]">
+          <div className="hero-in lg:max-w-[32rem]">
             <p className="spec-label text-white/60">{hero.eyebrow}</p>
             <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
               {hero.headline}

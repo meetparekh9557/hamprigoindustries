@@ -71,7 +71,7 @@ export function SplitHero({
       </div>
 
       <Container className="relative py-16 sm:py-20 lg:py-24">
-        <div className="lg:max-w-[32rem]">
+        <div className="hero-in lg:max-w-[32rem]">
           <h1 className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
             {title}
           </h1>

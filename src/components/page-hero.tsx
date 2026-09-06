@@ -16,7 +16,7 @@ export function PageHero({
     <section
       className={`bg-ink-strong text-white ${flush ? "" : "border-b border-line"}`}
     >
-      <Container className="py-16 sm:py-20">
+      <Container className="hero-in py-16 sm:py-20">
         {eyebrow ? (
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
             {eyebrow}
