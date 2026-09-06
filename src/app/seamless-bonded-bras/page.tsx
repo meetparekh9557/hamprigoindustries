@@ -79,7 +79,7 @@ export default function SeamlessBondedBrasPage() {
             <SpinViewer
               frames={page.material.product.frames}
               alt={page.material.product.alt}
-              className="mx-auto aspect-square w-full max-w-lg bg-white lg:max-w-none"
+              className="mx-auto aspect-square w-full max-w-[28rem] bg-white"
             />
           </div>
         </Container>
