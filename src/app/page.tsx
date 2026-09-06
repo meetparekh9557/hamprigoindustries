@@ -9,6 +9,7 @@ import {
   bondingTechnologies,
   company,
   hero,
+  homeAbout,
   homeClose,
   homeHeadings,
   materialChain,
@@ -72,21 +73,36 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 02. What we work with. The overview, before any paragraphs. */}
-      {/* No bottom padding: the rail is the end of this section, and
-          padding after it read as a stray grey band. */}
-      <section className="bg-surface pt-16 sm:pt-20">
+      {/* 02. About. Set as type: the works photograph is directly above
+          it in the hero, and a second one here would say nothing new. */}
+      <section className="border-b border-line bg-surface py-16 sm:py-20">
         <Container>
-          <div>
-            <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
-            <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-              {homeHeadings.work}
-            </h2>
+          <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+            <div>
+              <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
+              <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+                {homeAbout.heading}
+              </h2>
+            </div>
+            <div>
+              <div className="space-y-4">
+                {homeAbout.body.map((paragraph) => (
+                  <p
+                    key={paragraph.slice(0, 40)}
+                    className="text-base leading-relaxed text-muted sm:text-lg"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              <div className="mt-8">
+                <CtaLink href={homeAbout.cta.href} variant="outline">
+                  {homeAbout.cta.label}
+                </CtaLink>
+              </div>
+            </div>
           </div>
         </Container>
-        <div className="mt-10">
-          <WorkRail />
-        </div>
       </section>
 
       {/* 03. Our services. The two capabilities, each with its own visual.
@@ -188,32 +204,21 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 04. Why the structure is worth something to the buyer. Compact. */}
-      <section className="border-b border-line bg-surface py-16 sm:py-20">
+      {/* 04. What we work with. The overview, before any paragraphs. */}
+      {/* No bottom padding: the rail is the end of this section, and
+          padding after it read as a stray grey band. */}
+      <section className="bg-surface pt-16 sm:pt-20">
         <Container>
-          <div className="max-w-3xl">
-            <p className="spec-label text-brand">{whyHamprigo.eyebrow}</p>
-            <h2 className="mt-4 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
-              {whyHamprigo.heading}
+          <div>
+            <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
+            <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+              {homeHeadings.work}
             </h2>
           </div>
-          <dl className="mt-10 grid gap-10 md:grid-cols-3">
-            {whyHamprigo.items.map((item) => {
-              const Icon = ICONS[item.icon as IconName];
-              return (
-                <div key={item.label}>
-                  <Icon className="h-8 w-8 text-brand" />
-                  <dt className="mt-5 text-lg font-semibold text-ink-strong">
-                    {item.label}
-                  </dt>
-                  <dd className="mt-3 text-base leading-relaxed text-muted">
-                    {item.body}
-                  </dd>
-                </div>
-              );
-            })}
-          </dl>
         </Container>
+        <div className="mt-10">
+          <WorkRail />
+        </div>
       </section>
 
       {/* 05. What we stand for. Values come last, once the visitor knows what
@@ -242,7 +247,35 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 06. Closing band, shared with every other page. */}
+      {/* 06. Why Hamprigo. The structure is worth something to the buyer. Compact. */}
+      <section className="bg-surface py-16 sm:py-20">
+        <Container>
+          <div className="max-w-3xl">
+            <p className="spec-label text-brand">{whyHamprigo.eyebrow}</p>
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
+              {whyHamprigo.heading}
+            </h2>
+          </div>
+          <dl className="mt-10 grid gap-10 md:grid-cols-3">
+            {whyHamprigo.items.map((item) => {
+              const Icon = ICONS[item.icon as IconName];
+              return (
+                <div key={item.label}>
+                  <Icon className="h-8 w-8 text-brand" />
+                  <dt className="mt-5 text-lg font-semibold text-ink-strong">
+                    {item.label}
+                  </dt>
+                  <dd className="mt-3 text-base leading-relaxed text-muted">
+                    {item.body}
+                  </dd>
+                </div>
+              );
+            })}
+          </dl>
+        </Container>
+      </section>
+
+      {/* 07. Closing band, shared with every other page. */}
       <ClosingCta
         heading={homeClose.heading}
         body={[homeClose.body]}

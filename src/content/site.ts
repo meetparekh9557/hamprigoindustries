@@ -696,6 +696,18 @@ export const aboutPage = {
   },
 } as const;
 
+/**
+ * The About block on the homepage.
+ *
+ * Both paragraphs are the About page's own, not a fresh summary, so the two
+ * cannot drift apart and nothing new is claimed here.
+ */
+export const homeAbout = {
+  heading: "About Hamprigo",
+  body: [aboutPage.hero.body, aboutPage.story.body[3]],
+  cta: { label: "More About Hamprigo", href: "/about" },
+} as const;
+
 /** The Seamless Bonded Bras page, written to the client's brief. */
 export const bondedBrasPage = {
   hero: {
