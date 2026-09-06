@@ -31,6 +31,40 @@ export const nav = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
+/**
+ * Where enquiries are delivered.
+ *
+ * The site is a static export with no server of its own, so the form posts
+ * straight to FormSubmit, which relays it to the address below. That is the
+ * address the client supplied and the one printed on the Contact page, so
+ * nothing new is exposed by it appearing in the form's markup.
+ *
+ * FormSubmit needs activating once: the first enquiry sent from the live
+ * site triggers a confirmation email to that address, and the link in it has
+ * to be clicked. Until that is done, enquiries are held rather than
+ * delivered.
+ *
+ * A field named `email` is what FormSubmit uses for the reply-to, so a reply
+ * goes to the enquirer rather than back to us. Do not rename it.
+ */
+export const enquiryDelivery = {
+  endpoint: "https://formsubmit.co/sahilshah95@live.com",
+  /** Absolute, because FormSubmit redirects the browser to it. */
+  thankYou: "https://hamprigoindustries.com/thank-you/",
+  /** The page name is appended, giving "New Lead Lamination" and so on. */
+  subjectPrefix: "New Lead",
+} as const;
+
+/** The page an enquiry lands on once it has been sent. */
+export const thankYouPage = {
+  heading: "Thank You for Your Enquiry",
+  body: [
+    "We\u2019ve received your message successfully. Our team will review your requirements and get back to you shortly.",
+    "In the meantime, feel free to explore our manufacturing and bonding solutions.",
+  ],
+  cta: { label: "Explore Our Services", href: "/#services" },
+} as const;
+
 /** Sits under the logo in the footer. */
 export const footerBlurb = [
   "Textile lamination since 1989.",

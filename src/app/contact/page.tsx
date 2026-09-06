@@ -31,7 +31,7 @@ export default function ContactPage() {
                 {enquiryForm.heading}
               </h2>
               <div className="mt-8">
-                <EnquiryForm services={serviceOptions.all} tone="dark" />
+                <EnquiryForm services={serviceOptions.all} tone="dark" page="Contact" />
               </div>
             </div>
 

@@ -89,8 +89,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 03. Our services. The two capabilities, each with its own visual. */}
-      <section className="border-b border-line py-16 sm:py-20">
+      {/* 03. Our services. The two capabilities, each with its own visual.
+          Anchored, because the thank you page sends people back here. */}
+      <section id="services" className="scroll-mt-20 border-b border-line py-16 sm:py-20">
         <Container>
           <span aria-hidden="true" className="block h-0.5 w-10 bg-brand" />
           <h2 className="mt-6 text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
@@ -245,7 +246,7 @@ export default function HomePage() {
       <ClosingCta
         heading={homeClose.heading}
         body={[homeClose.body]}
-        form={{ services: serviceOptions.all }}
+        form={{ services: serviceOptions.all, page: "Home" }}
       />
     </>
   );

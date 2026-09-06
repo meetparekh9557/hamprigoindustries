@@ -1,16 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { contact, enquiryPlaceholders as ph } from "@/content/site";
+import {
+  contact,
+  enquiryDelivery,
+  enquiryPlaceholders as ph,
+} from "@/content/site";
 
 /**
- * Static export, so there is no server action. The form posts JSON directly
- * to whatever endpoint NEXT_PUBLIC_ENQUIRY_ENDPOINT names. Any handler that
- * accepts a JSON POST will work.
+ * Static export, so there is no server action. This is an ordinary form POST
+ * to FormSubmit, which emails the enquiry on and then sends the browser to
+ * the thank you page. Posting natively rather than over fetch means the form
+ * still works with JavaScript disabled, and the redirect is handled for us.
  *
- * With the variable unset the form refuses to submit and shows the phone
- * number and email instead. That is deliberate: a form that appears to work
- * but drops enquiries is worse than one that tells you to call.
+ * Validation runs first and cancels the submit if anything is missing. Once
+ * it passes, the event is left alone and the browser posts the form.
  *
  * The Service field is scoped by whoever renders the form. Pass `services`
  * for a dropdown, or `lockedService` for a page where the answer is already
@@ -18,7 +22,6 @@ import { contact, enquiryPlaceholders as ph } from "@/content/site";
  * control is left out of the submission entirely and the enquiry would
  * arrive with no service on it.
  */
-const ENDPOINT = process.env.NEXT_PUBLIC_ENQUIRY_ENDPOINT;
 
 /** City and country are asked for but not insisted on. Seven mandatory
  *  fields is a lot to put in front of someone who just wants a price. */
@@ -67,6 +70,7 @@ export function EnquiryForm({
   services,
   lockedService,
   tone = "light",
+  page,
 }: {
   /** Options for the Service dropdown. Ignored when lockedService is set. */
   services?: readonly string[];
@@ -74,24 +78,18 @@ export function EnquiryForm({
   lockedService?: string;
   /** "dark" when the form sits directly on a dark ground. */
   tone?: keyof typeof TONE;
+  /** Named in the email subject, so a lead says which page it came from. */
+  page: string;
 }) {
   const t = TONE[tone];
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     const form = event.currentTarget;
     const data = new FormData(form);
     const read = (key: string) => String(data.get(key) ?? "").trim();
-
-    // Honeypot. Bots fill hidden fields; people do not.
-    if (read("website")) {
-      setStatus("sent");
-      setMessage("Thank you. We will be in touch.");
-      return;
-    }
 
     const nextErrors: Record<string, string> = {};
     for (const [name, label] of REQUIRED) {
@@ -110,64 +108,35 @@ export function EnquiryForm({
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) {
+      event.preventDefault();
       setStatus("error");
       setMessage("Please check the highlighted fields.");
       return;
     }
 
-    if (!ENDPOINT) {
-      setStatus("error");
-      setMessage(
-        `Our enquiry form is not accepting messages yet. Please email ${contact.email} or call ${contact.phone} and we will respond.`,
-      );
-      return;
-    }
-
+    // Valid: let the browser post it and follow the redirect.
     setStatus("sending");
     setMessage("");
-
-    const payload = {
-      name: read("name"),
-      mobile,
-      email,
-      city: read("city"),
-      country: read("country"),
-      service: read("service"),
-      message: read("message"),
-      submittedAt: new Date().toISOString(),
-    };
-
-    try {
-      const response = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!response.ok) throw new Error(String(response.status));
-      form.reset();
-      setStatus("sent");
-      setMessage(
-        "Thank you. Your enquiry has been sent and we will come back to you shortly.",
-      );
-    } catch {
-      setStatus("error");
-      setMessage(
-        `We could not send your enquiry just now. Please email ${contact.email} or call ${contact.phone}.`,
-      );
-    }
-  }
-
-  if (status === "sent") {
-    return (
-      <div role="status" className={t.panel}>
-        <h3 className={t.panelHeading}>Enquiry received</h3>
-        <p className={t.panelBody}>{message}</p>
-      </div>
-    );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+    <form
+      action={enquiryDelivery.endpoint}
+      method="POST"
+      onSubmit={handleSubmit}
+      className="space-y-5"
+      noValidate
+    >
+      {/* FormSubmit's own settings. They are not shown to the enquirer and
+          are not part of the enquiry. */}
+      <input
+        type="hidden"
+        name="_subject"
+        value={`${enquiryDelivery.subjectPrefix} ${page}`}
+      />
+      <input type="hidden" name="_next" value={enquiryDelivery.thankYou} />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
       {status === "error" && message ? (
         <p role="alert" className={t.banner}>
           {message}
@@ -294,10 +263,11 @@ export function EnquiryForm({
         {errors.message ? <p className={t.error}>{errors.message}</p> : null}
       </div>
 
-      {/* Honeypot, off screen and hidden from assistive tech. */}
+      {/* Honeypot, off screen and hidden from assistive tech. The name is
+          the one FormSubmit itself filters on. */}
       <div aria-hidden="true" className="absolute left-[-9999px]">
-        <label htmlFor="website">Leave this field empty</label>
-        <input id="website" name="website" tabIndex={-1} autoComplete="off" />
+        <label htmlFor="_honey">Leave this field empty</label>
+        <input id="_honey" name="_honey" tabIndex={-1} autoComplete="off" />
       </div>
 
       <button

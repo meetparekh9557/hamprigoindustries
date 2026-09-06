@@ -47,7 +47,7 @@ export function RequestSample({
           </div>
 
           <div className="rounded-sm bg-white p-6 text-ink sm:p-8">
-            <EnquiryForm lockedService={lockedService} />
+            <EnquiryForm lockedService={lockedService} page="Seamless Bonded Bras" />
           </div>
         </div>
       </Container>

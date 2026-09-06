@@ -243,7 +243,7 @@ export default function LaminationPage() {
       <ClosingCta
         heading={page.close.heading}
         body={[page.close.body]}
-        form={{ services: serviceOptions.lamination }}
+        form={{ services: serviceOptions.lamination, page: "Lamination" }}
       />
     </>
   );

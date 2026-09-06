@@ -43,6 +43,8 @@ export function ClosingCta({
   form?: {
     services?: readonly string[];
     lockedService?: string;
+    /** Named in the email subject, so a lead says which page it came from. */
+    page: string;
   };
 }) {
   const pitch = (
@@ -93,6 +95,7 @@ export function ClosingCta({
               <EnquiryForm
                 services={form.services}
                 lockedService={form.lockedService}
+                page={form.page}
               />
             </div>
           </div>
