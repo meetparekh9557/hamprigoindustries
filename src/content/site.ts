@@ -934,19 +934,24 @@ export const bondedBrasPage = {
 } as const;
 
 /**
- * The floating WhatsApp button.
+ * The sticky WhatsApp button.
  *
- * NOTE: this number is not the one in `contact` above. The site's phone is
- * ...7268 and this is ...7286, the last two digits transposed. It was given
- * separately and deliberately, so it stands, but it is worth confirming: a
- * wrong digit here sends every WhatsApp enquiry into the void silently.
+ * Same number as the phone line above. It was supplied separately once as
+ * ...7286, with the last two digits transposed, which is not registered on
+ * WhatsApp: the app offered to send an invitation instead of opening a chat,
+ * so every enquiry sent through the button went nowhere. Confirmed as ...7268
+ * and corrected. It is derived from `contact` rather than typed again, so the
+ * two cannot drift apart a second time.
+ *
+ * wa.me wants the country code with no plus, spaces or dashes, which is what
+ * stripping the leading + off `phoneHref` gives.
  *
  * Messages are short on purpose. The point is to open the chat with the
  * subject already stated, leaving the person room to write their own
  * question rather than deleting a paragraph first.
  */
 export const whatsapp = {
-  number: "919619337286",
+  number: contact.phoneHref.replace("+", ""),
   messages: {
     default: "Hello Hamprigo Industries, I would like to make an enquiry.",
     lamination:
