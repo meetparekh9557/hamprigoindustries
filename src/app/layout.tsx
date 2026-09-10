@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@/components/analytics";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { WhatsAppButton } from "@/components/whatsapp-button";
@@ -14,6 +15,9 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  // Used for small spec labels only. Preloading it competed with the hero
+  // image for bandwidth on the first paint; it can arrive a beat later.
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -58,23 +62,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <head>
-        {/* Google Analytics. In <head> and async, as Google's own snippet
-            has it, so a pageview is recorded even if the visitor leaves
-            before the rest of the page finishes. */}
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${analytics.measurementId}`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${analytics.measurementId}');`,
-          }}
-        />
-      </head>
       <body className="flex min-h-full flex-col">
         <a
           href="#main"
@@ -88,6 +75,7 @@ gtag('config', '${analytics.measurementId}');`,
         </main>
         <SiteFooter />
         <WhatsAppButton />
+        <Analytics />
       </body>
     </html>
   );

@@ -60,7 +60,9 @@ export function SplitHero({
           src={image}
           alt={alt}
           fill
-          sizes="(min-width: 64rem) 50vw, 100vw"
+          /* A deliberate resolution cap, not a layout claim: see the note
+             on the homepage hero. The image does fill the width. */
+          sizes="(min-width: 64rem) 50vw, 66vw"
           className="object-cover"
           priority
         />

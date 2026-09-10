@@ -44,7 +44,12 @@ export default function HomePage() {
             src="/img/factory.jpg"
             alt={`The ${company.name} works`}
             fill
-            sizes="(min-width: 64rem) 50vw, 100vw"
+            /* 66vw rather than 100vw is a deliberate resolution cap, not a
+               layout claim: the image does fill the width. A phone at 3x
+               would otherwise fetch the 1200px variant, 121KB, for a
+               photograph sitting under a heavy gradient wash where the
+               detail cannot be seen. Capping selection near 2x halves it. */
+            sizes="(min-width: 64rem) 50vw, 66vw"
             className="object-cover"
             priority
           />
