@@ -1,0 +1,61 @@
+{
+  "/img/bonded-bra.jpg": [
+    480,
+    800,
+    1200
+  ],
+  "/img/eva.jpg": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "/img/fabric-to-fabric.jpg": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "/img/factory.jpg": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "/img/film.jpg": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "/img/pu-foam.jpg": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "/img/tech-hotmelt.jpg": [
+    480,
+    800
+  ],
+  "/img/tech-silicone.jpg": [
+    480,
+    800
+  ],
+  "/img/tech-tape.jpg": [
+    480,
+    800
+  ],
+  "/img/textile.jpg": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "/img/works.jpg": [
+    480,
+    800,
+    1200,
+    1600
+  ]
+}

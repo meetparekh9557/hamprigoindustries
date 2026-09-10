@@ -35,7 +35,6 @@ export function WorkRail() {
               fill
               sizes="(min-width: 76rem) 70vw, 90vw"
               className="work-panel__image"
-              priority={i === 0}
             />
             <span aria-hidden="true" className="work-panel__scrim" />
 
@@ -81,15 +80,22 @@ function TouchRail() {
     const root = ref.current;
     if (!root) return;
 
-    // Chromium will not lazy-load the final card in a horizontal scroller
-    // even once it is fully in view, so card 05 rendered with no image and
-    // never requested one. Nudging the images to eager fixes it. Guarded on
-    // the rail actually being displayed, so the desktop build does not
-    // download five pictures it hides.
+    // Chromium will not lazy-load the last card in a horizontal scroller even
+    // once it is fully in view, so card 05 used to render with no image and
+    // never request one. This used to be fixed by making all five eager,
+    // which cost a phone 1.1MB before it had scrolled anywhere. Now the
+    // remaining images are woken only once the rail is actually scrolled, so
+    // the first card is all a visitor pays for unless they look further.
     if (getComputedStyle(root).display !== "none") {
-      root.querySelectorAll("img").forEach((img) => {
-        img.loading = "eager";
-      });
+      const wake = () => {
+        root.querySelectorAll("img").forEach((img) => {
+          img.loading = "eager";
+        });
+        root.removeEventListener("scroll", wake);
+        root.removeEventListener("pointerdown", wake);
+      };
+      root.addEventListener("scroll", wake, { passive: true, once: true });
+      root.addEventListener("pointerdown", wake, { passive: true, once: true });
     }
 
     const cards = Array.from(root.querySelectorAll("[data-card]"));

@@ -34,6 +34,7 @@ export function SiteFooter() {
               {nav.map((item) => (
                 <li key={item.href}>
                   <Link
+                    prefetch={false}
                     href={item.href}
                     className="text-sm font-medium text-ink-strong transition-colors hover:text-brand"
                   >

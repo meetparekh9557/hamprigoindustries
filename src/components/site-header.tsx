@@ -18,6 +18,7 @@ export function SiteHeader() {
             lockup, so it needs height before the wordmark is readable. */}
         <div className="flex h-20 items-center justify-between gap-6 lg:h-24">
           <Link
+            prefetch={false}
             href="/"
             onClick={() => setOpen(false)}
             aria-label="Hamprigo Industries, home"
@@ -34,6 +35,7 @@ export function SiteHeader() {
                   : pathname.startsWith(item.href);
               return (
                 <Link
+                  prefetch={false}
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
@@ -48,6 +50,7 @@ export function SiteHeader() {
           </nav>
 
           <Link
+            prefetch={false}
             href="/contact"
             className="ml-auto hidden shrink-0 items-center rounded-sm bg-brand px-5 py-2.5 text-sm font-semibold tracking-wide text-brand-ink transition-colors hover:bg-brand-dark lg:inline-flex"
           >
@@ -92,6 +95,7 @@ export function SiteHeader() {
           <nav className="flex flex-col py-2">
             {nav.map((item) => (
               <Link
+                prefetch={false}
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
@@ -101,6 +105,7 @@ export function SiteHeader() {
               </Link>
             ))}
             <Link
+              prefetch={false}
               href="/contact"
               onClick={() => setOpen(false)}
               className="mt-4 inline-flex items-center justify-center rounded-sm bg-brand px-5 py-3 text-sm font-semibold tracking-wide text-brand-ink"
