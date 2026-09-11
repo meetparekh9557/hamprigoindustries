@@ -1,12 +1,16 @@
 import { Container } from "./container";
 
 /**
- * The questions a buyer asks, answered in plain sight.
+ * The questions a buyer asks.
  *
- * Rendered as real text rather than a click-to-open accordion: an answer
- * hidden behind a summary element is harder for a person to scan and gives
- * an answer engine less to work with. The same array feeds the FAQ
- * structured data, so what is claimed and what is shown are the same words.
+ * Built on `details` and `summary` rather than on state. It needs no
+ * JavaScript, so it works on the first paint rather than after hydration;
+ * the keyboard and screen reader behaviour is the browser's own rather than
+ * something reimplemented; and the answers stay in the markup while closed,
+ * so the FAQ structured data still matches what the page says.
+ *
+ * Each opens independently. Grouping them by `name` so that opening one
+ * closes the last would hide an answer the visitor is still reading.
  */
 export function Faq({
   heading,
@@ -21,18 +25,32 @@ export function Faq({
         <h2 className="text-2xl font-bold tracking-tight text-ink-strong sm:text-3xl">
           {heading}
         </h2>
-        <dl className="mt-10 grid gap-x-16 gap-y-8 border-t border-line pt-8 lg:grid-cols-2">
+
+        <div className="mt-10 border-t border-line">
           {items.map((item) => (
-            <div key={item.q}>
-              <dt className="text-lg font-semibold leading-snug text-ink-strong">
+            <details key={item.q} className="faq group border-b border-line">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-lg font-semibold leading-snug text-ink-strong transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand [&::-webkit-details-marker]:hidden">
                 {item.q}
-              </dt>
-              <dd className="mt-3 text-base leading-relaxed text-muted">
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 20 20"
+                  className="mt-1 h-5 w-5 shrink-0 text-brand transition-transform duration-200 group-open:rotate-45"
+                >
+                  <path
+                    d="M10 4v12M4 10h12"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.75"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </summary>
+              <p className="max-w-3xl pb-6 text-base leading-relaxed text-muted">
                 {item.a}
-              </dd>
-            </div>
+              </p>
+            </details>
           ))}
-        </dl>
+        </div>
       </Container>
     </section>
   );

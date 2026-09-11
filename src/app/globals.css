@@ -383,3 +383,32 @@ body {
     animation-delay: 330ms;
   }
 }
+
+/**
+ * The FAQ accordion opening.
+ *
+ * A closed `details` puts its content in display: none, so a height
+ * transition has nothing to run on. `::details-content` is the browser's
+ * own handle on that content and can be animated; `interpolate-size` is
+ * what lets it travel to auto rather than needing a fixed height.
+ *
+ * Guarded on support, so a browser without it simply opens instantly.
+ * Nothing depends on the animation, and reduced motion turns it off.
+ */
+@supports selector(::details-content) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+
+  .faq::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size 240ms cubic-bezier(0.22, 0.68, 0.28, 1),
+      content-visibility 240ms allow-discrete;
+  }
+
+  .faq[open]::details-content {
+    block-size: auto;
+  }
+}
