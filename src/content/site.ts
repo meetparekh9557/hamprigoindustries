@@ -555,7 +555,7 @@ export const whyHamprigo = {
     {
       icon: "swatch",
       label: "Your Fabric Or Ours",
-      body: "Customers can provide their fabric, or we can develop, source or treat it for you.",
+      body: "Customers can send us the fabric they want laminated, or we can develop, source or treat it for them.",
     },
     {
       icon: "sliders",
@@ -669,7 +669,7 @@ export const laminationPage = {
     heading: "Your Fabric Or Ours.",
     body: "You can send us your own fabric, or we can develop, source or treat the material required for your construction.",
     blocks: [
-      { title: "Your Fabric", body: "Send us the material you want to work with." },
+      { title: "Your Fabric", body: "Send us the material you want laminated." },
       { title: "Our Material", body: "We can develop, source or treat material where required." },
     ],
   },
@@ -738,12 +738,12 @@ export const bondedBrasFaq = [
     a: "A bra whose construction is bonded rather than stitched. Hamprigo manufactures seamless bonded bras using material we laminate ourselves, bringing material development, lamination and finished garment construction together under one supplier.",
   },
   {
-    q: "What are the stages from fabric to finished bra?",
-    a: "Three. Your fabric, which is the material you want to work with. Hamprigo lamination, where the material is laminated according to your requirement. Then the finished bra, a seamless bonded construction manufactured by Hamprigo.",
+    q: "What are the stages from material to finished bra?",
+    a: "Three. The material, developed and laminated by Hamprigo. The bonded construction, assembled by bonding rather than stitching. Then the finished bra, a seamless bonded construction manufactured by Hamprigo.",
   },
   {
-    q: "Can I supply my own fabric?",
-    a: "Yes. You can provide the fabric you want to work with, or we can develop and source the face fabric for you. Either way the lamination and the finished bra are both manufactured by Hamprigo.",
+    q: "Does Hamprigo make the material as well as the bra?",
+    a: "Yes. The material is developed and laminated by Hamprigo and the finished seamless bonded bra is manufactured here as well, so the laminate and the garment are settled in one place rather than across separate suppliers.",
   },
   {
     q: "Which bonding technologies does Hamprigo use?",
@@ -751,11 +751,11 @@ export const bondedBrasFaq = [
   },
   {
     q: "Can I request a sample?",
-    a: "Yes. Tell us the style you are planning and we will put a sample together so you can assess the hand, edge finish and how it sits.",
+    a: "Yes. Ask us for a sample and you can assess the hand, the edge finish and how it sits for yourself.",
   },
   {
     q: "How does the enquiry process work?",
-    a: "Send your requirement through the form on this page, or by phone or email. If you are working to a settled specification, send it across and we will come back on construction and quantities.",
+    a: "Send your requirement through the form on this page, or by phone, email or WhatsApp. Tell us the quantities you are working to and we will come back to you on the rest.",
   },
 ] as const;
 
@@ -791,9 +791,9 @@ export const aboutPage = {
   how: {
     eyebrow: "How We Work",
     heading: "Your Material Or Ours.",
-    body: "You can send us the fabric you want to work with, or we can develop, source or treat the material required for your construction.",
+    body: "You can send us the fabric you want laminated, or we can develop, source or treat the material required for your construction.",
     blocks: [
-      { title: "Your Fabric", body: "Send us the material you want to work with." },
+      { title: "Your Fabric", body: "Send us the material you want laminated." },
       { title: "Our Material", body: "We can develop, source or treat material where required." },
       {
         title: "Your Specification",
@@ -890,16 +890,19 @@ export const bondedBrasPage = {
     },
   },
   construction: {
-    heading: "Material And Construction, Specified Together.",
+    heading: "Material And Construction, Made In One Place.",
     body: [
-      "You can provide the fabric you want to work with, or we can develop and source the face fabric for you.",
-      "The lamination and finished seamless bonded bra are both manufactured by Hamprigo. This means the material and construction can be considered together rather than coordinated through separate suppliers.",
+      "The material is developed and laminated by Hamprigo, and the finished seamless bonded bra is manufactured here as well.",
+      "Material and construction are settled in one place rather than coordinated across separate suppliers, which is what keeps the laminate and the finished garment working as one.",
     ],
     sequence: [
-      { label: "Your Fabric", body: "The fabric you want to work with." },
       {
-        label: "Hamprigo Lamination",
-        body: "Material laminated according to your requirement.",
+        label: "Our Material",
+        body: "Developed and laminated by Hamprigo.",
+      },
+      {
+        label: "Bonded Construction",
+        body: "Assembled by bonding rather than stitching.",
       },
       {
         label: "Finished Bra",
@@ -927,8 +930,8 @@ export const bondedBrasPage = {
   close: {
     heading: "Request A Sample.",
     body: [
-      "Tell us the style you are planning and we will put a sample together so you can assess the hand, edge finish and how it sits.",
-      "If you are working to a settled specification, send it across and we will come back on construction and quantities.",
+      "Ask us for a sample and you can assess the hand, the edge finish and how it sits for yourself.",
+      "Tell us the quantities you are working to and we will come back to you on the rest.",
     ],
   },
 } as const;
