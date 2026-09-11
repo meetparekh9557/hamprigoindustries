@@ -738,8 +738,8 @@ export const bondedBrasFaq = [
     a: "A bra whose construction is bonded rather than stitched. Hamprigo manufactures seamless bonded bras using material we laminate ourselves, bringing material development, lamination and finished garment construction together under one supplier.",
   },
   {
-    q: "What material are Hamprigo's bonded bras made from?",
-    a: "Material laminated by Hamprigo. A bonded bra depends on the material beneath the finished construction: the laminate has to hold the layers together and maintain its performance through repeated laundering. Our bonding is irreversible, so layers do not separate at the edges or under stress, and the lamination holds its washing fastness through repeated laundering.",
+    q: "What are the stages from fabric to finished bra?",
+    a: "Three. Your fabric, which is the material you want to work with. Hamprigo lamination, where the material is laminated according to your requirement. Then the finished bra, a seamless bonded construction manufactured by Hamprigo.",
   },
   {
     q: "Can I supply my own fabric?",
