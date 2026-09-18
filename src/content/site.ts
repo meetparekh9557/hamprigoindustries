@@ -449,12 +449,12 @@ export const serviceImages: Record<string, { src: string; alt: string }> =
 export const bondingTechnologies = [
   {
     name: "Hotmelt PUR Dispensing",
-    image: "/img/tech-hotmelt.jpg",
+    image: "/img/tech-hotmelt-dots.jpg",
     alt: "Close-up of hotmelt adhesive dots dispensed onto fabric",
   },
   {
     name: "Silicone Printing",
-    image: "/img/tech-silicone.jpg",
+    image: "/img/tech-silicone-lines.jpg",
     alt: "Close-up of silicone print lines applied to a single layer of fabric",
   },
   {
