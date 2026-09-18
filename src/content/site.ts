@@ -450,12 +450,12 @@ export const bondingTechnologies = [
   {
     name: "Hotmelt PUR Dispensing",
     image: "/img/tech-hotmelt.jpg",
-    alt: "Close-up of adhesive beading applied along a bonded edge",
+    alt: "Close-up of hotmelt adhesive dots dispensed onto fabric",
   },
   {
     name: "Silicone Printing",
     image: "/img/tech-silicone.jpg",
-    alt: "Close-up of silicone printed onto bonded fabric",
+    alt: "Close-up of silicone print lines applied to a single layer of fabric",
   },
   {
     name: "Tape Bonding",
