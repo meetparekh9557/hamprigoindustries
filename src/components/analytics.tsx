@@ -17,6 +17,12 @@ import { analytics } from "@/content/site";
  * the page has loaded and the browser is idle, or until the visitor touches
  * something, whichever comes first. gtag replays the queue when it arrives,
  * so nothing is lost.
+ *
+ * The queue must hold arguments objects rather than arrays. gtag.js reads
+ * each entry and only runs it as a command when it is an arguments object;
+ * an array reads to it as data and is dropped in silence. Pushing arrays
+ * cost us every pageview, with no error anywhere to say so, so this follows
+ * Google's own snippet exactly.
  */
 declare global {
   interface Window {
@@ -29,9 +35,10 @@ export function Analytics() {
     if (document.getElementById("ga-src")) return;
 
     window.dataLayer = window.dataLayer || [];
-    function gtag(...args: unknown[]) {
-      window.dataLayer.push(args);
-    }
+    const gtag = function () {
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer.push(arguments);
+    } as (...params: unknown[]) => void;
     gtag("js", new Date());
     gtag("config", analytics.measurementId);
 
