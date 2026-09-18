@@ -454,8 +454,8 @@ export const bondingTechnologies = [
   },
   {
     name: "Silicone Printing",
-    image: "/img/tech-silicone-lines.jpg",
-    alt: "Close-up of silicone print lines applied to a single layer of fabric",
+    image: "/img/tech-silicone-print.jpg",
+    alt: "Silicone being dispensed onto a cut bra panel",
   },
   {
     name: "Tape Bonding",
